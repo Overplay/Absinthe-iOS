@@ -6,8 +6,8 @@
 //  Copyright © 2016 App Delegates. All rights reserved.
 //
 
-struct Notifications {
-    static var newOPIE = "newOPIE"
-    static var droppedOPIE = "droppedOPIE"
-    static var OPIESocketError = "OPIESocketError"
+enum Notifications: String {
+    case newOPIE
+    case droppedOPIE
+    case OPIESocketError
 }

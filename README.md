@@ -1,5 +1,6 @@
-# Belashi-iOS
-Ourglass mobile app
+# Absinthe-iOS
+
+Ourglass mobile app, based on Noah's Belashi branch.
 
 ##PODS
 

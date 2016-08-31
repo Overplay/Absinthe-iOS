@@ -46,9 +46,9 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         super.loadView()
         
         // Register for OPIE notifications
-        nc.addObserver(self, selector: #selector(newOPIE), name: Notifications.newOPIE, object: nil)
-        nc.addObserver(self, selector: #selector(OPIESocketError), name: Notifications.OPIESocketError, object: nil)
-        nc.addObserver(self, selector: #selector(droppedOPIE), name: Notifications.droppedOPIE, object: nil)
+        nc.addObserver(self, selector: #selector(newOPIE), name: Notifications.newOPIE.rawValue, object: nil)
+        nc.addObserver(self, selector: #selector(OPIESocketError), name: Notifications.OPIESocketError.rawValue, object: nil)
+        nc.addObserver(self, selector: #selector(droppedOPIE), name: Notifications.droppedOPIE.rawValue, object: nil)
         
         // Display hud
         self.hud = PKHUD()

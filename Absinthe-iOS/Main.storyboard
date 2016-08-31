@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS4-bW-e0p">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS4-bW-e0p">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -23,6 +23,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcH-Gg-gMx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="DU3-1b-bGN" kind="relationship" relationship="rootViewController" id="ZVM-xv-wfH"/>
@@ -65,7 +70,7 @@
         <!--Initial View Controller-->
         <scene sceneID="ihT-Be-Ndd">
             <objects>
-                <viewController id="DU3-1b-bGN" customClass="InitialViewController" customModule="Belashi_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DU3-1b-bGN" customClass="InitialViewController" customModule="Absinthe_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IY9-S9-UuS"/>
                         <viewControllerLayoutGuide type="bottom" id="ZKr-qa-ahb"/>
@@ -77,9 +82,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="xlC-G4-MYl"/>
                     <connections>
-                        <segue destination="QKj-LB-4wy" kind="show" identifier="toAccount" customClass="NoAnimationSegue" customModule="Belashi_iOS" customModuleProvider="target" id="gf6-KI-0s1"/>
-                        <segue destination="fDU-06-GNe" kind="show" identifier="toControl" customClass="NoAnimationSegue" customModule="Belashi_iOS" customModuleProvider="target" id="cX2-l4-1HM"/>
-                        <segue destination="Znu-ji-arK" kind="show" identifier="toMap" customClass="NoAnimationSegue" customModule="Belashi_iOS" customModuleProvider="target" id="0Iy-Xt-M7j"/>
+                        <segue destination="QKj-LB-4wy" kind="show" identifier="toAccount" customClass="NoAnimationSegue" customModule="Absinthe_iOS" customModuleProvider="target" id="gf6-KI-0s1"/>
+                        <segue destination="fDU-06-GNe" kind="show" identifier="toControl" customClass="NoAnimationSegue" customModule="Absinthe_iOS" customModuleProvider="target" id="cX2-l4-1HM"/>
+                        <segue destination="Znu-ji-arK" kind="show" identifier="toMap" customClass="NoAnimationSegue" customModule="Absinthe_iOS" customModuleProvider="target" id="0Iy-Xt-M7j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcG-UX-gTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
