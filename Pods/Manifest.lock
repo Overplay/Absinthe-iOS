@@ -1,0 +1,78 @@
+PODS:
+  - Alamofire (3.4.2)
+  - CocoaAsyncSocket (7.5.0):
+    - CocoaAsyncSocket/GCD (= 7.5.0)
+  - CocoaAsyncSocket/GCD (7.5.0)
+  - EAIntroView (2.9.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
+  - MMDrawerController (0.5.7):
+    - MMDrawerController/Core (= 0.5.7)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
+    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
+    - MMDrawerController/Subclass (= 0.5.7)
+  - MMDrawerController+Storyboard (0.0.2):
+    - MMDrawerController
+  - MMDrawerController/Core (0.5.7)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.7):
+    - MMDrawerController/Core
+  - OMGHTTPURLRQ (3.2.0):
+    - OMGHTTPURLRQ/RQ (= 3.2.0)
+  - OMGHTTPURLRQ/FormURLEncode (3.2.0)
+  - OMGHTTPURLRQ/RQ (3.2.0):
+    - OMGHTTPURLRQ/FormURLEncode
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (3.2.0)
+  - PKHUD (3.2.1)
+  - PromiseKit (3.5.1):
+    - PromiseKit/Foundation (= 3.5.1)
+    - PromiseKit/QuartzCore (= 3.5.1)
+    - PromiseKit/UIKit (= 3.5.1)
+  - PromiseKit/CorePromise (3.5.1)
+  - PromiseKit/Foundation (3.5.1):
+    - OMGHTTPURLRQ (~> 3.2.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (3.5.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (3.5.1):
+    - PromiseKit/CorePromise
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
+  - RealmSwift (1.0.2):
+    - Realm (= 1.0.2)
+  - SwiftyJSON (2.3.2)
+  - XCGLogger (3.5.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - CocoaAsyncSocket
+  - EAIntroView (~> 2.9.0)
+  - MMDrawerController (~> 0.5.7)
+  - MMDrawerController+Storyboard (~> 0.0.2)
+  - PKHUD
+  - PromiseKit
+  - RealmSwift
+  - SwiftyJSON
+  - XCGLogger (~> 3.2)
+
+SPEC CHECKSUMS:
+  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
+  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  MMDrawerController+Storyboard: c98f86c0f32cdef1d466d19a7da3ad2fc6c6ac00
+  OMGHTTPURLRQ: 1e54807cb7d5dbb506926e53498e1e9ac5720c79
+  PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
+  PromiseKit: 99ea973444a4bff6c38ffb97fa1bb175e619bcf0
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
+  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  XCGLogger: 94829865eea6fcc1f9a49e23bdc9f120a6848f30
+
+COCOAPODS: 0.39.0
