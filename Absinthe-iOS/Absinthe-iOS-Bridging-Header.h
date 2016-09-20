@@ -11,6 +11,6 @@
 
 #import <ifaddrs.h>
 
-#import "SimplePingHelper.h"
+//#import "SimplePingHelper.h"
 
 #endif /* Belashi_iOS_Bridging_Header_h */

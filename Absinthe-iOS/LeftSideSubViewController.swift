@@ -12,7 +12,7 @@ import MMDrawerController
 class LeftSideSubViewController : UIViewController {
     
     func openLeftSideView() {
-        xcglog.info("Opening left side view")
+        log.info("Opening left side view")
         self.mm_drawerController.toggleDrawerSide(.Left, animated: true, completion: nil)
     }
     

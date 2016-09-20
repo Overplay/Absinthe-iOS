@@ -19,6 +19,8 @@ class OPIE {
     // image with a 1:1 aspect ratio. Images of a different aspect ratio will look off.
     var icon: UIImage
     
+    var nowShowing = ""
+    
     class var defaultIconImage: UIImage {
         return UIImage(named: "tv_icon.png")!
     }
@@ -30,12 +32,13 @@ class OPIE {
         self.icon = OPIE.defaultIconImage
     }
     
-    init(systemName: String, location: String, ipAddress: String, time: NSDate) {
+    init(systemName: String, location: String, ipAddress: String, time: NSDate, nowShowing: String?) {
         self.systemName = systemName
         self.location = location
         self.ipAddress = ipAddress
         self.lastHeardFrom = time
         self.icon = OPIE.defaultIconImage
+        self.nowShowing = nowShowing ?? ""
     }
     
     init(systemName: String, location: String, ipAddress: String, time: NSDate, iconImage: String) {

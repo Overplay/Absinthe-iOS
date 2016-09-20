@@ -13,4 +13,5 @@ class OurglasserCell: UICollectionViewCell {
     @IBOutlet var name : UILabel!
     @IBOutlet var location : UILabel!
     @IBOutlet var ipAddress : UILabel!
+    @IBOutlet var systemNumberLabel: UILabel!
 }

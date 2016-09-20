@@ -10,68 +10,68 @@ import Foundation
 import SystemConfiguration.CaptiveNetwork
 import PromiseKit
 
-class NetUtils : NSObject, SimplePingDelegate, NSStreamDelegate {
+class NetUtils : NSObject, NSStreamDelegate {
     
     // MARK: PING
     
-    var sema: dispatch_semaphore_t!
-    var isError = false
-    var response: AnyObject!
-    
-    func ping(address: String) -> Promise<AnyObject>! {
-        let simpPing = SimplePing(hostName: address)
-        simpPing.delegate = self
-        simpPing.start()
-        
-        xcglog.debug("Starting ping")
-        
-        return Promise<AnyObject> { fulfill, reject in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                self.sema = dispatch_semaphore_create(0)
-                dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER)
-                if self.isError {
-                    reject(self.response as! ErrorType)
-                } else {
-                    fulfill(self.response)
-                }
-            }
-        }
-    }
-    
-    // Stop and signal promise
-    func stopPing(pinger: SimplePing, isError: Bool, response: AnyObject) {
-        self.isError = isError
-        self.response = response
-        pinger.stop()
-        dispatch_semaphore_signal(sema)
-    }
-    
-    // Send ping immediately
-    func simplePing(pinger: SimplePing, didStartWithAddress address: NSData) {
-        xcglog.debug("Sent ping with data")
-        pinger.sendPingWithData(nil)
-    }
-    
-    // Failed so reject promise
-    func simplePing(pinger: SimplePing, didFailWithError error: NSError) {
-        self.isError = true
-        self.response = error.description
-        xcglog.debug(String("Ping failed with error: %@", error.description))
-        stopPing(pinger, isError: true, response: error.description)
-    }
-    
-    // Failed so reject promise
-    func simplePing(pinger: SimplePing, didFailToSendPacket packet: NSData, sequenceNumber: UInt16, error: NSError) {
-        xcglog.debug(String("Ping packed failed to send with error: %@", error.description))
-        stopPing(pinger, isError: true, response: error.description)
-    }
-    
-    // Got data back so fulfill promise
-    func simplePing(pinger: SimplePing, didReceivePingResponsePacket packet: NSData, sequenceNumber: UInt16) {
-        xcglog.debug(String("Received ping response with data: %@", packet))
-        stopPing(pinger, isError: false, response: packet)
-    }
-    
+//    var sema: dispatch_semaphore_t!
+//    var isError = false
+//    var response: AnyObject!
+//    
+//    func ping(address: String) -> Promise<AnyObject>! {
+//        let simpPing = SimplePing(hostName: address)
+//        simpPing.delegate = self
+//        simpPing.start()
+//        
+//        xcglog.debug("Starting ping")
+//        
+//        return Promise<AnyObject> { fulfill, reject in
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+//                self.sema = dispatch_semaphore_create(0)
+//                dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER)
+//                if self.isError {
+//                    reject(self.response as! ErrorType)
+//                } else {
+//                    fulfill(self.response)
+//                }
+//            }
+//        }
+//    }
+//    
+//    // Stop and signal promise
+//    func stopPing(pinger: SimplePing, isError: Bool, response: AnyObject) {
+//        self.isError = isError
+//        self.response = response
+//        pinger.stop()
+//        dispatch_semaphore_signal(sema)
+//    }
+//    
+//    // Send ping immediately
+//    func simplePing(pinger: SimplePing, didStartWithAddress address: NSData) {
+//        xcglog.debug("Sent ping with data")
+//        pinger.sendPingWithData(nil)
+//    }
+//    
+//    // Failed so reject promise
+//    func simplePing(pinger: SimplePing, didFailWithError error: NSError) {
+//        self.isError = true
+//        self.response = error.description
+//        xcglog.debug(String("Ping failed with error: %@", error.description))
+//        stopPing(pinger, isError: true, response: error.description)
+//    }
+//    
+//    // Failed so reject promise
+//    func simplePing(pinger: SimplePing, didFailToSendPacket packet: NSData, sequenceNumber: UInt16, error: NSError) {
+//        xcglog.debug(String("Ping packed failed to send with error: %@", error.description))
+//        stopPing(pinger, isError: true, response: error.description)
+//    }
+//    
+//    // Got data back so fulfill promise
+//    func simplePing(pinger: SimplePing, didReceivePingResponsePacket packet: NSData, sequenceNumber: UInt16) {
+//        xcglog.debug(String("Received ping response with data: %@", packet))
+//        stopPing(pinger, isError: false, response: packet)
+//    }
+//    
     // MARK: WIFI ADDRESS
     
     // Get mobile device IP and netmask of connected Wi-Fi

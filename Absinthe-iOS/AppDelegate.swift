@@ -9,7 +9,7 @@
 import UIKit
 import EAIntroView
 
-let xcglog = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
+let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupXCGLogger() {
         // Create a destination for the system console log (via NSLog)
-        let systemLogDestination = XCGNSLogDestination(owner: xcglog, identifier: "advancedLogger.systemLogDestination")
+        let systemLogDestination = XCGNSLogDestination(owner: log, identifier: "advancedLogger.systemLogDestination")
         
         // Optionally set some configuration options
         systemLogDestination.outputLogLevel = .Debug
@@ -33,10 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         systemLogDestination.showDate = true
         
         // Add the destination to the logger
-        xcglog.addLogDestination(systemLogDestination)
+        log.addLogDestination(systemLogDestination)
         
         // Add basic app info, version info etc, to the start of the logs
-        xcglog.logAppDetails()
+        log.logAppDetails()
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -47,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Log into Asahi if possible
         Asahi.sharedInstance
+        
+        //Asahi.sharedInstance.testRegistration()
+        Asahi.sharedInstance.testLogin()
         
         return true
     }

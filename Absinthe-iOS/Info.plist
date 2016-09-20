@@ -29,10 +29,23 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow us to find the stores nearest to you.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Exo2-Black.ttf</string>
+		<string>Exo2-BlackItalic.ttf</string>
+		<string>Exo2-Bold.ttf</string>
+		<string>Exo2-BoldItalic.ttf</string>
+		<string>Exo2-ExtraBold.ttf</string>
+		<string>Exo2-ExtraBoldItalic.ttf</string>
+		<string>Exo2-ExtraLight.ttf</string>
+		<string>Exo2-ExtraLightItalic.ttf</string>
+		<string>Exo2-Italic.ttf</string>
+		<string>Exo2-Light.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>RegistrationStoryboard</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>RegistrationStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

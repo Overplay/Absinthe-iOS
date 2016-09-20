@@ -42,24 +42,25 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         do {
             try self.socket.bindToPort(PORT)
         } catch {
-            xcglog.error(String("ERROR: OPIE socket failed to bind to port %d", self.PORT))
-            nc.postNotificationName(Notifications.OPIESocketError.rawValue, object: nil)
+            log.error(String("ERROR: OPIE socket failed to bind to port %d", self.PORT))
+            //ASNotification.OPIEScoketError.issue()
+            nc.postNotificationName(ASNotification.OPIESocketError.rawValue, object: nil)
         }
         
         do {
             try self.socket.enableBroadcast(true)
         } catch {
             self.socket.close()
-            xcglog.error("ERROR: OPIE socket failed to enable broadcast.")
-            nc.postNotificationName(Notifications.OPIESocketError.rawValue, object: nil)
+            log.error("ERROR: OPIE socket failed to enable broadcast.")
+            nc.postNotificationName(ASNotification.OPIESocketError.rawValue, object: nil)
         }
         
         do {
             try self.socket.beginReceiving()
         } catch {
             self.socket.close()
-            xcglog.error("ERROR: OPIE socket failed to begin receiving.")
-            nc.postNotificationName(Notifications.OPIESocketError.rawValue, object: nil)
+            log.error("ERROR: OPIE socket failed to begin receiving.")
+            nc.postNotificationName(ASNotification.OPIESocketError.rawValue, object: nil)
         }
         
         broadcastPacket()
@@ -73,7 +74,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     // MARK: - GCDAsyncUdpSocket
     
     func broadcastPacket() {
-        xcglog.info("Broadcasting packet...")
+        log.info("Broadcasting packet...")
         do {
             // JSON object to broadcast to the LAN
             let jsonPacket = JSON([
@@ -83,25 +84,25 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: PORT, withTimeout: -1, tag: TAG)
             try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: PORT, withTimeout: -1, tag: TAG)
         } catch {
-            xcglog.error("ERROR: OPIE socket failed to send packet.")
-            nc.postNotificationName(Notifications.OPIESocketError.rawValue, object: nil)
+            log.error("ERROR: OPIE socket failed to send packet.")
+            nc.postNotificationName(ASNotification.OPIESocketError.rawValue, object: nil)
         }
     }
     
     @objc func udpSocket(sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
-        xcglog.info("Sent packet into nothingness... hoping for response.")
+        log.info("Sent packet into nothingness... hoping for response.")
     }
     
     @objc func udpSocket(sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: NSError) {
-        xcglog.error(String(format: "ERROR: OPIE socket failed to send packet. %@", error.description))
-        nc.postNotificationName(Notifications.OPIESocketError.rawValue, object: nil)
+        log.error(String(format: "ERROR: OPIE socket failed to send packet. %@", error.description))
+        nc.postNotificationName(ASNotification.OPIESocketError.rawValue, object: nil)
     }
     
     @objc func udpSocket(sock: GCDAsyncUdpSocket, didReceiveData data: NSData, fromAddress address: NSData, withFilterContext filterContext: AnyObject?) {
         
         let ipAddress = NetUtils.getIPAddress(address)
         if ipAddress != nil && ipAddress == netInfo["ip"]! {
-            xcglog.info("Got own packet. Working!")
+            log.info("Got own packet. Working!")
             return
         }
         
@@ -118,7 +119,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             toAdd.lastHeardFrom = NSDate()
             
         } catch {
-            xcglog.error("Error reading UDP JSON.")
+            log.error("Error reading UDP JSON.")
             return
         }
         
@@ -133,7 +134,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
                     op.systemName = toAdd.systemName
                     op.location = toAdd.location
                     op.lastHeardFrom = NSDate()
-                    nc.postNotificationName(Notifications.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                    nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
                     return
                 }
                 
@@ -151,7 +152,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             
             toAdd.ipAddress = ipAddress!
             self.opies.append(toAdd)
-            nc.postNotificationName(Notifications.newOPIE.rawValue, object: nil, userInfo: ["OPIE": toAdd])
+            nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": toAdd])
         }
     }
 }

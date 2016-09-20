@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Exo2-Bold.ttf">
+            <string>Exo2-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -21,18 +26,18 @@
                                 <rect key="frame" x="188" y="274" width="224" height="52"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="our screen, our time, baby!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXZ-VM-rai">
-                                <rect key="frame" x="198" y="338" width="205" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="195" y="382" width="211" height="21"/>
+                                <fontDescription key="fontDescription" name="Exo2-Bold" family="Exo 2" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eXZ-VM-rai" firstAttribute="top" secondItem="Sxb-4N-asR" secondAttribute="bottom" constant="12" id="4wL-G7-ZBQ"/>
+                            <constraint firstItem="eXZ-VM-rai" firstAttribute="top" secondItem="Sxb-4N-asR" secondAttribute="bottom" constant="56" id="4wL-G7-ZBQ"/>
                             <constraint firstItem="Sxb-4N-asR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PSo-c2-JPb"/>
                             <constraint firstItem="Sxb-4N-asR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oZb-mu-4c0"/>
-                            <constraint firstItem="eXZ-VM-rai" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tdK-iS-ycQ"/>
+                            <constraint firstItem="eXZ-VM-rai" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="0.5" id="tdK-iS-ycQ"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -34,7 +34,7 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     var hud: PKHUD!
     
     func simplePingResponse(success: NSNumber) {
-        xcglog.info(success.description)
+        log.info(success.description)
     }
     
     override func openLeftSideView() {
@@ -45,10 +45,12 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     override func loadView() {
         super.loadView()
         
+        self.navigationController!.navigationBar.translucent = false
+        
         // Register for OPIE notifications
-        nc.addObserver(self, selector: #selector(newOPIE), name: Notifications.newOPIE.rawValue, object: nil)
-        nc.addObserver(self, selector: #selector(OPIESocketError), name: Notifications.OPIESocketError.rawValue, object: nil)
-        nc.addObserver(self, selector: #selector(droppedOPIE), name: Notifications.droppedOPIE.rawValue, object: nil)
+        nc.addObserver(self, selector: #selector(newOPIE), name: ASNotification.newOPIE.rawValue, object: nil)
+        nc.addObserver(self, selector: #selector(OPIESocketError), name: ASNotification.OPIESocketError.rawValue, object: nil)
+        nc.addObserver(self, selector: #selector(droppedOPIE), name: ASNotification.droppedOPIE.rawValue, object: nil)
         
         // Display hud
         self.hud = PKHUD()
@@ -71,13 +73,13 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        xcglog.info(NetUtils.getWifiInfo()!.description)
+        log.info(NetUtils.getWifiInfo()!.description)
         
         /*let netPinger = NetUtils()
         netPinger.ping("10.1.10.1").then { result -> Void in
-            xcglog.info("Pinged successfully")
+            log.info("Pinged successfully")
         }.error { error in
-            xcglog.info("Ping failed!")
+            log.info("Ping failed!")
         }*/
         
 //        SimplePingHelper.ping("10.1.10.1", target: self, sel: #selector(simplePingResponse))
@@ -100,13 +102,13 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     }
     
     func newOPIE() {
-        xcglog.debug("New OPIE")
+        log.debug("New OPIE")
         self.availableOPIEs = OPIEBeaconListener.sharedInstance.opies
         self.stopRefresh()
     }
     
     func droppedOPIE() {
-        xcglog.debug("Dropped OPIE")
+        log.debug("Dropped OPIE")
         self.availableOPIEs = OPIEBeaconListener.sharedInstance.opies
         self.stopRefresh()
     }
@@ -134,13 +136,13 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         
         if let ssid = NetUtils.getWifiSSID() {
             if ssid.characters.count < 1 {
-                self.mainStatusLabel.text = "Not connected to Wi-Fi"
+                self.mainStatusLabel.text = "Not connected!"
             }else {
-                self.mainStatusLabel.text = String(format: "Wi-Fi Network: \(ssid)")
+                self.mainStatusLabel.text = String(format: "\(ssid)")
             }
             
         } else {
-            self.mainStatusLabel.text = "Not connected to Wi-Fi"
+            self.mainStatusLabel.text = "Not connected!"
             self.refreshControl.endRefreshing()
         }
         
@@ -182,10 +184,11 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         
         let cell : OurglasserCell = collectionView.dequeueReusableCellWithReuseIdentifier("DefaultOurglasserCell", forIndexPath: indexPath) as! OurglasserCell
         
-        cell.image.image = self.availableOPIEs[indexPath.row].icon
+//        cell.image.image = self.availableOPIEs[indexPath.row].icon
         cell.name.text = self.availableOPIEs[indexPath.row].systemName
         cell.location.text = self.availableOPIEs[indexPath.row].location
         cell.ipAddress.text = (isDevelopment ? self.availableOPIEs[indexPath.row].ipAddress : "")
+        cell.systemNumberLabel.text = "\(indexPath.row+1)"
         
         return cell
     }

@@ -10,10 +10,9 @@ import UIKit
 import MapKit
 import MMDrawerController
 import CoreLocation
+import SwiftyJSON
 
 class MapViewController : LeftSideSubViewController {
-    
-    var venues = NSMutableArray()
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +20,53 @@ class MapViewController : LeftSideSubViewController {
     var annotations = [MKAnnotation]()
     
     var currentLocation: CLLocation!
+    
+    func processVenues( inboundVenueJson: JSON ){
+        
+        guard let venueArray = inboundVenueJson.array else {
+            log.debug("No venues found!")
+            return
+        }
+        
+        var existingLocations = [String]()
+        
+        // val is one restaurant object
+        for venue in venueArray {
+            
+            let address = venue["address"]
+            let name  = venue["name"].stringValue
+            
+            // WTF is this??? MAK
+//            if name != "" && address.count != 4 {
+//                continue
+//            }
+            
+            // Address components compiled into one human readable string
+            let location = String(format: "%@, %@, %@, %@", address["street"].stringValue, address["city"].stringValue, address["state"].stringValue, address["zip"].stringValue)
+            
+            // There were some duplicates in the database so I'm filtering those out here. We don't really need this in the future though because that's more a database issue
+            if existingLocations.contains(location) {
+                continue
+            }else {
+                existingLocations.append(location)
+            }
+            let geocoder: CLGeocoder = CLGeocoder()
+            // Convert address into coordinates for visual map items
+            geocoder.geocodeAddressString(location,completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if (placemarks?.count > 0) {
+                    let topResult: CLPlacemark = (placemarks?[0])!
+                    let placemark = MKPlacemark(placemark: topResult)
+                    let pointAnnotation = MKPointAnnotation()
+                    pointAnnotation.coordinate = placemark.coordinate
+                    pointAnnotation.title = name
+                    pointAnnotation.subtitle = location
+                    self.mapView.addAnnotation(pointAnnotation)
+                }
+            })
+        }
+
+        
+    }
     
     override func viewDidLoad() {
         
@@ -35,41 +81,8 @@ class MapViewController : LeftSideSubViewController {
         self.mapView.delegate = self
         
         Asahi.sharedInstance.getVenues().then { response -> Void in
-            if response[1] as! String == "true" {
-                let json = response[2] as! NSArray
-                var existingLocations = [String]()
-                // val is one restaurant object
-                for val in json {
-                    let address = val["address"] as! NSDictionary
-                    let name  = val["name"] as! String
-                    if name != "" && address.count != 4 {
-                        continue
-                    }
-                    // Add for later? Idk, you might use this or not
-                    self.venues.addObject([name:address])
-                    // Address components compiled into one human readable string
-                    let location = String(format: "%@, %@, %@, %@", address["street"] as! String, address["city"] as! String, address["state"] as! String, address["zip"] as! String)
-                    // There were some duplicates in the database so I'm filtering those out here. We don't really need this in the future though because that's more a database issue
-                    if existingLocations.contains(location) {
-                        continue
-                    }else {
-                        existingLocations.append(location)
-                    }
-                    let geocoder: CLGeocoder = CLGeocoder()
-                    // Convert address into coordinates for visual map items
-                    geocoder.geocodeAddressString(location,completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                        if (placemarks?.count > 0) {
-                            let topResult: CLPlacemark = (placemarks?[0])!
-                            let placemark = MKPlacemark(placemark: topResult)
-                            let pointAnnotation = MKPointAnnotation()
-                            pointAnnotation.coordinate = placemark.coordinate
-                            pointAnnotation.title = name
-                            pointAnnotation.subtitle = location
-                            self.mapView.addAnnotation(pointAnnotation)
-                        }
-                    })
-                }
-            }
+            
+            self.processVenues(response)
         }
         
     }

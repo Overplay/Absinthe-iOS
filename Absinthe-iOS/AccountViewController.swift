@@ -77,16 +77,16 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
             // This is either log in or log out
             if indexPath.row == LOG_IN_ROW_INDEX {
                 if Asahi.sharedInstance.loggedIn {
-                    xcglog.info("Hit log out button")
+                    log.info("Hit log out button")
                     logOut()
                 }else {
-                    xcglog.info("Hit log in button")
+                    log.info("Hit log in button")
                     logIn(elementTextFields["0Email:"]!.text!, password: elementTextFields["0Password:"]!.text!)
                 }
             }
         }else if indexPath.section == 1 {
             if indexPath.row == REGISTER_ROW_INDEX {
-                xcglog.info("Hit register")
+                log.info("Hit register")
                 register(elementTextFields["1Email:"]!.text!, password: elementTextFields["1Password:"]!.text!, confirmPassword: elementTextFields["1Confirm Password:"]!.text!, firstName: elementTextFields["1First Name:"]!.text!, lastName: elementTextFields["1Last Name:"]!.text!, phone: elementTextFields["1Phone:"]!.text!)
             }
         }
@@ -182,34 +182,36 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         super.viewWillAppear(animated)
         // If auto logged in, stick email in text field
         if Asahi.sharedInstance.loggedIn && Asahi.sharedInstance.currentEmail != "" {
-            self.lastEmail = Asahi.sharedInstance.currentEmail
+            self.lastEmail = Asahi.sharedInstance.currentEmail!
         }
     }
     
     func logIn(email: String, password: String) {
         self.lastEmail = email
         Asahi.sharedInstance.login(email, password: password).then { response -> Void in
-            xcglog.info(response.description)
-            if(response[1] == "true") {
+            log.info(response.description)
+            if(response == true) {
                 self.tableView.reloadData()
             }else {
 //                self.showAlertWithTitle("Error!", andMessage: response[2])
             }
             // For testing
-            self.showAlertWithTitle("Message", andMessage: response[2])
+            //self.showAlertWithTitle("Message", andMessage: response[2])
         }
     }
     
     func logOut() {
-        Asahi.sharedInstance.logout().then { response -> Void in
-            xcglog.info(response.description)
-            if(response[1] == "true") {
+        
+        Asahi.sharedInstance.logout().then { loggedOut -> Void in
+
+            if loggedOut {
                 self.tableView.reloadData()
             }else {
 //                self.showAlertWithTitle("Error!", andMessage: response[2])
             }
             // For testing
-            self.showAlertWithTitle("Message", andMessage: response[2])
+            
+            self.showAlertWithTitle("Message", andMessage: "Logged out")
         }
     }
     
@@ -224,14 +226,14 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
                     "lastName": lastName,
                     "mobilePhone": phone
                 ]).then { response -> Void in
-                    xcglog.info(response.description)
+                    log.info(response.description)
                     if(response[1] == "true") {
                         self.tableView.reloadData()
                     }else {
 //                        self.showAlertWithTitle("Error!", andMessage: response[2])
                     }
                     // For testing
-                    self.showAlertWithTitle("Message", andMessage: response[2])
+                    //self.showAlertWithTitle("Message", andMessage: response[2])
             }
         }
     }
@@ -240,7 +242,7 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         let message = andMessage.stringByReplacingOccurrencesOfString("\\n", withString: "\n")
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okButtonAction = UIAlertAction(title: "Ok", style: .Default) { (action) in
-            xcglog.info("Pressed ok")
+            log.info("Pressed ok")
         }
         alertController.addAction(okButtonAction)
         self.presentViewController(alertController, animated: true) {}

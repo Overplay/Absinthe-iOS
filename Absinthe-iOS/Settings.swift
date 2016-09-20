@@ -1,9 +1,9 @@
 //
 //  Settings.swift
-//  Belashi-iOS
+//  Absinthe-iOS
 //
 //  Created by Mitchell Kahn on 7/13/16.
-//  Copyright © 2016 AppDelegates. All rights reserved.
+//  Copyright © 2016 Ourglass TV. All rights reserved.
 //
 
 import Foundation
@@ -13,27 +13,116 @@ import Foundation
 
 class Settings {
     
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+
     static let sharedInstance = Settings()
 
+    // MARK App Modes
     
     var isDevelopmentMode: Bool {
         get {
-            // Temporary defaults -- if nil, return true
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            return userDefaults.objectForKey("devMode") == nil ? true : userDefaults.boolForKey("devMode")
+            return userDefaults.boolForKey("devMode")
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "devMode")
+            userDefaults.setBool(newValue, forKey: "devMode")
+        }
+    }
+    
+    var appleReviewMode: Bool {
+        get {
+            return userDefaults.boolForKey("appleReviewMode")
+        }
+        set {
+            userDefaults.setBool(newValue, forKey: "appleReviewMode")
+        }
+    }
+    
+    // MARK Asahi Cloud Services
+    
+    var ourglassCloudBase: String {
+        get {
+            return userDefaults.stringForKey("asahiBase") ?? "whoopsie"
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "asahiBase")
+        }
+    }
+    
+    var ourglassCloudScheme: String {
+        get {
+            return userDefaults.stringForKey("asahiScheme") ?? "http://"
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "asahiScheme")
+        }
+    }
+    
+    var ourglassCloudBaseUrl: String {
+        return ourglassCloudScheme + ourglassCloudBase
+    }
+    
+    // MARK: User info
+    
+    
+    var userFirstName: String? {
+        get {
+            return userDefaults.stringForKey("userFirstName")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userFirstName")
+        }
+    }
+    
+    var userLastName: String? {
+        get {
+            return userDefaults.stringForKey("userLastName")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userLastName")
         }
     }
 
+    
+    var userEmail: String? {
+        get {
+            return userDefaults.stringForKey("userEmail")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userEmail")
+        }
+    }
+
+    var userAsahiJWT: String? {
+        get {
+            return userDefaults.stringForKey("userAsahiJWT")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userAsahiJWT")
+        }
+    }
+    
+    // TODO: This absolutely should never be used plaintext after release!!!
+    var userPassword: String? {
+        get {
+            return userDefaults.stringForKey("userPwd")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userPwd")
+        }
+    }
+
+
     // MARK:Defaults
     
-    // For some odd reason, the defaults block below is not working even though it was lifted from A8PoO
-    // Found all over the internet too, still doesn't work
-    
     func registerDefaults() {
-        NSUserDefaults.standardUserDefaults().registerDefaults(["devMode": true])
+        
+        userDefaults.registerDefaults([
+            
+            "devMode" :  true,
+            "asahiScheme" : "http://",
+            "asahiBase" : "107.170.209.248",
+            "appleReviewMode" : false
+        ])
     }
 
 }

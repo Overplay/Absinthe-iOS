@@ -14,11 +14,11 @@ class OCS {
     static let sharedInstance = OCS()
     
     func signIn(username: String, password: String) -> Bool {
-        xcglog.debug("OCS signing in")
+        log.debug("OCS signing in")
         return true
     }
     
     func signUp(username: String, password: String) {
-        xcglog.debug("OCS signing up for \(username)")
+        log.debug("OCS signing up for \(username)")
     }
 }

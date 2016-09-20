@@ -85,7 +85,7 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
                     $0.ipAddress == self.op.ipAddress
                 })
                 OPIEBeaconListener.sharedInstance.opies.removeAtIndex(opIndex!)
-                NSNotificationCenter.defaultCenter().postNotificationName(Notifications.droppedOPIE.rawValue, object: nil, userInfo: ["OPIE": self.op])
+                NSNotificationCenter.defaultCenter().postNotificationName(ASNotification.droppedOPIE.rawValue, object: nil, userInfo: ["OPIE": self.op])
                 self.chooseViewController.shouldFindAfterAppear = true
             }
             self.navigationController?.popViewControllerAnimated(true)

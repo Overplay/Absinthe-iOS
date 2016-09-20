@@ -31,7 +31,7 @@ class InitialViewController : UIViewController {
         // REMOVE 'FALSE' WHEN TESTING INTRO BUT ITS ANNOYING EVERYTIME
         if     false &&       !NSUserDefaults.standardUserDefaults().boolForKey("NotFirstLaunch") {
             
-            xcglog.info("Showing intro")
+            log.info("Showing intro")
             // Set bool true so it doesn't run again
             // UNCOMMENT THIS WHEN NOT TESTING OR ELSE IT WILL SHOW EVERYTIME AND THATS BAD
 //            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "NotFirstLaunch")
@@ -59,7 +59,7 @@ class InitialViewController : UIViewController {
             let window = UIApplication.sharedApplication().keyWindow
             introView.showInView(window)
             
-            xcglog.info("Shown")
+            log.info("Shown")
             
         }
         
