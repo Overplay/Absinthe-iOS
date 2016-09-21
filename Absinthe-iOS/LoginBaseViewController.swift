@@ -65,9 +65,9 @@ class LoginBaseViewController: RegSceneBaseViewController {
         
     }
     
-    func login(){
+    func login(email: String, pwd: String){
         
-        Asahi.sharedInstance.login(Settings.sharedInstance.userEmail!, password: password!)
+        Asahi.sharedInstance.login(email, password: pwd)
             .then{ response -> Void in
                 HUD.flash(.LabeledSuccess(title: "Logged In!", subtitle: nil ))
                 log.debug("OK, let's do this!")

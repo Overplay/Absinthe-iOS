@@ -19,7 +19,7 @@ class LoginViewController: LoginBaseViewController {
     
     @IBAction func goPressed(sender: UIButton){
         
-        login()
+        login(emailTextField.text!, pwd: pwdTextField.text!)
         
         
     }

@@ -21,14 +21,14 @@ class EnterPasswordViewController: LoginBaseViewController {
                                       password: pwdTextField.text!,
                                       user: [ "firstName": Settings.sharedInstance.userFirstName!,
                                             "lastName": Settings.sharedInstance.userLastName! ])
-            .then{ response in
+            .then{ response -> Void in
                 HUD.flash(.LabeledSuccess(title: "All Set!", subtitle: "Welcome to Ourglass"), delay: 1.0, completion: { (_) in
                     log.debug("Do something!")
                 })
             }
             .error{ err -> Void in
                 // On the off chance an account already exists
-                self.login()
+                self.login(Settings.sharedInstance.userEmail!, pwd: self.pwdTextField.text!)
         }
         
     }

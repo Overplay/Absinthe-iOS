@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Asahi.sharedInstance
         
         //Asahi.sharedInstance.testRegistration()
-        Asahi.sharedInstance.testLogin()
+        //Asahi.sharedInstance.testLogin()
         
         return true
     }
