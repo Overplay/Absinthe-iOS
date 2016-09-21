@@ -128,8 +128,9 @@ public class Asahi: NSObject {
     }
 
 
+    
     // TODO: MAK This should be replaced with a proper JSON login endpoint (see above)
-    func login(email: String, password: String) -> Promise<Bool> {
+    func loginOnly(email: String, password: String) -> Promise<Bool> {
         
         return Promise<Bool> { resolve, reject in
             
@@ -165,28 +166,41 @@ public class Asahi: NSObject {
         }
     }
     
-    // TODO: This should also be replaced with JSON endpoint
-    func logout() -> Promise<Bool> {
+    func login(email: String, password: String) -> Promise<String> {
         
-        return Promise<Bool> { fulfill, reject in
+        return loginOnly(email, password: password)
+            .then{ _ -> Promise<String> in
+                self.getToken()
+        }
+    }
+    
+    func getToken() -> Promise<String> {
+        
+        return Promise<String> { fulfill, reject in
             
-            Alamofire.request(.POST, createApiEndpoint("/auth/logout"), parameters: nil, encoding: .URL)
+            Alamofire.request(.GET, createApiEndpoint("/user/jwt"), parameters: nil, encoding: .URL)
                 .validate()
-                .responseString(completionHandler: { response in
+                .responseJSON { response in
                     
                     switch response.result {
                     
                         case .Success:
-                            self.loggedIn = false
-                            fulfill(true)
+                            
+                            guard let value = response.result.value else {
+                                reject(AsahiError.ResponseWasNotValidJson)
+                                return
+                            }
+                            
+                            Settings.sharedInstance.userAsahiJWT = (value["token"] as! String)
+                            Settings.sharedInstance.userAsahiJWTExpiry = (value["expires"] as! Int)
+                            fulfill(Settings.sharedInstance.userAsahiJWT!)
                     
-                    case .Failure(let error):
-                        reject(error)
+                        case .Failure(let error):
+                            reject(error)
                         
                     }
-                })
+                }
             }
-        
     }
     
     // TODO: This should also be replaced with JSON endpoint

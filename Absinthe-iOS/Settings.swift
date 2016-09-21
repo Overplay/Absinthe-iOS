@@ -101,6 +101,16 @@ class Settings {
         }
     }
     
+    var userAsahiJWTExpiry: Int {
+        get {
+            return userDefaults.integerForKey("userAsahiJWTExpiry")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userAsahiJWTExpiry")
+        }
+    }
+
+    
     // TODO: This absolutely should never be used plaintext after release!!!
     var userPassword: String? {
         get {

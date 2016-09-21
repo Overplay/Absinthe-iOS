@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterNameViewController: UIViewController, UITextFieldDelegate {
+class EnterNameViewController: RegSceneBaseViewController, UITextFieldDelegate {
     
     
     @IBOutlet var fnameLabel: UILabel!
@@ -71,18 +71,6 @@ class EnterNameViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func fadeIn(view: UIView){
-        UIView.animateWithDuration(0.35) { 
-            view.alpha = 1
-        }
-    }
-    
-    func fadeOut(view: UIView){
-        UIView.animateWithDuration(0.35) {
-            view.alpha = 0
-        }
-    }
-
     
     func checkNames(notification: NSNotification){
         

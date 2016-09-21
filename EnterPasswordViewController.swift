@@ -7,91 +7,55 @@
 //
 
 import UIKit
+import PKHUD
 
-class EnterPasswordViewController: UIViewController {
+// A lot of this VCs functionality is in the Base VC
+class EnterPasswordViewController: LoginBaseViewController {
 
-    @IBOutlet var pwdLabel: UILabel!
     
-    @IBOutlet var pwdTextField: UITextField!
-    
-    @IBOutlet var pwdGoodCheck: UIImageView!
-    
-    @IBOutlet var nextButton: UIButton!
-    
-    
-    var pwdOK = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func nextPressed(sender: UIButton) {
         
+        HUD.show(.LabeledProgress(title: "Creating Account", subtitle: "Please Wait"))
         
-        pwdLabel.alpha = 0
-        nextButton.alpha = 0
-        
-        pwdGoodCheck.alpha = 0
-        
-        UIView.animateWithDuration(0.65, animations: {
-            self.pwdLabel.alpha = 1
-        })
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkPwd), name: UITextFieldTextDidChangeNotification, object: nil)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: UITextField Delegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        log.debug("Delegate: should return")
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        log.debug("Delegate: did end editing")
-        //checkNames()
-        
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        return true
-    }
-    
-    func fadeIn(view: UIView){
-        UIView.animateWithDuration(0.35) {
-            view.alpha = 1
+        Asahi.sharedInstance.register(Settings.sharedInstance.userEmail!,
+                                      password: pwdTextField.text!,
+                                      user: [ "firstName": Settings.sharedInstance.userFirstName!,
+                                            "lastName": Settings.sharedInstance.userLastName! ])
+            .then{ response in
+                HUD.flash(.LabeledSuccess(title: "All Set!", subtitle: "Welcome to Ourglass"), delay: 1.0, completion: { (_) in
+                    log.debug("Do something!")
+                })
+            }
+            .error{ err -> Void in
+                // On the off chance an account already exists
+                self.login()
         }
+        
     }
     
-    func fadeOut(view: UIView){
-        UIView.animateWithDuration(0.35) {
-            view.alpha = 0
+    override func recoverFromLoginFailure() {
+        super.recoverFromLoginFailure()
+        recoverFromRegFailure()
+    }
+    
+    func recoverFromRegFailure(){
+        
+        HUD.hide()
+        
+        let alertController = UIAlertController(title: "Uh Oh", message: "There was a problem registering. Do you already have an account with that email?", preferredStyle: .Alert)
+        
+        
+        let cancelAction = UIAlertAction(title: "Try Again", style: .Cancel) { (action) in
+            self.navigationController!.popToRootViewControllerAnimated(true)
         }
-    }
-    
-    
-    func checkPwd(notification: NSNotification){
         
-//        if let pwd = pwdTextField.text {
-//            
-//            if email.isValidEmail() && emailGoodCheck.alpha == 0 {
-//                fadeIn(emailGoodCheck)
-//                fadeIn(nextButton)
-//                emailOK = true
-//            }
-//            
-//            if !email.isValidEmail() {
-//                fadeOut(emailGoodCheck)
-//                fadeOut(nextButton)
-//                emailOK = false
-//                
-//            }
-//        }
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
+    
+
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

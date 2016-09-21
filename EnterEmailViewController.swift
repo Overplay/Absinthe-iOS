@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterEmailViewController: UIViewController {
+class EnterEmailViewController: RegSceneBaseViewController {
 
     @IBOutlet var emailLabel: UILabel!
     
@@ -58,18 +58,6 @@ class EnterEmailViewController: UIViewController {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         return true
-    }
-    
-    func fadeIn(view: UIView){
-        UIView.animateWithDuration(0.35) {
-            view.alpha = 1
-        }
-    }
-    
-    func fadeOut(view: UIView){
-        UIView.animateWithDuration(0.35) {
-            view.alpha = 0
-        }
     }
     
     

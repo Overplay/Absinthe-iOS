@@ -189,30 +189,24 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
     func logIn(email: String, password: String) {
         self.lastEmail = email
         Asahi.sharedInstance.login(email, password: password).then { response -> Void in
-            log.info(response.description)
-            if(response == true) {
+            
                 self.tableView.reloadData()
-            }else {
-//                self.showAlertWithTitle("Error!", andMessage: response[2])
-            }
-            // For testing
-            //self.showAlertWithTitle("Message", andMessage: response[2])
         }
     }
     
     func logOut() {
         
-        Asahi.sharedInstance.logout().then { loggedOut -> Void in
-
-            if loggedOut {
-                self.tableView.reloadData()
-            }else {
-//                self.showAlertWithTitle("Error!", andMessage: response[2])
-            }
-            // For testing
-            
-            self.showAlertWithTitle("Message", andMessage: "Logged out")
-        }
+//        Asahi.sharedInstance.logout().then { loggedOut -> Void in
+//
+//            if loggedOut {
+//                self.tableView.reloadData()
+//            }else {
+////                self.showAlertWithTitle("Error!", andMessage: response[2])
+//            }
+//            // For testing
+//            
+//            self.showAlertWithTitle("Message", andMessage: "Logged out")
+//        }
     }
     
     func register(email: String, password: String, confirmPassword: String, firstName: String, lastName: String, phone: String) {

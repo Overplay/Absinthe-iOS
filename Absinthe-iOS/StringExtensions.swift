@@ -26,13 +26,11 @@ extension String {
     
     func isValidPwd() -> Bool {
         
-        // OK, this should be a RegEx, but I fucking hate RegEx...
-        
-        if self.characters.count < 8 {
-            return false
-        }
+        let pwdRegEx = "^(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@",pwdRegEx)
+        let result = passwordTest.evaluateWithObject(self)
+        return result
                
-        return true
     }
     
     // This is really shitty!

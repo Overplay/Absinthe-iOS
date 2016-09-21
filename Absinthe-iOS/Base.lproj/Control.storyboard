@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dOw-F6-NAD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="y8q-sV-GMZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -32,14 +32,14 @@
                         <viewControllerLayoutGuide type="bottom" id="u8J-WY-UWv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sSX-qo-oBM">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5K2-NU-3lG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5K2-NU-3lG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopBar" translatesAutoresizingMaskIntoConstraints="NO" id="dn1-Wl-MqD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TopBar" translatesAutoresizingMaskIntoConstraints="NO" id="dn1-Wl-MqD">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="492-wD-DEj">
                                         <rect key="frame" x="25" y="17" width="342" height="21"/>
@@ -52,7 +52,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OURGLASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46X-j8-PES">
-                                        <rect key="frame" x="25" y="41" width="342" height="47"/>
+                                        <rect key="frame" x="25" y="41" width="381" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="x5s-52-BEB"/>
                                         </constraints>
@@ -74,8 +74,8 @@
                                     <constraint firstItem="dn1-Wl-MqD" firstAttribute="leading" secondItem="5K2-NU-3lG" secondAttribute="leading" id="ycN-Qd-EFu"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sVa-V0-ox5">
-                                <rect key="frame" x="-4" y="101" width="383" height="502"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sVa-V0-ox5">
+                                <rect key="frame" x="0.0" y="113" width="414" height="559"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l1o-qk-9Jm">
                                     <size key="itemSize" width="312" height="118"/>
@@ -85,7 +85,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DefaultOurglasserCell" id="sx8-nE-5rR" customClass="OurglasserCell" customModule="Absinthe_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="35.5" y="100" width="312" height="118"/>
+                                        <rect key="frame" x="51" y="100" width="312" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="312" height="118"/>
@@ -154,10 +154,10 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="headerView" id="oSN-TL-Uoo">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Ourglass systems found. Please make sure you're connected to the right Wi-Fi network. Pull down to refresh." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUK-uP-Aq9">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Ourglass systems found. Please make sure you're connected to the right Wi-Fi network. Pull down to refresh." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUK-uP-Aq9">
                                             <rect key="frame" x="42" y="0.0" width="330" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="7xY-yx-ERQ"/>
@@ -199,8 +199,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Devices" id="CnR-z1-ZgI"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="mainStatusLabel" destination="46X-j8-PES" id="29x-f4-QmM"/>
                         <outlet property="ourglasserCollection" destination="sVa-V0-ox5" id="fJe-c0-QYQ"/>
@@ -209,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuE-ca-Icj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867.5" y="1303.5"/>
+            <point key="canvasLocation" x="2679.5" y="1303.5"/>
         </scene>
         <!--Ourglasser View Controller-->
         <scene sceneID="UNX-sL-B4P">
@@ -245,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OgC-AD-vMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440" y="1304"/>
+            <point key="canvasLocation" x="3252" y="1304"/>
         </scene>
         <!--Ourglasser View Controller-->
         <scene sceneID="jXD-5o-qfN">
@@ -280,7 +281,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRE-ZN-b2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2998" y="1304"/>
+            <point key="canvasLocation" x="3810" y="1304"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m5L-P1-bdY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8q-sV-GMZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" selectedImage="TopBar" systemItem="recents" id="ULO-pZ-htM"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3yh-Gi-gQH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dOw-F6-NAD" kind="relationship" relationship="rootViewController" id="rKM-6U-kLg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="td2-jb-ZFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1867" y="1303"/>
         </scene>
     </scenes>
     <resources>
