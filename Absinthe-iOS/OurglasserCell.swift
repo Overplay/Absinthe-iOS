@@ -14,4 +14,18 @@ class OurglasserCell: UICollectionViewCell {
     @IBOutlet var location : UILabel!
     @IBOutlet var ipAddress : UILabel!
     @IBOutlet var systemNumberLabel: UILabel!
+    
+    
+    func swiped(sender: UISwipeGestureRecognizer){
+        log.debug("Tickle my pickle!")
+    }
+    
+    override func awakeFromNib() {
+        
+        let sgr = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        sgr.direction = .Left
+        
+    }
+    
+    
 }

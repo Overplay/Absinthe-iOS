@@ -45,7 +45,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>RegistrationStoryboard</string>
 	<key>UIMainStoryboardFile</key>
-	<string>RegistrationStoryboard</string>
+	<string>MainTabsStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

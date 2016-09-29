@@ -49,11 +49,7 @@ class EnterNameViewController: RegSceneBaseViewController, UITextFieldDelegate {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+      
     // MARK: UITextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         log.debug("Delegate: should return")

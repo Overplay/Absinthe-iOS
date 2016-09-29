@@ -107,9 +107,14 @@ extension MapViewController : UITableViewDelegate, UITableViewDataSource {
         
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "OGMapItemCell")
+            cell?.backgroundColor = UIColor(white: 51/255, alpha: 1.0)
+            cell?.textLabel?.textColor = UIColor.whiteColor()
+            cell?.detailTextLabel?.textColor = UIColor( white: 1.0, alpha: 0.7)
         }
         
         let annotation = self.annotations[indexPath.row]
+        
+        
         
         cell!.textLabel!.text = annotation.title!
         

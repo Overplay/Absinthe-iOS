@@ -15,7 +15,7 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet var webView: UIWebView!
     @IBAction func disme(sender: UIButton) {
         self.timer.invalidate()
-        self.hud.hide()
+        HUD.hide()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -32,24 +32,18 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     var alamofireManager : Alamofire.Manager!
     var requestTimeout = 5  // seconds for device disappear
     var timeoutTime = 30 // seconds for web page timeout (slow load)
-    var hud: PKHUD!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Setup HUD
-        self.hud = PKHUD()
-        self.hud.dimsBackground = true
-        self.hud.userInteractionOnUnderlyingViewsEnabled = true
-        self.hud.contentView = PKHUDProgressView()
         
         if self.respondsToSelector(Selector("automaticallyAdjustsScrollViewInsets")) {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
         self.webView.delegate = self
-        self.webView.scrollView.scrollEnabled = false
-        self.webView.scrollView.bounces = false
+        self.webView.scrollView.scrollEnabled = true
+        self.webView.scrollView.bounces = true
+        self.webView.scalesPageToFit = true
         goToApps()
         
         self.navigationController?.topViewController?.title = self.navTitle
@@ -60,12 +54,15 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
         self.alamofireManager = Alamofire.Manager(configuration: config)
         
         startPageLoadTimeout()
+        
+        self.navigationController?.navigationBarHidden = false
+        
     }
     
     func startPageLoadTimeout() {
         // Show HUD
-        self.hud.show()
-        
+
+        HUD.show(.LabeledProgress(title: "Connecting To", subtitle: op.systemName))
         if(self.timeoutTimer.valid) {
             self.timeoutTimer.invalidate()
         }
@@ -74,7 +71,8 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidTimeOut() {
-        self.hud.hide()
+
+        HUD.hide()
         
         let alertController = UIAlertController(title: "Network Error", message: "There appears to be an issue communicating with the Ourglass device.", preferredStyle: .Alert)
         
@@ -103,7 +101,8 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        self.hud.hide()
+        
+        HUD.hide()
         if self.timeoutTimer.valid {
             self.timeoutTimer.invalidate()
         }
@@ -136,7 +135,7 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     // MARK: - Navigation
     
     override func viewWillDisappear(animated: Bool) {
-        self.hud.hide()
+        HUD.hide()
         super.viewWillDisappear(animated)
     }
     
