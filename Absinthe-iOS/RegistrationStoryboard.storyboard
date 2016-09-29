@@ -113,7 +113,7 @@
                         <outlet property="loginWithFBButton" destination="KGI-2Z-Mfw" id="5cW-de-Md5"/>
                         <outlet property="logoToTop" destination="eJ2-A7-nDD" id="3d5-v6-1mD"/>
                         <outlet property="ogLogoView" destination="5nN-aL-jeo" id="Pvf-3E-dAr"/>
-                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromLRToMainTabs" id="EvS-cC-VAW"/>
+                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromLRToMainTabs" animates="NO" id="EvS-cC-VAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hs-Ux-taA" userLabel="First Responder" sceneMemberID="firstResponder"/>

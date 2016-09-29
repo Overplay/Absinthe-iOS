@@ -248,6 +248,18 @@ public class Asahi: NSObject {
         }
     }
     
+    func checkAuthorized() -> Promise<Bool> {
+        
+        return Promise<Bool> { resolve, reject in
+            
+            if let _ = Settings.sharedInstance.userAsahiJWT {
+                resolve(true)
+            } else {
+                resolve(false)
+            }
+        }
+    }
+    
     
     // MARK Test Methods
     
