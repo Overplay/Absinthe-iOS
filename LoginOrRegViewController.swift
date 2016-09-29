@@ -39,9 +39,9 @@ class LoginOrRegViewController: UIViewController {
         
         // Check user authorization
         Asahi.sharedInstance.checkAuthorized().then {authorized -> Void in
-            //if authorized {
+            if authorized {
                 self.performSegueWithIdentifier("fromLRToMainTabs", sender: nil)
-            //}
+            }
         }
         
         let logoRestPosition = logoToTop.constant
