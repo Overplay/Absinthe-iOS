@@ -70,8 +70,6 @@ class LoginBaseViewController: RegSceneBaseViewController {
         Asahi.sharedInstance.login(email, password: pwd)
             .then{ response -> Void in
                 HUD.flash(.LabeledSuccess(title: "Logged In!", subtitle: nil ))
-                log.debug("OK, let's do this!")
-                self.handleLogin()
             }
             .error{ err in
                 self.recoverFromLoginFailure()
@@ -80,14 +78,25 @@ class LoginBaseViewController: RegSceneBaseViewController {
         
     }
     
-    // This is normally handled in the child class
-    func recoverFromLoginFailure(){
-        log.debug("Login failed")
+    func loginWithSegue(email: String, pwd: String, segueId: String){
+        
+        Asahi.sharedInstance.login(email, password: pwd)
+            .then{ response -> Void in
+                HUD.flash(.LabeledSuccess(title: "Logged In!", subtitle: nil ))
+                log.debug("OK, let's do this!")
+                self.performSegueWithIdentifier(segueId, sender: nil)
+            }
+            .error{ err in
+                self.recoverFromLoginFailure()
+                
+        }
+        
     }
     
     
-    func handleLogin(){
-        log.debug("Heading to main UI...")
+    // This is normally handled in the child class
+    func recoverFromLoginFailure(){
+        log.debug("Login failed")
     }
     
 

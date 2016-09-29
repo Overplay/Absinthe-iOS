@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: LoginBaseViewController {
     
+    let segueId = "fromLoginToMainTabs"
     
     @IBOutlet var emailTextField: UITextField!    
     @IBOutlet var emailLabel: UILabel!
@@ -18,16 +19,7 @@ class LoginViewController: LoginBaseViewController {
     var emailOK = false;
     
     @IBAction func goPressed(sender: UIButton){
-        
-        login(emailTextField.text!, pwd: pwdTextField.text!)
-        
-        
-    }
-    
-    override func handleLogin(){
-        super.handleLogin()
-        self.performSegueWithIdentifier("toTabsFromLogin", sender: self)
-        
+        loginWithSegue(emailTextField.text!, pwd: pwdTextField.text!, segueId: segueId)
     }
 
     override func viewDidLoad() {

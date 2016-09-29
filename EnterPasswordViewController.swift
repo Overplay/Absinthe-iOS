@@ -11,8 +11,9 @@ import PKHUD
 
 // A lot of this VCs functionality is in the Base VC
 class EnterPasswordViewController: LoginBaseViewController {
-
     
+    let segueId = "fromPasswordToMainTabs"
+
     @IBAction func nextPressed(sender: UIButton) {
         
         HUD.show(.LabeledProgress(title: "Creating Account", subtitle: "Please Wait"))
@@ -23,12 +24,12 @@ class EnterPasswordViewController: LoginBaseViewController {
                                             "lastName": Settings.sharedInstance.userLastName! ])
             .then{ response -> Void in
                 HUD.flash(.LabeledSuccess(title: "All Set!", subtitle: "Welcome to Ourglass"), delay: 1.0, completion: { (_) in
-                    log.debug("Do something!")
+                    self.performSegueWithIdentifier(self.segueId, sender: nil)
                 })
             }
             .error{ err -> Void in
                 // On the off chance an account already exists
-                self.login(Settings.sharedInstance.userEmail!, pwd: self.pwdTextField.text!)
+                self.loginWithSegue(Settings.sharedInstance.userEmail!, pwd: self.pwdTextField.text!, segueId: self.segueId)
         }
         
     }
@@ -52,15 +53,6 @@ class EnterPasswordViewController: LoginBaseViewController {
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        
-    }
-    
-
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-//        Settings.sharedInstance.userEmail = emailTextField.text
         
     }
 

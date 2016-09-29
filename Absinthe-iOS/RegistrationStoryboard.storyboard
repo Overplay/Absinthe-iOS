@@ -447,8 +447,9 @@
                                     <action selector="nextPressed:" destination="KxC-XW-Uyv" eventType="touchUpInside" id="cvQ-sB-fuc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password must be at least 8 characters long and include one capital letter and one punctuation mark." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FF0-oS-QkS">
-                                <rect key="frame" x="20" y="103" width="560" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FF0-oS-QkS">
+                                <rect key="frame" x="-427" y="103" width="1007" height="21"/>
+                                <string key="text">Your password must be at least 8 characters long and include one capital letter, one special character (?!@$%^&amp;*), and one number.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -484,7 +485,6 @@
                             <constraint firstItem="FGM-zZ-LJo" firstAttribute="top" secondItem="fFh-b5-Igg" secondAttribute="bottom" constant="6" id="AKo-Km-umP"/>
                             <constraint firstItem="reK-t5-qha" firstAttribute="leading" secondItem="Mad-gm-fcl" secondAttribute="leadingMargin" id="D42-QP-epW"/>
                             <constraint firstItem="OIX-00-ICu" firstAttribute="leading" secondItem="Mad-gm-fcl" secondAttribute="leadingMargin" id="ELr-wX-KHE"/>
-                            <constraint firstItem="Rgy-r9-wdZ" firstAttribute="top" secondItem="FF0-oS-QkS" secondAttribute="bottom" constant="45" id="Oan-UR-GEJ"/>
                             <constraint firstItem="FGM-zZ-LJo" firstAttribute="leading" secondItem="Mad-gm-fcl" secondAttribute="leadingMargin" id="R8u-5a-og8"/>
                             <constraint firstItem="v8S-8U-oO3" firstAttribute="trailing" secondItem="Mad-gm-fcl" secondAttribute="trailingMargin" id="THA-Ta-dUk"/>
                             <constraint firstItem="reK-t5-qha" firstAttribute="top" secondItem="v8S-8U-oO3" secondAttribute="bottom" constant="-1" id="X6P-fR-ewy"/>
@@ -497,6 +497,7 @@
                             <constraint firstItem="FF0-oS-QkS" firstAttribute="leading" secondItem="Mad-gm-fcl" secondAttribute="leadingMargin" id="eQn-PO-h3g"/>
                             <constraint firstItem="FGM-zZ-LJo" firstAttribute="top" secondItem="reK-t5-qha" secondAttribute="bottom" constant="8" id="g6j-cA-U9J"/>
                             <constraint firstItem="Rgy-r9-wdZ" firstAttribute="trailing" secondItem="Mad-gm-fcl" secondAttribute="trailingMargin" id="h3X-eH-hXa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FF0-oS-QkS" secondAttribute="trailing" id="iHx-lB-yEN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yl2-c8-a0j" secondAttribute="trailing" id="nUy-fa-svM"/>
                             <constraint firstItem="FF0-oS-QkS" firstAttribute="trailing" secondItem="Mad-gm-fcl" secondAttribute="trailingMargin" id="xNu-X2-239"/>
                         </constraints>
@@ -506,7 +507,7 @@
                         <outlet property="pwdGoodCheck" destination="fFh-b5-Igg" id="cqS-0X-nMD"/>
                         <outlet property="pwdLabel" destination="v8S-8U-oO3" id="Ydb-6K-KT1"/>
                         <outlet property="pwdTextField" destination="reK-t5-qha" id="rba-pa-kK4"/>
-                        <segue destination="NHR-vw-zJV" kind="show" id="xhs-be-PIL"/>
+                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromPasswordToMainTabs" id="xhs-be-PIL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82y-Jc-VhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -670,7 +671,7 @@
                         <outlet property="pwdGoodCheck" destination="BiF-a4-RtG" id="GRR-1V-sHV"/>
                         <outlet property="pwdLabel" destination="8Oc-m3-HlX" id="Bqt-D2-Nk6"/>
                         <outlet property="pwdTextField" destination="QXZ-ci-ZhP" id="rC9-nW-zIh"/>
-                        <segue destination="NHR-vw-zJV" kind="show" identifier="toTabsFromLogin" id="UTh-5h-oXD"/>
+                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromLoginToMainTabs" id="UTh-5h-oXD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4c-uv-BZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
