@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DSP-D1-AjW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DSP-D1-AjW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -113,6 +113,7 @@
                         <outlet property="loginWithFBButton" destination="KGI-2Z-Mfw" id="5cW-de-Md5"/>
                         <outlet property="logoToTop" destination="eJ2-A7-nDD" id="3d5-v6-1mD"/>
                         <outlet property="ogLogoView" destination="5nN-aL-jeo" id="Pvf-3E-dAr"/>
+                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromLRToMainTabs" id="EvS-cC-VAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hs-Ux-taA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,6 +684,6 @@
         <image name="ic_play_circle_outline_white_48pt" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UTh-5h-oXD"/>
+        <segue reference="EvS-cC-VAW"/>
     </inferredMetricsTieBreakers>
 </document>

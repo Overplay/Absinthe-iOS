@@ -37,6 +37,11 @@ class LoginOrRegViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Check user authorization
+        if Settings.sharedInstance.u {
+            
+        }
+        
         let logoRestPosition = logoToTop.constant
         logoToTop.constant = -200
         createAccountButton.alpha = 0
