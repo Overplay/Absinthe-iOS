@@ -12,9 +12,9 @@ import PromiseKit
 import MMDrawerController
 import EAIntroView
 
-class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, EAIntroDelegate {
+class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, EAIntroDelegate {
  
-    @IBOutlet weak var mainStatusLabel: UILabel!
+    @IBOutlet var mainStatusLabel: UILabel!
     @IBOutlet var ourglasserCollection : UICollectionView!
     
     let SEARCHING_TIMEOUT_INTERVAL = 30.0
@@ -29,35 +29,20 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     var availableOPIEs = [OPIE]()
     var iphoneIPAddress = String()
     
-    var shouldFindAfterAppear = false
+    var shouldFindAfterAppear = true
     
-    var hud: PKHUD!
-    
-    func simplePingResponse(success: NSNumber) {
-        log.info(success.description)
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
-    override func openLeftSideView() {
-        self.stopRefresh()
-        super.openLeftSideView()
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-        self.navigationController!.navigationBar.translucent = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // Register for OPIE notifications
         nc.addObserver(self, selector: #selector(newOPIE), name: ASNotification.newOPIE.rawValue, object: nil)
         nc.addObserver(self, selector: #selector(OPIESocketError), name: ASNotification.OPIESocketError.rawValue, object: nil)
         nc.addObserver(self, selector: #selector(droppedOPIE), name: ASNotification.droppedOPIE.rawValue, object: nil)
-        
-        // Display hud
-        self.hud = PKHUD()
-        self.hud.dimsBackground = true
-        self.hud.userInteractionOnUnderlyingViewsEnabled = true
-        self.hud.contentView = PKHUDProgressView()
-        
+
         // Setup collection view
         self.ourglasserCollection.dataSource = self
         self.ourglasserCollection.delegate = self
@@ -68,6 +53,9 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         self.refreshControl.addTarget(self, action: #selector(findOurglassers), forControlEvents: UIControlEvents.ValueChanged)
         self.ourglasserCollection.addSubview(self.refreshControl)
         self.ourglasserCollection.alwaysBounceVertical = true
+        
+        setNeedsStatusBarAppearanceUpdate()
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -75,14 +63,8 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         
         log.info(NetUtils.getWifiInfo()!.description)
         
-        /*let netPinger = NetUtils()
-        netPinger.ping("10.1.10.1").then { result -> Void in
-            log.info("Pinged successfully")
-        }.error { error in
-            log.info("Ping failed!")
-        }*/
-        
-//        SimplePingHelper.ping("10.1.10.1", target: self, sel: #selector(simplePingResponse))
+        self.navigationController?.navigationBarHidden = true
+
         
         if shouldFindAfterAppear {
             shouldFindAfterAppear = false
@@ -115,7 +97,8 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     
     func OPIESocketError() {
         self.refreshControl.endRefreshing()
-        self.hud.hide()
+        
+        HUD.hide()
         
         let alertController = UIAlertController(title: "OPIE Locator", message: "There was an error locating OPIEs.", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -123,15 +106,20 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    
 
     func findOurglassers() {
-        // Send out broadcast signal again
+        
+        // Run a sweep...
         OPIEBeaconListener.sharedInstance.broadcastPacket()
         
         self.refreshing = true
         
         // Show HUD, hide drag down
-        self.hud.show()
+        
+        HUD.show(.LabeledProgress(title: "Is there anybody", subtitle: "out there?"))
+        
         self.refreshControl.endRefreshing()
         
         if let ssid = NetUtils.getWifiSSID() {
@@ -154,7 +142,7 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     
     func stopRefresh() {
         self.refreshing = false
-        self.hud.hide()
+        HUD.hide()
         self.refreshControl.endRefreshing()
         self.sortByIPAndReload()
     }
@@ -187,7 +175,8 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
 //        cell.image.image = self.availableOPIEs[indexPath.row].icon
         cell.name.text = self.availableOPIEs[indexPath.row].systemName
         cell.location.text = self.availableOPIEs[indexPath.row].location
-        cell.ipAddress.text = (isDevelopment ? self.availableOPIEs[indexPath.row].ipAddress : "")
+        //cell.ipAddress.text = (isDevelopment ? self.availableOPIEs[indexPath.row].ipAddress : "")
+        cell.ipAddress.text = self.availableOPIEs[indexPath.row].ipAddress
         cell.systemNumberLabel.text = "\(indexPath.row+1)"
         
         return cell
@@ -204,6 +193,7 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
         switch kind {
             
         case UICollectionElementKindSectionHeader:
@@ -219,6 +209,7 @@ class ChooseOurglasserViewController : LeftSideSubViewController, UICollectionVi
         default:
             assert(false, "Unexpected element kind in OPIE collection view.")
         }
+        
     }
     
     // MARK: - Navigation

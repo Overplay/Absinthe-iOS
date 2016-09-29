@@ -9,7 +9,7 @@
         <scene sceneID="oEO-Vi-FBQ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Control" id="TPM-Ue-mhX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="je0-xZ-UBX"/>
+                    <tabBarItem key="tabBarItem" title="TVs" image="TabTVIconSolid" id="je0-xZ-UBX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCZ-7X-oGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -23,9 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="TPM-Ue-mhX" kind="relationship" relationship="viewControllers" id="BIv-yg-bQr"/>
+                        <segue destination="tty-OO-Mvq" kind="relationship" relationship="viewControllers" id="Nh9-ee-0Jv"/>
                         <segue destination="08f-Iw-7LS" kind="relationship" relationship="viewControllers" id="ND2-Jw-ehP"/>
                     </connections>
                 </tabBarController>
@@ -37,11 +40,26 @@
         <scene sceneID="7QL-fK-sAE">
             <objects>
                 <viewControllerPlaceholder storyboardName="Account" id="08f-Iw-7LS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aPs-sa-54R"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="TabGearIcon" selectedImage="TabGearIcon" id="aPs-sa-54R"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2s-ds-TP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="290.5" y="-116"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="adg-SF-Wsj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="tty-OO-Mvq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Locs" image="TabMapIcon" id="Rgk-x7-T2F"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lh2-L4-IMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253.5" y="57"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="TabGearIcon" width="25" height="25"/>
+        <image name="TabMapIcon" width="25" height="25"/>
+        <image name="TabTVIconSolid" width="25" height="25"/>
+    </resources>
 </document>

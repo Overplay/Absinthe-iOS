@@ -61,6 +61,13 @@ class Settings {
         return ourglassCloudScheme + ourglassCloudBase
     }
     
+    // MARK: OG Discovery Protocol
+    
+    var udpDiscoveryPort: UInt16 {
+        return 9091
+    }
+    
+    
     // MARK: User info
     
     
@@ -121,6 +128,15 @@ class Settings {
         }
     }
 
+    var isRegistered: Bool {
+        get {
+            return userDefaults.boolForKey("isRegistered")
+        }
+        set {
+            userDefaults.setBool(newValue, forKey: "isRegistered")
+        }
+    }
+
 
     // MARK:Defaults
     
@@ -131,7 +147,9 @@ class Settings {
             "devMode" :  true,
             "asahiScheme" : "http://",
             "asahiBase" : "107.170.209.248",
-            "appleReviewMode" : false
+            "appleReviewMode" : false,
+            "isRegistered" : false
+            
         ])
     }
 
