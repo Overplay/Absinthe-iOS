@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class LoginViewController: LoginBaseViewController {
     
@@ -57,6 +58,21 @@ class LoginViewController: LoginBaseViewController {
             }
         }
 
+    }
+    
+    override func recoverFromLoginFailure() {
+        super.recoverFromLoginFailure()
+        HUD.hide()
+        
+        let alertController = UIAlertController(title: "Uh Oh", message: "There was a problem logging in.", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Try Again", style: .Cancel) { (action) in
+            
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     /*
