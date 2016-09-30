@@ -59,7 +59,6 @@ public class Asahi: NSObject {
                 "type":"local"]
 
             Alamofire.request(RequestRouter.Register(params))
-            //Alamofire.request(.POST, createApiEndpoint("/auth/addUser"), parameters: params, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
                 
@@ -95,7 +94,6 @@ public class Asahi: NSObject {
                             "type":"local"]
             
             Alamofire.request(RequestRouter.Login(parameters))
-            //Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
                     
@@ -140,7 +138,6 @@ public class Asahi: NSObject {
                 "type":"local"]
             
             Alamofire.request(RequestRouter.Login(parameters))
-            //Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseString { response in
                     
@@ -181,7 +178,6 @@ public class Asahi: NSObject {
         return Promise<String> { fulfill, reject in
             
             Alamofire.request(RequestRouter.GetToken())
-            //Alamofire.request(.GET, createApiEndpoint("/user/jwt"), parameters: nil, encoding: .URL)
                 .validate()
                 .responseJSON { response in
                     
@@ -214,7 +210,6 @@ public class Asahi: NSObject {
             let params = ["email": email, "newpass": newPassword]
             
             Alamofire.request(RequestRouter.ChangePwd(params))
-            //Alamofire.request(.POST, createApiEndpoint("/auth/changePwd"), parameters: params, encoding: .JSON)
                 .validate()
                 .responseString(completionHandler: { response in switch response.result {
                 case .Success:
@@ -231,7 +226,6 @@ public class Asahi: NSObject {
         return Promise<JSON> { resolve, reject in
             
             Alamofire.request(RequestRouter.GetVenues())
-            //Alamofire.request(.GET, createApiEndpoint("/api/v1/venue"))
                 .validate()
                 .responseJSON(completionHandler: { response in
                     
