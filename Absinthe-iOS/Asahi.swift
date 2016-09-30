@@ -58,8 +58,8 @@ public class Asahi: NSObject {
                 "user": user,
                 "type":"local"]
 
-            
-            Alamofire.request(.POST, createApiEndpoint("/auth/addUser"), parameters: params, encoding: .JSON)
+            Alamofire.request(RequestRouter.Register(params))
+            //Alamofire.request(.POST, createApiEndpoint("/auth/addUser"), parameters: params, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
                 
@@ -94,7 +94,8 @@ public class Asahi: NSObject {
                             "password":password,
                             "type":"local"]
             
-            Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
+            Alamofire.request(RequestRouter.Login(parameters))
+            //Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
                     
@@ -138,7 +139,8 @@ public class Asahi: NSObject {
                 "password":password,
                 "type":"local"]
             
-            Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
+            Alamofire.request(RequestRouter.Login(parameters))
+            //Alamofire.request(.POST, createApiEndpoint("/auth/login"), parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseString { response in
                     
@@ -178,7 +180,8 @@ public class Asahi: NSObject {
         
         return Promise<String> { fulfill, reject in
             
-            Alamofire.request(.GET, createApiEndpoint("/user/jwt"), parameters: nil, encoding: .URL)
+            Alamofire.request(RequestRouter.GetToken())
+            //Alamofire.request(.GET, createApiEndpoint("/user/jwt"), parameters: nil, encoding: .URL)
                 .validate()
                 .responseJSON { response in
                     
@@ -208,7 +211,10 @@ public class Asahi: NSObject {
         
         return Promise<Bool> { resolve, reject in
             
-            Alamofire.request(.POST, createApiEndpoint("/auth/changePwd"), parameters: ["email":email,"newpass":newPassword], encoding: .JSON)
+            let params = ["email": email, "newpass": newPassword]
+            
+            Alamofire.request(RequestRouter.ChangePwd(params))
+            //Alamofire.request(.POST, createApiEndpoint("/auth/changePwd"), parameters: params, encoding: .JSON)
                 .validate()
                 .responseString(completionHandler: { response in switch response.result {
                 case .Success:
@@ -224,7 +230,8 @@ public class Asahi: NSObject {
         
         return Promise<JSON> { resolve, reject in
             
-            Alamofire.request(.GET, createApiEndpoint("/api/v1/venue"))
+            Alamofire.request(RequestRouter.GetVenues())
+            //Alamofire.request(.GET, createApiEndpoint("/api/v1/venue"))
                 .validate()
                 .responseJSON(completionHandler: { response in
                     

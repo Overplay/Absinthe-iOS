@@ -45,6 +45,7 @@
 		4F7110C71D5A9E4E004200E5 /* LeftSideSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7110C61D5A9E4E004200E5 /* LeftSideSubViewController.swift */; };
 		4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A571D4FD5D000F83848 /* IntroPage1.xib */; };
 		4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A591D4FDA1200F83848 /* IntroPage2.xib */; };
+		4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */; };
 		4F9033221D4FB98F00525515 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9033211D4FB98F00525515 /* Account.storyboard */; };
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
 		4FD30E131D4FE75100C6DB60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FD30E121D4FE75100C6DB60 /* Main.storyboard */; };
@@ -99,6 +100,7 @@
 		4F76932F1D3EBD96008B515A /* Absinthe-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Absinthe-iOS-Bridging-Header.h"; path = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F826A571D4FD5D000F83848 /* IntroPage1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage1.xib; path = "Absinthe-iOS/IntroPage1.xib"; sourceTree = "<group>"; };
 		4F826A591D4FDA1200F83848 /* IntroPage2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage2.xib; path = "Absinthe-iOS/IntroPage2.xib"; sourceTree = "<group>"; };
+		4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		4F9033211D4FB98F00525515 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Account.storyboard; path = "Absinthe-iOS/Account.storyboard"; sourceTree = "<group>"; };
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
 		4FD30E121D4FE75100C6DB60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Absinthe-iOS/Main.storyboard"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				1EABF7561D90F91500D2BBD5 /* NetUtils.swift */,
 				4F6C7F281D3E9E110055EF8A /* Asahi.swift */,
 				1EC631631D778D3D00F99E0E /* ABNetworking.swift */,
+				4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				1E25C1491D36FAD400BEA1FB /* OPIE.swift in Sources */,
 				1EC631641D778D3D00F99E0E /* ABNetworking.swift in Sources */,
 				1E167ACD1D92DD130080C4C6 /* RegSceneBaseViewController.swift in Sources */,
+				4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */,
 				1EABF7611D91A4B500D2BBD5 /* StringExtensions.swift in Sources */,
 				1EABF75B1D919BF400D2BBD5 /* EnterNameViewController.swift in Sources */,
 				1E69E6611D924CAF00B48212 /* LoginViewController.swift in Sources */,
