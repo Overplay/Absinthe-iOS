@@ -10,6 +10,10 @@ import UIKit
 
 class RegSceneBaseViewController: UIViewController {
     
+    @IBAction func onBack(sender: UIButton) {
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+    
     func fadeIn(view: UIView){
         UIView.animateWithDuration(0.35) {
             view.alpha = 1
@@ -21,7 +25,5 @@ class RegSceneBaseViewController: UIViewController {
             view.alpha = 0
         }
     }
-
-
 
 }
