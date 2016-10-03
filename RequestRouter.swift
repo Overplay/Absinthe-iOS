@@ -75,9 +75,9 @@ enum RequestRouter: URLRequestConvertible {
         let encoding: Alamofire.ParameterEncoding
         
         switch self {
-        case .GetToken:
+        case .GetToken, .GetVenues:  // should GetVenues be JSON or URL encoded?
             encoding = Alamofire.ParameterEncoding.URL
-        case .Register, .Login, .ChangePwd, .GetVenues():  // should GetVenues be JSON encoded?
+        case .Register, .Login, .ChangePwd:
             encoding = Alamofire.ParameterEncoding.JSON
         }
         
