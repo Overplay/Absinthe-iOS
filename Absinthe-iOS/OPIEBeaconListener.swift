@@ -162,8 +162,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         
         for op in self.opies {
             
-            if op.systemName == receivedOp.systemName {
-            //if op.ipAddress == receivedOp.ipAddress {
+            if op.ipAddress == receivedOp.ipAddress {
                 op.systemName = receivedOp.systemName
                 op.location = receivedOp.location
                 op.lastHeardFrom = NSDate()
