@@ -24,6 +24,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     // max time (in seconds) that can elapse between OPIE broadcasts before the OPIE is dropped
     let timeBeforeDrop: Double = 10
     
+    // time between pseudo upnp broadcast
+    let broadcastInterval: Double = 5
+    
     
     // TODO: [mak] are their situations where this could fail (!)?
     let netInfo = NetUtils.getWifiInfo()! as [String:String]
@@ -70,8 +73,11 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             return
         }
         
-        // Fire off the psuedo upnp "anyone there?" packet
-        broadcastPacket()
+        // Fire off the psuedo upnp "anyone there?" packet to send on an interval
+        NSTimer.scheduledTimerWithTimeInterval(broadcastInterval, target: self, selector: #selector (broadcastPacket),userInfo: nil, repeats: true)
+        
+        // Check devices are online
+        NSTimer.scheduledTimerWithTimeInterval(timeBeforeDrop, target: self, selector: #selector (checkOPIEs), userInfo: nil, repeats: true)
         
     }
     
@@ -131,53 +137,65 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             return
         }
         
-        let toAdd = OPIE()
+        let receivedOp = OPIE()
         
         do {
             let OurglasserJson = try NSJSONSerialization.JSONObjectWithData(data, options:[])
             if let name = OurglasserJson["name"] as? String {
-                toAdd.systemName = name != "undefined" && name != "" ? name : "Ourglass Device"
+                receivedOp.systemName = name != "undefined" && name != "" ? name : "Ourglass Device"
             }
             if let location = OurglasserJson["location"] as? String {
-                toAdd.location = location != "undefined" && location != "" ? location : ""
+                receivedOp.location = location != "undefined" && location != "" ? location : ""
             }
-            toAdd.lastHeardFrom = NSDate()
+            receivedOp.lastHeardFrom = NSDate()
             
         } catch {
             log.error("Error reading UDP JSON.")
             return
         }
         
-        if ipAddress != nil {
+        receivedOp.ipAddress = ipAddress!
+        processOPIE(receivedOp)
+    }
+    
+    func processOPIE(receivedOp: OPIE) {
+        
+        for op in self.opies {
             
-            // Verify unique-ness of OPIE box. Use name when testing so we can simulate multiple OPIEs from the same computer, but eventually we'll use the IP address as the unique identifier.
-            for op in self.opies {
-                
-                // I think we have enough boxes that we don't need to simulate a ton of boxes from the same IP.
-                // comment out when testing
-                if op.ipAddress == ipAddress {
-                    op.systemName = toAdd.systemName
-                    op.location = toAdd.location
-                    op.lastHeardFrom = NSDate()
-                    nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
-                    return
-                }
-                
-                // comment out when not testing
-                /*
-                if op.systemName == toAdd.systemName {
-                    op.systemName = toAdd.systemName
-                    op.location = toAdd.location
-                    op.lastHeardFrom = NSDate()
-                    nc.postNotificationName(Notifications.newOPIE, object: nil, userInfo: ["OPIE": op])
-                    return
-                }
-                */
+            if op.systemName == receivedOp.systemName {
+            //if op.ipAddress == receivedOp.ipAddress {
+                op.systemName = receivedOp.systemName
+                op.location = receivedOp.location
+                op.lastHeardFrom = NSDate()
+                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                return
             }
-            
-            toAdd.ipAddress = ipAddress!
-            self.opies.append(toAdd)
-            nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": toAdd])
+        }
+        
+        self.opies.append(receivedOp);
+        nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": receivedOp])
+    }
+    
+    func checkOPIEs() {
+        log.info("Checking devices online...")
+        
+        var online = [OPIE]()
+        var dropped = false
+        
+        for op in self.opies {
+            if let lastHeard = op.lastHeardFrom {
+                let elapsedTime = NSDate().timeIntervalSinceDate(lastHeard)
+                if elapsedTime <= timeBeforeDrop {
+                    online.append(op)
+                } else {
+                    dropped = true
+                }
+            }
+        }
+        
+        self.opies = online
+        if dropped == true {
+            nc.postNotificationName(ASNotification.droppedOPIE.rawValue, object: nil)
         }
     }
 }

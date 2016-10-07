@@ -17,7 +17,7 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     @IBOutlet var mainStatusLabel: UILabel!
     @IBOutlet var ourglasserCollection : UICollectionView!
     
-    let SEARCHING_TIMEOUT_INTERVAL = 30.0
+    let SEARCHING_TIMEOUT_INTERVAL = 10.0
     
     // TODO this will be replaced with a call into Settings eventually. 
     let isDevelopment = Settings.sharedInstance.isDevelopmentMode
