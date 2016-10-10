@@ -54,10 +54,11 @@
 		4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */; };
 		4FE9456D1D53F81600F35CD0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE9456C1D53F81600F35CD0 /* Map.storyboard */; };
 		4FE9456F1D53FCF800F35CD0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE9456E1D53FCF800F35CD0 /* MapKit.framework */; };
-		BD07C60157CD3A1515523012 /* Pods_Absinthe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */; };
+		EF1771CD8436FDD404217923 /* Pods_Absinthe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7FCA9865B09BB3EE13E22 /* Pods_Absinthe_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0123AE4B63B8D880C5EC5480 /* Pods-Absinthe-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		1E167ACA1D92DC540080C4C6 /* LoginBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaseViewController.swift; path = "Absinthe-iOS/LoginBaseViewController.swift"; sourceTree = "<group>"; };
 		1E167ACC1D92DD130080C4C6 /* RegSceneBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegSceneBaseViewController.swift; path = "Absinthe-iOS/RegSceneBaseViewController.swift"; sourceTree = "<group>"; };
 		1E167ACF1D92E6E90080C4C6 /* MainTabsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabsStoryboard.storyboard; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		1EABF75E1D919C1500D2BBD5 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		1EABF7601D91A4B500D2BBD5 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Absinthe-iOS/StringExtensions.swift"; sourceTree = "<group>"; };
 		1EC631631D778D3D00F99E0E /* ABNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABNetworking.swift; path = "Absinthe-iOS/ABNetworking.swift"; sourceTree = "<group>"; };
-		3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoAnimationSegue.swift; path = "Absinthe-iOS/NoAnimationSegue.swift"; sourceTree = "<group>"; };
 		4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LeftSideMenu.storyboard; path = "Absinthe-iOS/LeftSideMenu.storyboard"; sourceTree = "<group>"; };
 		4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftSideMenuTableViewController.swift; path = "Absinthe-iOS/LeftSideMenuTableViewController.swift"; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "Absinthe-iOS/MapViewController.swift"; sourceTree = "<group>"; };
 		4FE9456C1D53F81600F35CD0 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = "Absinthe-iOS/Map.storyboard"; sourceTree = "<group>"; };
 		4FE9456E1D53FCF800F35CD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Absinthe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F3F2EBFDB39E6D5C74495D0 /* Pods-Absinthe-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E8E7FCA9865B09BB3EE13E22 /* Pods_Absinthe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Absinthe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 			files = (
 				4FE9456F1D53FCF800F35CD0 /* MapKit.framework in Frameworks */,
 				1E25C12B1D36F2CD00BEA1FB /* SystemConfiguration.framework in Frameworks */,
-				BD07C60157CD3A1515523012 /* Pods_Absinthe_iOS.framework in Frameworks */,
+				EF1771CD8436FDD404217923 /* Pods_Absinthe_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +146,7 @@
 				1E25C1301D36F51100BEA1FB /* Support */,
 				1E25C1161D36F2A700BEA1FB /* Products */,
 				5CE8A13EA7990143D4C277F5 /* Frameworks */,
-				A03068D986E10C9DBF5DA87D /* Pods */,
+				6918A0E8904EC39EF7632141 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,16 +292,16 @@
 			children = (
 				4FE9456E1D53FCF800F35CD0 /* MapKit.framework */,
 				1E25C12A1D36F2CD00BEA1FB /* SystemConfiguration.framework */,
-				C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */,
+				E8E7FCA9865B09BB3EE13E22 /* Pods_Absinthe_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A03068D986E10C9DBF5DA87D /* Pods */ = {
+		6918A0E8904EC39EF7632141 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */,
-				3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */,
+				0123AE4B63B8D880C5EC5480 /* Pods-Absinthe-iOS.debug.xcconfig */,
+				7F3F2EBFDB39E6D5C74495D0 /* Pods-Absinthe-iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -313,13 +313,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E25C1271D36F2A700BEA1FB /* Build configuration list for PBXNativeTarget "Absinthe-iOS" */;
 			buildPhases = (
-				6FEEFBF914A0DF12B0F21AA2 /* [CP] Check Pods Manifest.lock */,
+				47F9AF815FC93071F3D31634 /* [CP] Check Pods Manifest.lock */,
 				1E25C1111D36F2A700BEA1FB /* Sources */,
 				1E25C1121D36F2A700BEA1FB /* Frameworks */,
 				1E25C1131D36F2A700BEA1FB /* Resources */,
-				60A726B23BDDB4BDB324F740 /* [CP] Embed Pods Frameworks */,
-				1F27A679894139455C16CDFA /* [CP] Copy Pods Resources */,
-				86F83BA81C74954DD2D15CA5 /* Embed Pods Frameworks */,
+				050BC0B7A0DD7AE1CACD29D2 /* [CP] Embed Pods Frameworks */,
+				CCE8F9EA461C1A6DB52A92BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,22 +390,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F27A679894139455C16CDFA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		60A726B23BDDB4BDB324F740 /* [CP] Embed Pods Frameworks */ = {
+		050BC0B7A0DD7AE1CACD29D2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -421,7 +405,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6FEEFBF914A0DF12B0F21AA2 /* [CP] Check Pods Manifest.lock */ = {
+		47F9AF815FC93071F3D31634 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,19 +420,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		86F83BA81C74954DD2D15CA5 /* Embed Pods Frameworks */ = {
+		CCE8F9EA461C1A6DB52A92BD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -602,7 +586,7 @@
 		};
 		1E25C1281D36F2A700BEA1FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */;
+			baseConfigurationReference = 0123AE4B63B8D880C5EC5480 /* Pods-Absinthe-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -620,7 +604,7 @@
 		};
 		1E25C1291D36F2A700BEA1FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */;
+			baseConfigurationReference = 7F3F2EBFDB39E6D5C74495D0 /* Pods-Absinthe-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
