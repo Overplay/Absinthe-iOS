@@ -17,9 +17,8 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     @IBOutlet var mainStatusLabel: UILabel!
     @IBOutlet var ourglasserCollection : UICollectionView!
     
-    let SEARCHING_TIMEOUT_INTERVAL = 10.0
+    let SEARCHING_TIMEOUT_INTERVAL = 7.0
     
-    // TODO this will be replaced with a call into Settings eventually. 
     let isDevelopment = Settings.sharedInstance.isDevelopmentMode
     
     let nc = NSNotificationCenter.defaultCenter()
@@ -50,6 +49,7 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
         
         // Setup refresh control and add
         self.refreshControl = UIRefreshControl()
+        //self.refreshControl.tintColor = UIColor(red:255/255, green:255/255, blue:255/255, alpha:1)
         self.refreshControl.addTarget(self, action: #selector(findOurglassers), forControlEvents: UIControlEvents.ValueChanged)
         self.ourglasserCollection.addSubview(self.refreshControl)
         self.ourglasserCollection.alwaysBounceVertical = true
@@ -115,12 +115,7 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
         OPIEBeaconListener.sharedInstance.broadcastPacket()
         
         self.refreshing = true
-        
-        // Show HUD, hide drag down
-        
-        HUD.show(.LabeledProgress(title: "Is there anybody", subtitle: "out there?"))
-        
-        self.refreshControl.endRefreshing()
+        self.refreshControl.beginRefreshing()
         
         if let ssid = NetUtils.getWifiSSID() {
             if ssid.characters.count < 1 {
@@ -142,7 +137,6 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     
     func stopRefresh() {
         self.refreshing = false
-        HUD.hide()
         self.refreshControl.endRefreshing()
         self.sortByIPAndReload()
     }

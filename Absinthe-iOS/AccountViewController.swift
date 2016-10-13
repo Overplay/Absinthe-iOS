@@ -20,17 +20,15 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
     
     var tableView: UITableView!
     
-    // Stupid swift doesn't like to keep stupid elements in their stupid order
-    // So let's do it manually with a dictionary!
     // tf = text field -- no autocapitalization or autocorrection
     // stf = secure text field -- hides characters
     // ntf = name text field -- capitalizes every word
     // bn = button -- user interaction enabled and color changed
-    let elements = [
+    /*let elements = [
         "Log In": [
             "Email:tf",
             "Password:stf",
-            "Log:bn"
+            "Log Out:bn"
         ],
         "Register": [
             "First Name:ntf",
@@ -41,9 +39,15 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
             "Confirm Password:stf",
             "Register:bn"
         ]
-    ]
+    ]*/
+    
+    let elements = ["Invite Friends:btn", "Edit Account:btn", "Add New Ourglass Device:btn", "Add/Manage Venues:btn", "Log Out:btn"]
     
     var elementTextFields = [String:UITextField]()
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,44 +56,48 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableView), name: "AsahiLoggedIn", object: nil)
-    }
-    
-    func reloadTableView() {
-        self.tableView.reloadData()
+        // not necessary?
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableView), name: "AsahiLoggedIn", object: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Array(elements.keys).count
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return elements[Array(elements.keys)[section]]!.count
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(elements.keys)[section]
+        return elements.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 0 {
-            // This is either log in or log out
-            if indexPath.row == LOG_IN_ROW_INDEX {
-                if Asahi.sharedInstance.loggedIn {
-                    log.info("Hit log out button")
-                    logOut()
-                }else {
-                    log.info("Hit log in button")
-                    logIn(elementTextFields["0Email:"]!.text!, password: elementTextFields["0Password:"]!.text!)
-                }
-            }
-        }else if indexPath.section == 1 {
-            if indexPath.row == REGISTER_ROW_INDEX {
-                log.info("Hit register")
-                register(elementTextFields["1Email:"]!.text!, password: elementTextFields["1Password:"]!.text!, confirmPassword: elementTextFields["1Confirm Password:"]!.text!, firstName: elementTextFields["1First Name:"]!.text!, lastName: elementTextFields["1Last Name:"]!.text!, phone: elementTextFields["1Phone:"]!.text!)
-            }
+        
+        switch elements[indexPath.row] {
+        case "Invite Friends:btn":
+            print("Inviting friends")
+        case "Log Out:btn":
+            logout()
+        default:
+            print("Other setting")
         }
+    }
+    
+    func logout() {
+        let alertController = UIAlertController(title: "Log out", message: "Are you sure you want to log out?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+            
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
     
     func widthOfString(str: String, forHeight: CGFloat, withFont: UIFont) -> CGFloat {
@@ -99,35 +107,35 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as! SettingsCell
         cell.userInteractionEnabled = true
         
-        var dict = elements[Array(elements.keys)[indexPath.section]]!
+        let val = elements[indexPath.row] as String
+        let labelText = val.componentsSeparatedByString(":")[0]
+        //let type = val.componentsSeparatedByString(":")[1]
         
-        let val = dict[indexPath.row] as String
-        var labelText = val.componentsSeparatedByString(":")[0]
-        let type = val.componentsSeparatedByString(":")[1]
+        /*cell.textLabel?.text = labelText
+        cell.backgroundColor = UIColor(white: 51/255, alpha: 1.0)
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.detailTextLabel?.textColor = UIColor( white: 1.0, alpha: 0.7)
+        cell.textLabel?.font = UIFont(name: Style.regularFont, size: 20.0)*/
         
-        // Keep only one log in/out button
-        if labelText == "Log" {
-            labelText = String(format: "%@ %@", labelText, (Asahi.sharedInstance.loggedIn ? "Out" : "In"))
-        }
+        cell.label.text = labelText
         
-        cell.textLabel?.text = labelText
-        cell.textLabel?.textColor = .blackColor()
+        cell.icon.image = UIImage(named: "AppIcon")
         
-        if let existingTextField = cell.contentView.viewWithTag(TEXT_FIELD_TAG) {
+        // TODO: what does this do?
+        /*if let existingTextField = cell.contentView.viewWithTag(TEXT_FIELD_TAG) {
             existingTextField.removeFromSuperview()
         }
         
-        // If a text field at all
         if type.rangeOfString("tf") != nil {
-            // Add colon to end of label
             cell.textLabel!.text = String(format: "%@:", cell.textLabel!.text!)
+            
             let labelWidth = widthOfString(cell.textLabel!.text!, forHeight: cell.contentView.bounds.size.height, withFont: cell.textLabel!.font)
-            // Set the width of the text field based on the label width + 40 pixels
-            // - 15 pixels for spacing on the right side
+            
             let textField = UITextField(frame: CGRectMake(labelWidth + 40, 0, cell.contentView.bounds.size.width - labelWidth - 40 - 15, cell.contentView.bounds.size.height))
+            
             textField.tag = TEXT_FIELD_TAG
             textField.adjustsFontSizeToFitWidth = true
             textField.returnKeyType = .Done
@@ -136,6 +144,7 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
             textField.autocapitalizationType = .None
             textField.secureTextEntry = false
             textField.textColor = .blackColor()
+            
             if indexPath.section == 0 {
                 textField.enabled = !Asahi.sharedInstance.loggedIn
                 cell.userInteractionEnabled = textField.enabled
@@ -165,10 +174,9 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
             cell.contentView.addSubview(textField)
             // Add pointers to an array so we can easily grab the text later. Combination of section index + label (for two similarly named text fields, i.e. Email)
             elementTextFields[String(indexPath.section).stringByAppendingString(cell.textLabel!.text!)] = textField
-        } else if type == "bn" {
+        } else if type == "btn" {
             cell.userInteractionEnabled = true
-            cell.textLabel?.textColor = UIColor(red: (14.0/255.0), green: (122.0/255.0), blue: (254.0/255.0), alpha: 1.0)
-        }
+        }*/
         
         return cell
     }
@@ -194,20 +202,6 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         }
     }
     
-    func logOut() {
-        
-//        Asahi.sharedInstance.logout().then { loggedOut -> Void in
-//
-//            if loggedOut {
-//                self.tableView.reloadData()
-//            }else {
-////                self.showAlertWithTitle("Error!", andMessage: response[2])
-//            }
-//            // For testing
-//            
-//            self.showAlertWithTitle("Message", andMessage: "Logged out")
-//        }
-    }
     
     func register(email: String, password: String, confirmPassword: String, firstName: String, lastName: String, phone: String) {
         self.lastEmail = email

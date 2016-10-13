@@ -38,6 +38,7 @@
 		1EABF75F1D919C1500D2BBD5 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EABF75E1D919C1500D2BBD5 /* EnterPasswordViewController.swift */; };
 		1EABF7611D91A4B500D2BBD5 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EABF7601D91A4B500D2BBD5 /* StringExtensions.swift */; };
 		1EC631641D778D3D00F99E0E /* ABNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC631631D778D3D00F99E0E /* ABNetworking.swift */; };
+		4F2118DA1DAFF2F800D82E6D /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2118D91DAFF2F800D82E6D /* SettingsCell.swift */; };
 		4F5ED9821D511D56006519A7 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */; };
 		4F5ED9851D511F36006519A7 /* LeftSideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */; };
 		4F5ED9871D511F62006519A7 /* LeftSideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */; };
@@ -92,6 +93,7 @@
 		1EABF75E1D919C1500D2BBD5 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		1EABF7601D91A4B500D2BBD5 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Absinthe-iOS/StringExtensions.swift"; sourceTree = "<group>"; };
 		1EC631631D778D3D00F99E0E /* ABNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABNetworking.swift; path = "Absinthe-iOS/ABNetworking.swift"; sourceTree = "<group>"; };
+		4F2118D91DAFF2F800D82E6D /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoAnimationSegue.swift; path = "Absinthe-iOS/NoAnimationSegue.swift"; sourceTree = "<group>"; };
 		4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LeftSideMenu.storyboard; path = "Absinthe-iOS/LeftSideMenu.storyboard"; sourceTree = "<group>"; };
 		4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftSideMenuTableViewController.swift; path = "Absinthe-iOS/LeftSideMenuTableViewController.swift"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				4F9033211D4FB98F00525515 /* Account.storyboard */,
 				4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */,
+				4F2118D91DAFF2F800D82E6D /* SettingsCell.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */,
 				1EABF75F1D919C1500D2BBD5 /* EnterPasswordViewController.swift in Sources */,
 				1E25C14E1D36FB9200BEA1FB /* Settings.swift in Sources */,
+				4F2118DA1DAFF2F800D82E6D /* SettingsCell.swift in Sources */,
 				1E25C13C1D36F99300BEA1FB /* ChooseOurglasserViewController.swift in Sources */,
 				4FD30E171D4FFE4600C6DB60 /* AccountViewController.swift in Sources */,
 				4F6C7F291D3E9E110055EF8A /* Asahi.swift in Sources */,

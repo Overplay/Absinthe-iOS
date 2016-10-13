@@ -136,6 +136,7 @@ class Settings {
             userDefaults.setBool(newValue, forKey: "isRegistered")
         }
     }
+    
 
 
     // MARK:Defaults
