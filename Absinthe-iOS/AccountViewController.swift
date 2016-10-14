@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MMDrawerController
 
-class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AccountViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     let LOG_IN_ROW_INDEX = 2
     let REGISTER_ROW_INDEX = 6

@@ -39,21 +39,17 @@
 		1EABF7611D91A4B500D2BBD5 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EABF7601D91A4B500D2BBD5 /* StringExtensions.swift */; };
 		1EC631641D778D3D00F99E0E /* ABNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC631631D778D3D00F99E0E /* ABNetworking.swift */; };
 		4F5ED9821D511D56006519A7 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */; };
-		4F5ED9851D511F36006519A7 /* LeftSideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */; };
-		4F5ED9871D511F62006519A7 /* LeftSideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */; };
 		4F6C7F291D3E9E110055EF8A /* Asahi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C7F281D3E9E110055EF8A /* Asahi.swift */; };
-		4F7110C71D5A9E4E004200E5 /* LeftSideSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7110C61D5A9E4E004200E5 /* LeftSideSubViewController.swift */; };
 		4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A571D4FD5D000F83848 /* IntroPage1.xib */; };
 		4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A591D4FDA1200F83848 /* IntroPage2.xib */; };
 		4F9033221D4FB98F00525515 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9033211D4FB98F00525515 /* Account.storyboard */; };
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
 		4FD30E131D4FE75100C6DB60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FD30E121D4FE75100C6DB60 /* Main.storyboard */; };
 		4FD30E171D4FFE4600C6DB60 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */; };
-		4FD30E191D4FFE6200C6DB60 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD30E181D4FFE6200C6DB60 /* InitialViewController.swift */; };
 		4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */; };
 		4FE9456D1D53F81600F35CD0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE9456C1D53F81600F35CD0 /* Map.storyboard */; };
 		4FE9456F1D53FCF800F35CD0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE9456E1D53FCF800F35CD0 /* MapKit.framework */; };
-		BD07C60157CD3A1515523012 /* Pods_Absinthe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */; };
+		EF5622DB73533A48DCAADE03 /* Pods_Absinthe_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D90E5C998971ACC265B3C /* Pods_Absinthe_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,12 +86,8 @@
 		1EABF75E1D919C1500D2BBD5 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		1EABF7601D91A4B500D2BBD5 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Absinthe-iOS/StringExtensions.swift"; sourceTree = "<group>"; };
 		1EC631631D778D3D00F99E0E /* ABNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABNetworking.swift; path = "Absinthe-iOS/ABNetworking.swift"; sourceTree = "<group>"; };
-		3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoAnimationSegue.swift; path = "Absinthe-iOS/NoAnimationSegue.swift"; sourceTree = "<group>"; };
-		4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LeftSideMenu.storyboard; path = "Absinthe-iOS/LeftSideMenu.storyboard"; sourceTree = "<group>"; };
-		4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftSideMenuTableViewController.swift; path = "Absinthe-iOS/LeftSideMenuTableViewController.swift"; sourceTree = "<group>"; };
 		4F6C7F281D3E9E110055EF8A /* Asahi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asahi.swift; path = "Absinthe-iOS/Asahi.swift"; sourceTree = "<group>"; };
-		4F7110C61D5A9E4E004200E5 /* LeftSideSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftSideSubViewController.swift; path = "Absinthe-iOS/LeftSideSubViewController.swift"; sourceTree = "<group>"; };
 		4F76932F1D3EBD96008B515A /* Absinthe-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Absinthe-iOS-Bridging-Header.h"; path = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F826A571D4FD5D000F83848 /* IntroPage1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage1.xib; path = "Absinthe-iOS/IntroPage1.xib"; sourceTree = "<group>"; };
 		4F826A591D4FDA1200F83848 /* IntroPage2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage2.xib; path = "Absinthe-iOS/IntroPage2.xib"; sourceTree = "<group>"; };
@@ -103,12 +95,12 @@
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
 		4FD30E121D4FE75100C6DB60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Absinthe-iOS/Main.storyboard"; sourceTree = "<group>"; };
 		4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "Absinthe-iOS/AccountViewController.swift"; sourceTree = "<group>"; };
-		4FD30E181D4FFE6200C6DB60 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialViewController.swift; path = "Absinthe-iOS/InitialViewController.swift"; sourceTree = "<group>"; };
 		4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "Absinthe-iOS/MapViewController.swift"; sourceTree = "<group>"; };
 		4FE9456C1D53F81600F35CD0 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = "Absinthe-iOS/Map.storyboard"; sourceTree = "<group>"; };
 		4FE9456E1D53FCF800F35CD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Absinthe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810D90E5C998971ACC265B3C /* Pods_Absinthe_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Absinthe_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE4B0C49B1F077FA769DDDF /* Pods-Absinthe-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FD077D3DA07EF956B4EF7A42 /* Pods-Absinthe-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Absinthe-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +110,7 @@
 			files = (
 				4FE9456F1D53FCF800F35CD0 /* MapKit.framework in Frameworks */,
 				1E25C12B1D36F2CD00BEA1FB /* SystemConfiguration.framework in Frameworks */,
-				BD07C60157CD3A1515523012 /* Pods_Absinthe_iOS.framework in Frameworks */,
+				EF5622DB73533A48DCAADE03 /* Pods_Absinthe_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +136,7 @@
 				1E25C1301D36F51100BEA1FB /* Support */,
 				1E25C1161D36F2A700BEA1FB /* Products */,
 				5CE8A13EA7990143D4C277F5 /* Frameworks */,
-				A03068D986E10C9DBF5DA87D /* Pods */,
+				6DBDC6000D194FAAED826C79 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,7 +180,6 @@
 				1E96566A1D89F82800EFD7EF /* Poppins-SemiBold.ttf */,
 				1E25C11F1D36F2A700BEA1FB /* Assets.xcassets */,
 				1E25C1211D36F2A700BEA1FB /* LaunchScreen.storyboard */,
-				4FD30E181D4FFE6200C6DB60 /* InitialViewController.swift */,
 				4FD30E121D4FE75100C6DB60 /* Main.storyboard */,
 				4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */,
 			);
@@ -250,9 +241,6 @@
 		4F5ED9831D511EC4006519A7 /* Left Side Menu */ = {
 			isa = PBXGroup;
 			children = (
-				4F5ED9841D511F36006519A7 /* LeftSideMenu.storyboard */,
-				4F5ED9861D511F62006519A7 /* LeftSideMenuTableViewController.swift */,
-				4F7110C61D5A9E4E004200E5 /* LeftSideSubViewController.swift */,
 			);
 			name = "Left Side Menu";
 			sourceTree = "<group>";
@@ -289,16 +277,16 @@
 			children = (
 				4FE9456E1D53FCF800F35CD0 /* MapKit.framework */,
 				1E25C12A1D36F2CD00BEA1FB /* SystemConfiguration.framework */,
-				C7CC54F6AB18865F608E05FB /* Pods_Absinthe_iOS.framework */,
+				810D90E5C998971ACC265B3C /* Pods_Absinthe_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A03068D986E10C9DBF5DA87D /* Pods */ = {
+		6DBDC6000D194FAAED826C79 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */,
-				3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */,
+				ECE4B0C49B1F077FA769DDDF /* Pods-Absinthe-iOS.debug.xcconfig */,
+				FD077D3DA07EF956B4EF7A42 /* Pods-Absinthe-iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -310,13 +298,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E25C1271D36F2A700BEA1FB /* Build configuration list for PBXNativeTarget "Absinthe-iOS" */;
 			buildPhases = (
-				6FEEFBF914A0DF12B0F21AA2 /* [CP] Check Pods Manifest.lock */,
+				9E73DC40F77A719B083266D0 /* [CP] Check Pods Manifest.lock */,
 				1E25C1111D36F2A700BEA1FB /* Sources */,
 				1E25C1121D36F2A700BEA1FB /* Frameworks */,
 				1E25C1131D36F2A700BEA1FB /* Resources */,
-				60A726B23BDDB4BDB324F740 /* [CP] Embed Pods Frameworks */,
-				1F27A679894139455C16CDFA /* [CP] Copy Pods Resources */,
-				86F83BA81C74954DD2D15CA5 /* Embed Pods Frameworks */,
+				E2148DB9AD0D7E16AFA1DA73 /* [CP] Embed Pods Frameworks */,
+				483983E5375BA4A4B2E5E5BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,7 +326,7 @@
 				TargetAttributes = {
 					1E25C1141D36F2A700BEA1FB = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = M772E93TAU;
+						DevelopmentTeam = 6DABK4Y6G2;
 					};
 				};
 			};
@@ -373,7 +360,6 @@
 				4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */,
 				1E96566D1D89F82800EFD7EF /* Poppins-Medium.ttf in Resources */,
 				4FD30E131D4FE75100C6DB60 /* Main.storyboard in Resources */,
-				4F5ED9851D511F36006519A7 /* LeftSideMenu.storyboard in Resources */,
 				4F9033221D4FB98F00525515 /* Account.storyboard in Resources */,
 				1E25C1201D36F2A700BEA1FB /* Assets.xcassets in Resources */,
 				1E96566C1D89F82800EFD7EF /* Poppins-Light.ttf in Resources */,
@@ -388,7 +374,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F27A679894139455C16CDFA /* [CP] Copy Pods Resources */ = {
+		483983E5375BA4A4B2E5E5BD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -403,22 +389,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		60A726B23BDDB4BDB324F740 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Absinthe-iOS/Pods-Absinthe-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FEEFBF914A0DF12B0F21AA2 /* [CP] Check Pods Manifest.lock */ = {
+		9E73DC40F77A719B083266D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -430,17 +401,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		86F83BA81C74954DD2D15CA5 /* Embed Pods Frameworks */ = {
+		E2148DB9AD0D7E16AFA1DA73 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,14 +428,11 @@
 			files = (
 				1E25C14B1D36FAD400BEA1FB /* OurglasserCell.swift in Sources */,
 				4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */,
-				4F7110C71D5A9E4E004200E5 /* LeftSideSubViewController.swift in Sources */,
-				4FD30E191D4FFE6200C6DB60 /* InitialViewController.swift in Sources */,
 				4F5ED9821D511D56006519A7 /* NoAnimationSegue.swift in Sources */,
 				1EABF7571D90F91500D2BBD5 /* NetUtils.swift in Sources */,
 				1E25C1471D36FAD400BEA1FB /* ASNotification.swift in Sources */,
 				1E25C14C1D36FAD400BEA1FB /* Style.swift in Sources */,
 				1E25C13D1D36F99300BEA1FB /* OurglasserViewController.swift in Sources */,
-				4F5ED9871D511F62006519A7 /* LeftSideMenuTableViewController.swift in Sources */,
 				1E25C14A1D36FAD400BEA1FB /* OPIEBeaconListener.swift in Sources */,
 				4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */,
 				1EABF75F1D919C1500D2BBD5 /* EnterPasswordViewController.swift in Sources */,
@@ -598,7 +566,7 @@
 		};
 		1E25C1281D36F2A700BEA1FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8BCCE01C244622DD076CC6E /* Pods-Absinthe-iOS.debug.xcconfig */;
+			baseConfigurationReference = ECE4B0C49B1F077FA769DDDF /* Pods-Absinthe-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -606,7 +574,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Absinthe-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ourglass.absinthe;
+				PRODUCT_BUNDLE_IDENTIFIER = io.overplay.absinthe;
 				PRODUCT_NAME = "Absinthe-iOS";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h";
@@ -616,7 +584,7 @@
 		};
 		1E25C1291D36F2A700BEA1FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D7B2FD07F0C8132A770A0D2 /* Pods-Absinthe-iOS.release.xcconfig */;
+			baseConfigurationReference = FD077D3DA07EF956B4EF7A42 /* Pods-Absinthe-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -624,7 +592,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Absinthe-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ourglass.absinthe;
+				PRODUCT_BUNDLE_IDENTIFIER = io.overplay.absinthe;
 				PRODUCT_NAME = "Absinthe-iOS";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h";

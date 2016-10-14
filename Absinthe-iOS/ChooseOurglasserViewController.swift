@@ -9,10 +9,8 @@
 import UIKit
 import PKHUD
 import PromiseKit
-import MMDrawerController
-import EAIntroView
 
-class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, EAIntroDelegate {
+class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
  
     @IBOutlet var mainStatusLabel: UILabel!
     @IBOutlet var ourglasserCollection : UICollectionView!
@@ -73,10 +71,10 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     }
     
     // Delegate method to start finding after intro is finished
-    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        // Begin searching
-        self.findOurglassers()
-    }
+//    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
+//        // Begin searching
+//        self.findOurglassers()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -194,9 +192,9 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        switch kind {
-            
-        case UICollectionElementKindSectionHeader:
+//        switch kind {
+//            
+//        case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerView", forIndexPath: indexPath)
             
             if self.availableOPIEs.count < 1 && !self.refreshing {
@@ -205,11 +203,12 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
                 headerView.hidden = true
             }
             return headerView
-            
-        default:
-            assert(false, "Unexpected element kind in OPIE collection view.")
-        }
-        
+//            
+//        default:
+//            assert(false, "Unexpected element kind in OPIE collection view.")
+//        }
+//        
+    
     }
     
     // MARK: - Navigation
