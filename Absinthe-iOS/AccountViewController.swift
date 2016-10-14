@@ -71,9 +71,12 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        // TODO: clean this
         switch elements[indexPath.row] {
         case "Invite Friends:btn":
             print("Inviting friends")
+        case "Edit Account:btn":
+            self.performSegueWithIdentifier("fromAccountToEdit", sender: nil)
         case "Log Out:btn":
             logout()
         default:
