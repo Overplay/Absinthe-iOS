@@ -91,6 +91,7 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            Settings.sharedInstance.userAsahiJWT = nil
             self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
         }
         
@@ -100,83 +101,27 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
 
     }
     
-    func widthOfString(str: String, forHeight: CGFloat, withFont: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: CGFloat.max, height: forHeight)
-        let boundingBox = str.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: withFont], context: nil)
-        return boundingBox.width
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as! SettingsCell
         cell.userInteractionEnabled = true
         
         let val = elements[indexPath.row] as String
         let labelText = val.componentsSeparatedByString(":")[0]
-        //let type = val.componentsSeparatedByString(":")[1]
-        
-        /*cell.textLabel?.text = labelText
-        cell.backgroundColor = UIColor(white: 51/255, alpha: 1.0)
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.detailTextLabel?.textColor = UIColor( white: 1.0, alpha: 0.7)
-        cell.textLabel?.font = UIFont(name: Style.regularFont, size: 20.0)*/
         
         cell.label.text = labelText
         
-        cell.icon.image = UIImage(named: "AppIcon")
-        
-        // TODO: what does this do?
-        /*if let existingTextField = cell.contentView.viewWithTag(TEXT_FIELD_TAG) {
-            existingTextField.removeFromSuperview()
+        switch labelText {
+        case "Invite Friends":
+            cell.icon.image = UIImage(named: "ic_card_giftcard_white_18pt")
+        case "Edit Account":
+            cell.icon.image = UIImage(named: "ic_perm_identity_white_18pt")
+        case "Add New Ourglass Device":
+            cell.icon.image = UIImage(named: "ic_queue_play_next_white_18pt")
+        case "Add/Manage Venues":
+            cell.icon.image = UIImage(named: "ic_add_location_white_18pt")
+        default:
+            break
         }
-        
-        if type.rangeOfString("tf") != nil {
-            cell.textLabel!.text = String(format: "%@:", cell.textLabel!.text!)
-            
-            let labelWidth = widthOfString(cell.textLabel!.text!, forHeight: cell.contentView.bounds.size.height, withFont: cell.textLabel!.font)
-            
-            let textField = UITextField(frame: CGRectMake(labelWidth + 40, 0, cell.contentView.bounds.size.width - labelWidth - 40 - 15, cell.contentView.bounds.size.height))
-            
-            textField.tag = TEXT_FIELD_TAG
-            textField.adjustsFontSizeToFitWidth = true
-            textField.returnKeyType = .Done
-            textField.delegate = self
-            textField.autocorrectionType = .No
-            textField.autocapitalizationType = .None
-            textField.secureTextEntry = false
-            textField.textColor = .blackColor()
-            
-            if indexPath.section == 0 {
-                textField.enabled = !Asahi.sharedInstance.loggedIn
-                cell.userInteractionEnabled = textField.enabled
-                if labelText == "Email" {
-                    if !textField.enabled {
-                        textField.text = Asahi.sharedInstance.currentEmail
-                        textField.textColor = .grayColor()
-                    }else {
-                        textField.text = (lastEmail != "" ? lastEmail : Asahi.sharedInstance.currentEmail)
-                    }
-                }
-            }else {
-                textField.enabled = true
-                cell.userInteractionEnabled = true
-            }
-            // Different types of text field
-            switch(type) {
-                case "stf":
-                    textField.secureTextEntry = true
-                    break
-                case "ntf":
-                    textField.autocapitalizationType = .Words
-                    break
-                default:
-                    break
-            }
-            cell.contentView.addSubview(textField)
-            // Add pointers to an array so we can easily grab the text later. Combination of section index + label (for two similarly named text fields, i.e. Email)
-            elementTextFields[String(indexPath.section).stringByAppendingString(cell.textLabel!.text!)] = textField
-        } else if type == "btn" {
-            cell.userInteractionEnabled = true
-        }*/
         
         return cell
     }

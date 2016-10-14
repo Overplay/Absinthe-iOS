@@ -29,26 +29,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSK-Fu-kDi">
-                                            <rect key="frame" x="26" y="8" width="417" height="41"/>
+                                            <rect key="frame" x="26" y="15" width="45" height="28"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Saj-a9-szU">
-                                            <rect key="frame" x="512" y="8" width="41" height="41"/>
+                                            <rect key="frame" x="530" y="16" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="41" id="0ye-VH-hVk"/>
+                                                <constraint firstAttribute="height" constant="25" id="KZb-HT-rYW"/>
+                                                <constraint firstAttribute="width" constant="25" id="wM7-Z8-oKL"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Saj-a9-szU" secondAttribute="trailing" constant="39" id="6eN-Wn-6PI"/>
                                         <constraint firstItem="Saj-a9-szU" firstAttribute="centerY" secondItem="kpa-xe-UKk" secondAttribute="centerY" id="CQe-gc-mqQ"/>
                                         <constraint firstItem="FSK-Fu-kDi" firstAttribute="leading" secondItem="kpa-xe-UKk" secondAttribute="leadingMargin" constant="18" id="L0c-l2-1hX"/>
                                         <constraint firstItem="FSK-Fu-kDi" firstAttribute="centerY" secondItem="kpa-xe-UKk" secondAttribute="centerY" id="cqn-HP-iPR"/>
-                                        <constraint firstItem="Saj-a9-szU" firstAttribute="leading" secondItem="FSK-Fu-kDi" secondAttribute="trailing" constant="69" id="crf-Q7-8i4"/>
-                                        <constraint firstItem="Saj-a9-szU" firstAttribute="top" secondItem="kpa-xe-UKk" secondAttribute="topMargin" id="kw4-bi-nhK"/>
-                                        <constraint firstItem="Saj-a9-szU" firstAttribute="top" secondItem="FSK-Fu-kDi" secondAttribute="top" id="rtp-k1-rKw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Saj-a9-szU" secondAttribute="trailing" constant="37" id="hHP-jq-kC5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
