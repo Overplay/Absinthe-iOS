@@ -19,11 +19,13 @@ enum RequestRouter: URLRequestConvertible {
     case Login([String: AnyObject])
     case ChangePwd([String: AnyObject])
     case GetVenues()
+    case GetAuthStatus()
+    case Logout()
     
     var URLRequest: NSMutableURLRequest {
         var method: Alamofire.Method {
             switch self {
-            case .GetToken, .GetVenues:
+            case .GetToken, .GetVenues, .GetAuthStatus, .Logout:
                 return .GET
             case .Register, .Login, .ChangePwd:
                 return .POST
@@ -32,7 +34,7 @@ enum RequestRouter: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
-            case .GetToken, .GetVenues:
+            case .GetToken, .GetVenues, .GetAuthStatus, .Logout:
                 return (nil)
             case .Register(let newUser):
                 return (newUser)
@@ -56,6 +58,10 @@ enum RequestRouter: URLRequestConvertible {
                 relativePath = "/auth/changePwd"
             case .GetVenues:
                 relativePath = "/api/v1/venue"
+            case .GetAuthStatus:
+                relativePath = "/auth/status"
+            case .Logout:
+                relativePath = "/auth/logoutPage"
             }
             
             var URL = NSURL(string: RequestRouter.baseURLString)!
@@ -75,7 +81,7 @@ enum RequestRouter: URLRequestConvertible {
         let encoding: Alamofire.ParameterEncoding
         
         switch self {
-        case .GetToken, .GetVenues:  // should GetVenues be JSON or URL encoded?
+        case .GetToken, .GetVenues, .GetAuthStatus, .Logout:
             encoding = Alamofire.ParameterEncoding.URL
         case .Register, .Login, .ChangePwd:
             encoding = Alamofire.ParameterEncoding.JSON

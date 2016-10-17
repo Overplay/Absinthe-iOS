@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MMDrawerController
+import PKHUD
 
 struct SettingsOption {
     let label: String
@@ -95,8 +95,20 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
-            Settings.sharedInstance.userAsahiJWT = nil
-            self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
+            //Settings.sharedInstance.userAsahiJWT = nil
+            //self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
+            
+            Asahi.sharedInstance.logout()
+                .then{ response -> Void in
+                    HUD.flash(.LabeledSuccess(title: "Logged out!", subtitle: ""), delay: 1.0, completion: { (_) in
+                        self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
+                    })
+                }
+                .error{ err -> Void in
+                    // On the off chance an account already exists
+                    print("ERROR LOGGING OUT")
+            }
+            
         }
         
         alertController.addAction(okAction)

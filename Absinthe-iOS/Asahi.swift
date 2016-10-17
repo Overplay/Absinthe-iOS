@@ -261,6 +261,53 @@ public class Asahi: NSObject {
         }
     }
     
+    func checkAuthStatus() -> Promise<Bool> {
+        return Promise<Bool> { resolve, reject in
+            
+            Alamofire.request(RequestRouter.GetAuthStatus())
+                
+                .validate()
+                
+                .responseJSON(completionHandler: { response in
+                    
+                    guard let value = response.result.value else {
+                        reject(AsahiError.ResponseWasNotValidJson)
+                        return
+                    }
+                    
+                    
+                    print(response)
+                    print(value)
+                    
+                    switch response.result {
+                        
+                    case .Success:
+                        resolve(true)
+                        
+                    case .Failure(let error):
+                        reject(error)
+                    }
+                })
+        }
+    }
+    
+    func logout() -> Promise<Bool> {
+        return Promise<Bool> { resolve, reject in
+            Alamofire.request(RequestRouter.Logout())
+            
+                .validate()
+            
+                .responseString(completionHandler: { response in
+                    switch response.result {
+                    case .Success:
+                        resolve(true)
+                    case .Failure(let error):
+                        reject(error)
+                    }
+            })
+        }
+    }
+    
     
     // MARK Test Methods
     
