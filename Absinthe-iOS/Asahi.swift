@@ -261,8 +261,8 @@ public class Asahi: NSObject {
         }
     }
     
-    func checkAuthStatus() -> Promise<Bool> {
-        return Promise<Bool> { resolve, reject in
+    func checkAuthStatus() -> Promise<JSON> {
+        return Promise<JSON> { resolve, reject in
             
             Alamofire.request(RequestRouter.GetAuthStatus())
                 
@@ -275,14 +275,10 @@ public class Asahi: NSObject {
                         return
                     }
                     
-                    
-                    print(response)
-                    print(value)
-                    
                     switch response.result {
                         
                     case .Success:
-                        resolve(true)
+                        resolve(JSON(value))
                         
                     case .Failure(let error):
                         reject(error)

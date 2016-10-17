@@ -95,18 +95,22 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
-            //Settings.sharedInstance.userAsahiJWT = nil
-            //self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
             
             Asahi.sharedInstance.logout()
                 .then{ response -> Void in
+                    Settings.sharedInstance.userAsahiJWT = nil
                     HUD.flash(.LabeledSuccess(title: "Logged out!", subtitle: ""), delay: 1.0, completion: { (_) in
                         self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
                     })
                 }
+                
+                // TODO: is this how we should handle errors?
                 .error{ err -> Void in
-                    // On the off chance an account already exists
-                    print("ERROR LOGGING OUT")
+                    log.error("Error logging out")
+                    Settings.sharedInstance.userAsahiJWT = nil
+                    HUD.flash(.LabeledSuccess(title: "Logged out!", subtitle: ""), delay: 1.0, completion: { (_) in
+                        self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
+                    })
             }
             
         }
