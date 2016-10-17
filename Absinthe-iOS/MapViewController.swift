@@ -80,11 +80,17 @@ class MapViewController : LeftSideSubViewController {
         
         self.mapView.delegate = self
         
-        Asahi.sharedInstance.getVenues().then { response -> Void in
+        Asahi.sharedInstance.getVenues()
             
-            self.processVenues(response)
+            .then { response -> Void in
+                log.debug("Got venues!")
+                self.processVenues(response)
+            }
+            
+            .error{ err -> Void in
+                log.error("Error getting venues")
+                print(err)
         }
-        
     }
     
     func recenter() {

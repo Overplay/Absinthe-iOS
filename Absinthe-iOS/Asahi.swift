@@ -202,7 +202,6 @@ public class Asahi: NSObject {
             }
     }
     
-    // TODO: This should also be replaced with JSON endpoint
     func changePassword(email: String, newPassword: String) -> Promise<Bool> {
         
         return Promise<Bool> { resolve, reject in
@@ -270,14 +269,13 @@ public class Asahi: NSObject {
                 
                 .responseJSON(completionHandler: { response in
                     
-                    guard let value = response.result.value else {
-                        reject(AsahiError.ResponseWasNotValidJson)
-                        return
-                    }
-                    
                     switch response.result {
                         
                     case .Success:
+                        guard let value = response.result.value else {
+                            reject(AsahiError.ResponseWasNotValidJson)
+                            return
+                        }
                         resolve(JSON(value))
                         
                     case .Failure(let error):
