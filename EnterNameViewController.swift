@@ -110,12 +110,8 @@ class EnterNameViewController: RegSceneBaseViewController, UITextFieldDelegate {
 
    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    
         Settings.sharedInstance.userFirstName = fnameTextField.text
         Settings.sharedInstance.userLastName = lnameTextField.text
-
-        
     }
     
     

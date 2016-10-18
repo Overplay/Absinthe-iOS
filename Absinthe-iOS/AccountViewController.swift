@@ -24,7 +24,7 @@ struct SettingsOption {
     }
 }
 
-class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AccountViewController : AccountBaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var tableView: UITableView!
     
@@ -34,10 +34,6 @@ class AccountViewController : LeftSideSubViewController, UITableViewDelegate, UI
         SettingsOption(label: "Add New Ourglass Device", image: "ic_queue_play_next_white_18pt"),
         SettingsOption(label: "Add/Manage Venues", image: "ic_add_location_white_18pt"),
         SettingsOption(label: "Log Out")]
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

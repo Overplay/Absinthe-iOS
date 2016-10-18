@@ -9,11 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class EditAccountViewController: UIViewController {
+class EditAccountViewController: AccountBaseViewController {
 
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var emailGoodCheck: UIImageView!
     
     @IBAction func closeEditAccount(sender: AnyObject) {
         self.navigationController!.popViewControllerAnimated(true)
@@ -36,27 +37,31 @@ class EditAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.emailGoodCheck.alpha = 0
 
-        // Should we get these values from somewhere else?
-        // TODO: set first and last names in settings
         self.firstName.text = Settings.sharedInstance.userFirstName
         self.lastName.text = Settings.sharedInstance.userLastName
-   
         self.email.text = Settings.sharedInstance.userEmail
+        checkEmail()
         
         Asahi.sharedInstance.checkAuthStatus()
             
             .then{ response -> Void in
                 log.debug("Successfully checked auth")
                 if let first = response["firstName"].string {
+                    Settings.sharedInstance.userFirstName = first
                     self.firstName.text = first
+                    self.checkEmail()
                 }
                 
                 if let last = response["lastName"].string {
+                    Settings.sharedInstance.userLastName = last
                     self.lastName.text = last
                 }
                 
                 if let email = response["auth"]["email"].string {
+                    Settings.sharedInstance.userEmail = email
                     self.email.text = email
                 }
             }
@@ -75,11 +80,26 @@ class EditAccountViewController: UIViewController {
                 self.presentViewController(alertController, animated: true, completion: nil)
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkEmail), name: UITextFieldTextDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkEmail() {
+        
+        if let email = self.email.text {
+            
+            if email.isValidEmail() && self.emailGoodCheck.alpha == 0 {
+                fadeIn(self.emailGoodCheck)
+            }
+            
+            if !email.isValidEmail() {
+                fadeOut(self.emailGoodCheck)
+            }
+        }
     }
     
 
