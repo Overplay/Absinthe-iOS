@@ -49,6 +49,7 @@
 		4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */; };
 		4F9033221D4FB98F00525515 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9033211D4FB98F00525515 /* Account.storyboard */; };
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
+		4FC790B81DBADD61004058D6 /* MainTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790B71DBADD61004058D6 /* MainTabsController.swift */; };
 		4FD30E171D4FFE4600C6DB60 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */; };
 		4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */; };
 		4FE9456D1D53F81600F35CD0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE9456C1D53F81600F35CD0 /* Map.storyboard */; };
@@ -103,6 +104,7 @@
 		4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		4F9033211D4FB98F00525515 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Account.storyboard; path = "Absinthe-iOS/Account.storyboard"; sourceTree = "<group>"; };
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
+		4FC790B71DBADD61004058D6 /* MainTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabsController.swift; sourceTree = "<group>"; };
 		4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "Absinthe-iOS/AccountViewController.swift"; sourceTree = "<group>"; };
 		4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "Absinthe-iOS/MapViewController.swift"; sourceTree = "<group>"; };
 		4FE9456C1D53F81600F35CD0 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = "Absinthe-iOS/Map.storyboard"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1E167ACF1D92E6E90080C4C6 /* MainTabsStoryboard.storyboard */,
+				4FC790B71DBADD61004058D6 /* MainTabsController.swift */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				1EC631641D778D3D00F99E0E /* ABNetworking.swift in Sources */,
 				1E167ACD1D92DD130080C4C6 /* RegSceneBaseViewController.swift in Sources */,
 				4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */,
+				4FC790B81DBADD61004058D6 /* MainTabsController.swift in Sources */,
 				1EABF7611D91A4B500D2BBD5 /* StringExtensions.swift in Sources */,
 				1EABF75B1D919BF400D2BBD5 /* EnterNameViewController.swift in Sources */,
 				1E69E6611D924CAF00B48212 /* LoginViewController.swift in Sources */,

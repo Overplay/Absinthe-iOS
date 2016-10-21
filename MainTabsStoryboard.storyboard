@@ -15,15 +15,15 @@
             </objects>
             <point key="canvasLocation" x="287.5" y="-310"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tabs Controller-->
         <scene sceneID="WF8-E1-EyP">
             <objects>
-                <tabBarController id="OwK-n2-qyQ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="L0b-eT-oZW">
+                <tabBarController id="OwK-n2-qyQ" customClass="MainTabsController" customModule="Absinthe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="L0b-eT-oZW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
