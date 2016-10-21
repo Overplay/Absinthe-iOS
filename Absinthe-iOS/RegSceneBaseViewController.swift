@@ -10,6 +10,10 @@ import UIKit
 
 class RegSceneBaseViewController: UIViewController {
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     @IBAction func onBack(sender: UIButton) {
         self.navigationController!.popViewControllerAnimated(true)
     }
