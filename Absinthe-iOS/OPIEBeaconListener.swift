@@ -77,7 +77,8 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         NSTimer.scheduledTimerWithTimeInterval(broadcastInterval, target: self, selector: #selector (broadcastPacket),userInfo: nil, repeats: true)
         
         // Check devices are online
-        NSTimer.scheduledTimerWithTimeInterval(timeBeforeDrop, target: self, selector: #selector (checkOPIEs), userInfo: nil, repeats: true)
+        // TODO: remove algo broken?
+        //NSTimer.scheduledTimerWithTimeInterval(timeBeforeDrop, target: self, selector: #selector (checkOPIEs), userInfo: nil, repeats: true)
         
     }
     
