@@ -8,11 +8,10 @@
 
 import UIKit
 import MapKit
-import MMDrawerController
 import CoreLocation
 import SwiftyJSON
 
-class MapViewController : LeftSideSubViewController {
+class MapViewController : UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!

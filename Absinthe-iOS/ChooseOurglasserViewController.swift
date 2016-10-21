@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChooseOurglasserViewController
 //  OurglassAppSwift
 //
 //  Created by Alyssa Torres on 3/1/16.
@@ -9,10 +9,8 @@
 import UIKit
 import PKHUD
 import PromiseKit
-import MMDrawerController
-import EAIntroView
 
-class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, EAIntroDelegate {
+class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
  
     @IBOutlet var mainStatusLabel: UILabel!
     @IBOutlet var ourglasserCollection : UICollectionView!
@@ -72,11 +70,11 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
         }
     }
     
-    // Delegate method to start finding after intro is finished
-    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        // Begin searching
-        self.findOurglassers()
-    }
+//    // Delegate method to start finding after intro is finished
+//    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
+//        // Begin searching
+//        self.findOurglassers()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

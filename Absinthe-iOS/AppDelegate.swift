@@ -1,4 +1,4 @@
-	//
+//
 //  AppDelegate.swift
 //  Belashi-iOS
 //
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EAIntroView
 
 let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
 
