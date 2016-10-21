@@ -478,6 +478,7 @@
                         <outlet property="passwordCheck" destination="SRO-sY-Sjk" id="taD-ll-M2P"/>
                         <outlet property="repeatNewPassword" destination="eAM-he-5Rk" id="9Ju-C9-6OE"/>
                         <outlet property="repeatNewPasswordCheck" destination="I79-Ha-ROY" id="6AP-ns-DYK"/>
+                        <outlet property="saveButton" destination="5Zt-go-cC8" id="NdV-SY-dP8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXK-Uy-K2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
