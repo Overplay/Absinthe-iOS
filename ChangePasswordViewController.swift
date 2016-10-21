@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ChangePasswordViewController: AccountBaseViewController {
 
@@ -27,18 +28,43 @@ class ChangePasswordViewController: AccountBaseViewController {
     }
     
     @IBAction func saveNewPassword(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Change Password", message: "Are you sure you want to change your password?", preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in }
+        if checkInputs() && checkRepeatPassword() {
+            let alertController = UIAlertController(title: "Change Password", message: "Are you sure you want to change your password?", preferredStyle: .Alert)
         
-        alertController.addAction(cancelAction)
+            let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in }
         
-        // TODO: change password with call to Asahi and store new info in Settings
-        let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in }
+            alertController.addAction(cancelAction)
         
-        alertController.addAction(okAction)
+            // TODO: change password with call to Asahi and store new info in Settings
+            let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in }
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+            alertController.addAction(okAction)
+        
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        else if !checkRepeatPassword() {
+            let alertController = UIAlertController(title: "New Password", message: "Your passwords do not match.", preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        else {
+            let alertController = UIAlertController(title: "Oops!", message: "The information you provided is not valid.", preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        // TODO: check that given password matches account?
     }
     
     override func viewDidLoad() {
@@ -63,17 +89,20 @@ class ChangePasswordViewController: AccountBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func checkInputs() {
-        if checkEmail() &&
-            checkPassword(self.currentPassword, checkImage: self.passwordCheck) &&
-            checkPassword(self.newPassword, checkImage: self.newPasswordCheck) &&
-            checkPassword(self.repeatNewPassword, checkImage: self.repeatNewPasswordCheck) {
-            
+    func checkInputs() -> Bool {
+        let emailValid = checkEmail()
+        let currentPasswordValid = checkPassword(self.currentPassword, checkImage: self.passwordCheck)
+        let newPasswordValid = checkPassword(self.newPassword, checkImage: self.newPasswordCheck)
+        let repeatPasswordValid = checkRepeatPassword()
+        
+        if emailValid && currentPasswordValid && newPasswordValid && repeatPasswordValid {
             fadeIn(self.saveButton)
+            return true
         }
         
         else {
             fadeOut(self.saveButton)
+            return false
         }
     }
     
@@ -120,7 +149,21 @@ class ChangePasswordViewController: AccountBaseViewController {
     }
     
     func checkRepeatPassword() -> Bool {
-        return true
+        if let pwd = self.newPassword.text {
+            if let rpwd = self.repeatNewPassword.text {
+                
+                if !pwd.isValidPwd() || pwd != rpwd {
+                    fadeOut(self.repeatNewPasswordCheck)
+                    return false
+                }
+            
+                else {
+                    fadeIn(self.repeatNewPasswordCheck)
+                    return true
+                }
+            }
+        }
+        return false
     }
 
     /*
