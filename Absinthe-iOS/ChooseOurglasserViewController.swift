@@ -169,7 +169,7 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
         cell.location.text = self.availableOPIEs[indexPath.row].location
         //cell.ipAddress.text = (isDevelopment ? self.availableOPIEs[indexPath.row].ipAddress : "")
         cell.ipAddress.text = self.availableOPIEs[indexPath.row].ipAddress
-        cell.systemNumberLabel.text = "\(indexPath.row+1)"
+        cell.systemNumberLabel.text = String(format: "%02d", indexPath.row+1)
         
         return cell
     }
