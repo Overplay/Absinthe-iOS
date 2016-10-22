@@ -44,8 +44,6 @@
 		4F3248E61DB6970900EF4CE3 /* AccountBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3248E51DB6970900EF4CE3 /* AccountBaseViewController.swift */; };
 		4F5ED9821D511D56006519A7 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */; };
 		4F6C7F291D3E9E110055EF8A /* Asahi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C7F281D3E9E110055EF8A /* Asahi.swift */; };
-		4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A571D4FD5D000F83848 /* IntroPage1.xib */; };
-		4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A591D4FDA1200F83848 /* IntroPage2.xib */; };
 		4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */; };
 		4F9033221D4FB98F00525515 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9033211D4FB98F00525515 /* Account.storyboard */; };
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
@@ -99,8 +97,6 @@
 		4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoAnimationSegue.swift; path = "Absinthe-iOS/NoAnimationSegue.swift"; sourceTree = "<group>"; };
 		4F6C7F281D3E9E110055EF8A /* Asahi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asahi.swift; path = "Absinthe-iOS/Asahi.swift"; sourceTree = "<group>"; };
 		4F76932F1D3EBD96008B515A /* Absinthe-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Absinthe-iOS-Bridging-Header.h"; path = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		4F826A571D4FD5D000F83848 /* IntroPage1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage1.xib; path = "Absinthe-iOS/IntroPage1.xib"; sourceTree = "<group>"; };
-		4F826A591D4FDA1200F83848 /* IntroPage2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage2.xib; path = "Absinthe-iOS/IntroPage2.xib"; sourceTree = "<group>"; };
 		4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		4F9033211D4FB98F00525515 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Account.storyboard; path = "Absinthe-iOS/Account.storyboard"; sourceTree = "<group>"; };
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
@@ -226,7 +222,6 @@
 				1E25C1321D36F53F00BEA1FB /* Control */,
 				1E167ACE1D92E6D40080C4C6 /* Tabs */,
 				1EABF7531D90F40900D2BBD5 /* Registration */,
-				4F826A501D4FCC7700F83848 /* Intro */,
 				4FE945691D53F7F700F35CD0 /* Map */,
 				4F9033201D4FB97100525515 /* Account */,
 			);
@@ -246,15 +241,6 @@
 				1E167ACC1D92DD130080C4C6 /* RegSceneBaseViewController.swift */,
 			);
 			name = Registration;
-			sourceTree = "<group>";
-		};
-		4F826A501D4FCC7700F83848 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				4F826A571D4FD5D000F83848 /* IntroPage1.xib */,
-				4F826A591D4FDA1200F83848 /* IntroPage2.xib */,
-			);
-			name = Intro;
 			sourceTree = "<group>";
 		};
 		4F9033201D4FB97100525515 /* Account */ = {
@@ -363,8 +349,6 @@
 				1EABF7551D90F50D00D2BBD5 /* RegistrationStoryboard.storyboard in Resources */,
 				1E96566F1D89F82800EFD7EF /* Poppins-SemiBold.ttf in Resources */,
 				1E25C1231D36F2A700BEA1FB /* LaunchScreen.storyboard in Resources */,
-				4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */,
-				4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */,
 				1E96566D1D89F82800EFD7EF /* Poppins-Medium.ttf in Resources */,
 				4F9033221D4FB98F00525515 /* Account.storyboard in Resources */,
 				1E25C1201D36F2A700BEA1FB /* Assets.xcassets in Resources */,

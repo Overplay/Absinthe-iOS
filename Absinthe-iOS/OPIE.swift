@@ -13,7 +13,7 @@ class OPIE {
     var systemName: String
     var location: String
     var ipAddress: String
-    var lastHeardFrom: NSDate?
+    var ttl: Int
     
     // OurglasserCell in the collection view is currently formatted to display an icon
     // image with a 1:1 aspect ratio. Images of a different aspect ratio will look off.
@@ -29,23 +29,24 @@ class OPIE {
         self.systemName = ""
         self.location = ""
         self.ipAddress = ""
+        self.ttl = -1
         self.icon = OPIE.defaultIconImage
     }
     
-    init(systemName: String, location: String, ipAddress: String, time: NSDate, nowShowing: String?) {
+    init(systemName: String, location: String, ipAddress: String, ttl: Int, nowShowing: String?) {
         self.systemName = systemName
         self.location = location
         self.ipAddress = ipAddress
-        self.lastHeardFrom = time
+        self.ttl = ttl
         self.icon = OPIE.defaultIconImage
         self.nowShowing = nowShowing ?? ""
     }
     
-    init(systemName: String, location: String, ipAddress: String, time: NSDate, iconImage: String) {
+    init(systemName: String, location: String, ipAddress: String, ttl: Int, iconImage: String) {
         self.systemName = systemName
         self.location = location
         self.ipAddress = ipAddress
-        self.lastHeardFrom = time
+        self.ttl = ttl
         self.icon = UIImage(named: iconImage)!
     }
     
@@ -58,6 +59,6 @@ class OPIE {
         return "systemName: \(self.systemName) " +
                "location: \(self.location) " +
                "ipAddress: \(self.ipAddress) " +
-               "lastHeardFrom: \(self.lastHeardFrom)"
+               "ttl: \(self.ttl)"
     }
 }
