@@ -70,6 +70,14 @@ class Settings {
     
     // MARK: User info
     
+    var userId: String? {
+        get {
+            return userDefaults.stringForKey("userId")
+        }
+        set {
+            userDefaults.setObject(newValue, forKey: "userId")
+        }
+    }
     
     var userFirstName: String? {
         get {

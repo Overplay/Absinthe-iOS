@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 
 let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
 
@@ -46,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Log into Asahi if possible
         Asahi.sharedInstance
-        
+      
         //Asahi.sharedInstance.testRegistration()
         //Asahi.sharedInstance.testLogin()
         
@@ -78,7 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

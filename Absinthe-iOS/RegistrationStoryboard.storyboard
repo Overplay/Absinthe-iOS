@@ -38,6 +38,29 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Check Auth View Controller-->
+        <scene sceneID="Sos-nZ-Buz">
+            <objects>
+                <viewController id="uo6-Yd-ChO" customClass="CheckAuthViewController" customModule="Absinthe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EQ3-SF-ovN"/>
+                        <viewControllerLayoutGuide type="bottom" id="WD7-eC-Tb9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y8i-QJ-gNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uq3-BE-XAQ"/>
+                    <connections>
+                        <segue destination="bZf-4A-0Z3" kind="show" identifier="fromCheckAuthToLR" animates="NO" id="FUh-ft-Jjo"/>
+                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromCheckAuthToMainTabs" animates="NO" id="UOq-Y5-399"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8j-IA-kXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="349"/>
+        </scene>
         <!--Login Or Reg View Controller-->
         <scene sceneID="wFF-We-B5M">
             <objects>
@@ -116,14 +139,13 @@
                         <outlet property="orLabel" destination="c19-t4-BIZ" id="PbT-mB-EhN"/>
                         <outlet property="signUpButton" destination="wId-Ve-pwN" id="usm-Id-yp5"/>
                         <outlet property="welcomeToTop" destination="63l-DF-cca" id="wvh-2H-a5J"/>
-                        <segue destination="NHR-vw-zJV" kind="show" identifier="fromLRToMainTabs" animates="NO" id="EvS-cC-VAW"/>
                         <segue destination="3ZW-2C-ui3" kind="show" identifier="fromLRToEnterName" id="i2b-ww-rY6"/>
                         <segue destination="GOE-Ny-CCt" kind="show" identifier="fromLRToLogin" id="w5F-ge-Iao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hs-Ux-taA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="349"/>
+            <point key="canvasLocation" x="1791" y="349"/>
         </scene>
         <!--Enter Name View Controller-->
         <scene sceneID="LzQ-ll-CEZ">
@@ -302,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZC4-d3-Gtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="349"/>
+            <point key="canvasLocation" x="2465" y="349"/>
         </scene>
         <!--Enter Email View Controller-->
         <scene sceneID="IW8-dD-Eyl">
@@ -428,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Te-i6-cla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2675" y="349"/>
+            <point key="canvasLocation" x="3153" y="349"/>
         </scene>
         <!--MainTabsStoryboard-->
         <scene sceneID="zoZ-IU-2oc">
@@ -436,7 +458,7 @@
                 <viewControllerPlaceholder storyboardName="MainTabsStoryboard" id="NHR-vw-zJV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zA-YU-gsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="1056"/>
+            <point key="canvasLocation" x="2621" y="883"/>
         </scene>
         <!--Enter Password View Controller-->
         <scene sceneID="rC5-F7-oU7">
@@ -586,12 +608,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82y-Jc-VhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2675" y="1056"/>
+            <point key="canvasLocation" x="3851" y="349"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qa9-G1-JPp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="DSP-D1-AjW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginOrRegisterVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="DSP-D1-AjW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jed-fN-7oL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -599,7 +621,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bZf-4A-0Z3" kind="relationship" relationship="rootViewController" id="OIm-DB-fdq"/>
+                        <segue destination="uo6-Yd-ChO" kind="relationship" relationship="rootViewController" id="5ne-TH-XIn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIL-5O-lSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -768,7 +790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4c-uv-BZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="1225"/>
+            <point key="canvasLocation" x="1791" y="1153"/>
         </scene>
     </scenes>
     <resources>
@@ -777,6 +799,6 @@
         <image name="ic_play_circle_outline_white_48pt" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EvS-cC-VAW"/>
+        <segue reference="UOq-Y5-399"/>
     </inferredMetricsTieBreakers>
 </document>

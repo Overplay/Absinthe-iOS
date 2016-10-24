@@ -32,12 +32,9 @@ class LoginOrRegViewController: RegSceneBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Check user authorization
-        Asahi.sharedInstance.checkAuthorized().then {authorized -> Void in
-            if authorized {
-                self.performSegueWithIdentifier("fromLRToMainTabs", sender: nil)
-            }
-        }
+        // TODO: Move the check for logged in somewhere else so reg scene doesn't flash
+        
+        // For now, log in using Settings, then check Auth status
         
         let welcomeRestPosition = welcomeToTop.constant
         self.welcomeToTop.constant = -200

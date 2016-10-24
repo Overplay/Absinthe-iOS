@@ -95,6 +95,7 @@ class AccountViewController : AccountBaseViewController, UITableViewDelegate, UI
             Asahi.sharedInstance.logout()
                 .then{ response -> Void in
                     Settings.sharedInstance.userAsahiJWT = nil
+                    Settings.sharedInstance.userPassword = nil
                     HUD.flash(.LabeledSuccess(title: "Logged out!", subtitle: ""), delay: 1.0, completion: { (_) in
                         self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
                     })
@@ -104,6 +105,7 @@ class AccountViewController : AccountBaseViewController, UITableViewDelegate, UI
                 .error{ err -> Void in
                     log.error("Error logging out")
                     Settings.sharedInstance.userAsahiJWT = nil
+                    Settings.sharedInstance.userPassword = nil
                     HUD.flash(.LabeledSuccess(title: "Logged out!", subtitle: ""), delay: 1.0, completion: { (_) in
                         self.performSegueWithIdentifier("fromAccountToRegistration", sender: nil)
                     })
@@ -115,6 +117,10 @@ class AccountViewController : AccountBaseViewController, UITableViewDelegate, UI
         
         self.presentViewController(alertController, animated: true, completion: nil)
 
+    }
+    
+    func inviteFriends() {
+        
     }
     
     override func viewWillAppear(animated: Bool) {

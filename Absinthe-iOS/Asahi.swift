@@ -48,6 +48,8 @@ public class Asahi: NSObject {
 //        }
 //    }
     
+    // TODO: sign in with Facebook (use "type": "facebook" on login and register)
+    
     func register(email: String, password: String, user: NSDictionary) -> Promise<JSON> {
         
         return Promise<JSON> { resolve, reject in
@@ -89,11 +91,11 @@ public class Asahi: NSObject {
         
         return Promise<JSON> { resolve, reject in
             
-            let parameters = ["email":email,
+            let params = ["email":email,
                             "password":password,
                             "type":"local"]
             
-            Alamofire.request(RequestRouter.Login(parameters))
+            Alamofire.request(RequestRouter.Login(params))
                 .validate()
                 .responseJSON { response in
                     
@@ -133,11 +135,11 @@ public class Asahi: NSObject {
         
         return Promise<Bool> { resolve, reject in
             
-            let parameters = ["email":email,
+            let params = ["email":email,
                 "password":password,
                 "type":"local"]
             
-            Alamofire.request(RequestRouter.Login(parameters))
+            Alamofire.request(RequestRouter.Login(params))
                 .validate()
                 .responseString { response in
                     
@@ -152,7 +154,7 @@ public class Asahi: NSObject {
                         if (Settings.sharedInstance.isDevelopmentMode){
                             Settings.sharedInstance.userPassword = password
                         }
-                        
+                                                
                         ASNotification.AsahiLoggedIn.issue()
                         resolve(true)
                         
@@ -276,6 +278,8 @@ public class Asahi: NSObject {
                             reject(AsahiError.ResponseWasNotValidJson)
                             return
                         }
+                        print(value)
+          
                         resolve(JSON(value))
                         
                     case .Failure(let error):
@@ -302,6 +306,56 @@ public class Asahi: NSObject {
         }
     }
     
+    /*func changeAccountInfo(firstName: String, lastName: String, email: String) -> Promise<Bool> {
+        return Promise<Bool> { resolve, reject in
+            
+            let params = ["firstName": firstName, "lastName": lastName, "email":email]
+            
+            Alamofire.request(RequestRouter.ChangeAccountInfo(params))
+                .validate()
+                .responseString { response in
+                    
+                    switch response.result {
+                        
+                    case .Success:
+                        print(response.result.value)
+                        
+                        // TODO: update Settings with new info
+                        
+                        resolve(true)
+                        
+                    case .Failure(let error):
+                        log.debug(error.localizedDescription)
+                        reject(error)
+                        
+                    }
+            }
+        }
+
+    }*/
+    
+    func inviteNewUser(email: String) -> Promise<Bool> {
+        return Promise<Bool> { resolve, reject in
+            
+            let params = ["email": email]
+            
+            Alamofire.request(RequestRouter.InviteNewUser(params))
+                .validate()
+                .responseString { response in
+                    
+                    switch response.result {
+                        
+                    case .Success:
+                        print(response.result.value)
+                        resolve(true)
+                        
+                    case .Failure(let error):
+                        log.debug(error.localizedDescription)
+                        reject(error)
+                    }
+            }
+        }
+    }
     
     // MARK Test Methods
     
