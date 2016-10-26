@@ -213,8 +213,13 @@ public class Asahi: NSObject {
             Alamofire.request(RequestRouter.ChangePwd(params))
                 .validate()
                 .responseString(completionHandler: { response in switch response.result {
+                    
                 case .Success:
+                    if (Settings.sharedInstance.isDevelopmentMode){
+                        Settings.sharedInstance.userPassword = newPassword
+                    }
                     resolve(true)
+                    
                 case .Failure(let error):
                     reject(error)
                     }
@@ -278,9 +283,31 @@ public class Asahi: NSObject {
                             reject(AsahiError.ResponseWasNotValidJson)
                             return
                         }
-                        print(value)
           
                         resolve(JSON(value))
+                        
+                    case .Failure(let error):
+                        reject(error)
+                    }
+                })
+        }
+    }
+    
+    func changeAccountInfo(firstName: String, lastName: String, email: String) -> Promise<Bool> {
+        return Promise<Bool> { resolve, reject in
+            
+            let params = ["email": email, "firstName": firstName, "lastName": lastName]
+            
+            Alamofire.request(RequestRouter.ChangeAccountInfo(params))
+            
+                .validate()
+            
+                .responseString(completionHandler: { response in
+                    
+                    switch response.result {
+                        
+                    case .Success:
+                        resolve(true)
                         
                     case .Failure(let error):
                         reject(error)
@@ -341,7 +368,7 @@ public class Asahi: NSObject {
             
             Alamofire.request(RequestRouter.InviteNewUser(params))
                 .validate()
-                .responseString { response in
+                .responseString(completionHandler: { response in
                     
                     switch response.result {
                         
@@ -353,7 +380,7 @@ public class Asahi: NSObject {
                         log.debug(error.localizedDescription)
                         reject(error)
                     }
-            }
+            })
         }
     }
     

@@ -76,7 +76,7 @@ class CheckAuthViewController: UIViewController {
                             }
                         }
                         
-                        .error{ err in
+                        .error{ err -> Void in
                             reject(err)
                     }
                     

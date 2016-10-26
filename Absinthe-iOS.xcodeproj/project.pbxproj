@@ -49,6 +49,7 @@
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
 		4FC790B81DBADD61004058D6 /* MainTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790B71DBADD61004058D6 /* MainTabsController.swift */; };
 		4FC790BA1DBEB636004058D6 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790B91DBEB636004058D6 /* CheckAuthViewController.swift */; };
+		4FC790BC1DC05B86004058D6 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */; };
 		4FD30E171D4FFE4600C6DB60 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */; };
 		4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */; };
 		4FE9456D1D53F81600F35CD0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE9456C1D53F81600F35CD0 /* Map.storyboard */; };
@@ -103,6 +104,7 @@
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
 		4FC790B71DBADD61004058D6 /* MainTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabsController.swift; sourceTree = "<group>"; };
 		4FC790B91DBEB636004058D6 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
+		4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "Absinthe-iOS/AccountViewController.swift"; sourceTree = "<group>"; };
 		4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "Absinthe-iOS/MapViewController.swift"; sourceTree = "<group>"; };
 		4FE9456C1D53F81600F35CD0 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = "Absinthe-iOS/Map.storyboard"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				4F2118D91DAFF2F800D82E6D /* SettingsCell.swift */,
 				4F3248E11DB5818600EF4CE3 /* ChangePasswordViewController.swift */,
 				4F3248E51DB6970900EF4CE3 /* AccountBaseViewController.swift */,
+				4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */,
 				1EABF75F1D919C1500D2BBD5 /* EnterPasswordViewController.swift in Sources */,
 				1E25C14E1D36FB9200BEA1FB /* Settings.swift in Sources */,
+				4FC790BC1DC05B86004058D6 /* InviteFriendsViewController.swift in Sources */,
 				4F2118DA1DAFF2F800D82E6D /* SettingsCell.swift in Sources */,
 				4F3248E01DB55AC000EF4CE3 /* EditAccountViewController.swift in Sources */,
 				1E25C13C1D36F99300BEA1FB /* ChooseOurglasserViewController.swift in Sources */,
