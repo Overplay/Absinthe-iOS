@@ -186,21 +186,17 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        switch kind {
-            
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerView", forIndexPath: indexPath)
+             let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerView", forIndexPath: indexPath)
             
             if self.availableOPIEs.count < 1 && !self.refreshing {
                 headerView.hidden = false
             } else {
                 headerView.hidden = true
             }
-            return headerView
             
-        default:
-            assert(false, "Unexpected element kind in OPIE collection view.")
-        }
+       
+        return headerView
+
         
     }
     
