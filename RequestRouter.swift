@@ -12,6 +12,7 @@ import PromiseKit
 import SwiftyJSON
 
 enum RequestRouter: URLRequestConvertible {
+    
     static let baseURLString: String = Settings.sharedInstance.ourglassCloudBaseUrl
     
     case GetToken()
@@ -21,14 +22,18 @@ enum RequestRouter: URLRequestConvertible {
     case GetVenues()
     case GetAuthStatus()
     case Logout()
+    case ChangeAccountInfo([String: AnyObject])
+    case InviteNewUser([String: AnyObject])
     
     var URLRequest: NSMutableURLRequest {
         var method: Alamofire.Method {
             switch self {
             case .GetToken, .GetVenues, .GetAuthStatus, .Logout:
                 return .GET
-            case .Register, .Login, .ChangePwd:
+            case .Register, .Login, .ChangePwd, .InviteNewUser:
                 return .POST
+            case .ChangeAccountInfo:
+                return .PUT
             }
         }
         
@@ -42,6 +47,10 @@ enum RequestRouter: URLRequestConvertible {
                 return (user)
             case .ChangePwd(let newPass):
                 return (newPass)
+            case .ChangeAccountInfo(let info):
+                return (info)
+            case .InviteNewUser(let email):
+                return (email)
             }
         }()
         
@@ -62,6 +71,10 @@ enum RequestRouter: URLRequestConvertible {
                 relativePath = "/auth/status"
             case .Logout:
                 relativePath = "/auth/logoutPage"
+            case .ChangeAccountInfo:
+                relativePath = "/user/\(Settings.sharedInstance.userId)"   // TODO: this might crash
+            case .InviteNewUser:
+                relativePath = "/user/inviteNewUser"
             }
             
             var URL = NSURL(string: RequestRouter.baseURLString)!
@@ -83,7 +96,7 @@ enum RequestRouter: URLRequestConvertible {
         switch self {
         case .GetToken, .GetVenues, .GetAuthStatus, .Logout:
             encoding = Alamofire.ParameterEncoding.URL
-        case .Register, .Login, .ChangePwd:
+        case .Register, .Login, .ChangePwd, .ChangeAccountInfo, .InviteNewUser:
             encoding = Alamofire.ParameterEncoding.JSON
         }
         

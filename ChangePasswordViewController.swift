@@ -10,13 +10,16 @@ import UIKit
 import PKHUD
 
 class ChangePasswordViewController: AccountBaseViewController {
+    
+    var email: String?
 
-    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     @IBOutlet weak var currentPassword: UITextField!
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatNewPassword: UITextField!
    
-    @IBOutlet weak var emailCheck: UIImageView!
     @IBOutlet weak var passwordCheck: UIImageView!
     @IBOutlet weak var newPasswordCheck: UIImageView!
     @IBOutlet weak var repeatNewPasswordCheck: UIImageView!
@@ -29,15 +32,34 @@ class ChangePasswordViewController: AccountBaseViewController {
     
     @IBAction func saveNewPassword(sender: AnyObject) {
         
+        // TODO: check that given password matches account?
+
         if checkInputs() && checkRepeatPassword() {
+            
             let alertController = UIAlertController(title: "Change Password", message: "Are you sure you want to change your password?", preferredStyle: .Alert)
         
             let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in }
         
             alertController.addAction(cancelAction)
         
-            // TODO: change password with call to Asahi and store new info in Settings
-            let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in }
+            let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+                
+                if let email = self.email {
+                    if let newPwd = self.newPassword.text {
+                        
+                        Asahi.sharedInstance.changePassword(email, newPassword: newPwd)
+                            
+                            // TODO: show alert that password changed
+                            .then{ response -> Void in
+                                log.debug("Password changed")
+                            }
+
+                            .error{ err -> Void in
+                                log.error("Error changing password")
+                            }
+                    }
+                }
+            }
         
             alertController.addAction(okAction)
         
@@ -64,20 +86,28 @@ class ChangePasswordViewController: AccountBaseViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
-        // TODO: check that given password matches account?
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.emailCheck.alpha = 0
         self.passwordCheck.alpha = 0
         self.newPasswordCheck.alpha = 0
         self.repeatNewPasswordCheck.alpha = 0
         self.saveButton.alpha = 0
         
         
-        self.email.text = Settings.sharedInstance.userEmail
+        self.email = Settings.sharedInstance.userEmail
+        
+        if let first = Settings.sharedInstance.userFirstName {
+            if let last = Settings.sharedInstance.userLastName {
+                self.nameLabel.text = "\(first) \(last)"
+            } else {
+                self.nameLabel.text = "\(first)"
+            }
+        }
+        
+        self.emailLabel.text = Settings.sharedInstance.userEmail
         
         checkInputs()
         
@@ -90,12 +120,13 @@ class ChangePasswordViewController: AccountBaseViewController {
     }
     
     func checkInputs() -> Bool {
-        let emailValid = checkEmail()
+        
+        // we want to make sure all of these checks are done so that the proper animations occur
         let currentPasswordValid = checkPassword(self.currentPassword, checkImage: self.passwordCheck)
         let newPasswordValid = checkPassword(self.newPassword, checkImage: self.newPasswordCheck)
         let repeatPasswordValid = checkRepeatPassword()
         
-        if emailValid && currentPasswordValid && newPasswordValid && repeatPasswordValid {
+        if currentPasswordValid && newPasswordValid && repeatPasswordValid {
             fadeIn(self.saveButton)
             return true
         }
@@ -104,27 +135,6 @@ class ChangePasswordViewController: AccountBaseViewController {
             fadeOut(self.saveButton)
             return false
         }
-    }
-    
-    func checkEmail() -> Bool {
-        if let email = self.email.text {
-            
-            if email.isValidEmail() && self.emailCheck.alpha == 0 {
-                fadeIn(self.emailCheck)
-                return true
-            }
-            
-            if !email.isValidEmail() {
-                fadeOut(self.emailCheck)
-                return false
-            }
-            
-            else {
-                return true
-            }
-        }
-        
-        return false
     }
     
     func checkPassword(textField: UITextField, checkImage: UIImageView) -> Bool {

@@ -15,18 +15,13 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     
     static let sharedInstance = OPIEBeaconListener()
     
-    // This is the subnet mask for the current network, all IPs on local Wi-Fi
     let BROADCAST_HOST = "255.255.255.255"
-    
-    // 9091 for now
     let PORT = Settings.sharedInstance.udpDiscoveryPort
     
-    // max time (in seconds) that can elapse between OPIE broadcasts before the OPIE is dropped
-    let timeBeforeDrop: Double = 10
-    
     // time between pseudo upnp broadcast
-    let broadcastInterval: Double = 5
+    let broadcastInterval: Double = 3
     
+    let maxTTL = 10
     
     // TODO: [mak] are their situations where this could fail (!)?
     let netInfo = NetUtils.getWifiInfo()! as [String:String]
@@ -86,7 +81,10 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         self.socket.close()
     }
     
-    // MARK: - GCDAsyncUdpSocket
+    func handleTimerFire() {
+        broadcastPacket()
+        decrementTTL()
+    }
     
     func broadcastPacket() {
         
@@ -104,12 +102,52 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             #if (arch(i386) || arch(x86_64)) && os(iOS)
                 try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: PORT+1, withTimeout: -1, tag: TAG)
             #endif
-            
-            //try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: bport, withTimeout: -1, tag: TAG)
-            //try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: bport, withTimeout: -1, tag: TAG)
+        
         } catch {
             log.error("ERROR: OPIE socket failed to send packet.")
             ASNotification.OPIESocketError.issue()
+        }
+    }
+    
+    func processOPIE(receivedOp: OPIE) {
+        
+        for op in self.opies {
+            
+            if op.ipAddress == receivedOp.ipAddress {
+                op.systemName = receivedOp.systemName
+                op.location = receivedOp.location
+                op.ttl = maxTTL
+                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                return
+            }
+        }
+        
+        receivedOp.ttl = maxTTL
+        self.opies.append(receivedOp);
+        nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": receivedOp])
+    }
+    
+    func decrementTTL() {
+        
+        var current = [OPIE]()
+        var drop = false
+        
+        for op in self.opies {
+            
+            op.ttl -= 1
+            
+            if op.ttl <= 0 {
+                drop = true
+            }
+            
+            else {
+                current.append(op)
+            }
+        }
+        
+        self.opies = current
+        if drop == true {
+            nc.postNotificationName(ASNotification.droppedOPIE.rawValue, object: nil)
         }
     }
     
@@ -148,7 +186,6 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             if let location = OurglasserJson["location"] as? String {
                 receivedOp.location = location != "undefined" && location != "" ? location : ""
             }
-            receivedOp.lastHeardFrom = NSDate()
             
         } catch {
             log.error("Error reading UDP JSON.")
@@ -156,46 +193,8 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         }
         
         receivedOp.ipAddress = ipAddress!
+
         processOPIE(receivedOp)
     }
     
-    func processOPIE(receivedOp: OPIE) {
-        
-        for op in self.opies {
-            
-            if op.ipAddress == receivedOp.ipAddress {
-                op.systemName = receivedOp.systemName
-                op.location = receivedOp.location
-                op.lastHeardFrom = NSDate()
-                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
-                return
-            }
-        }
-        
-        self.opies.append(receivedOp);
-        nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": receivedOp])
-    }
-    
-    func checkOPIEs() {
-        log.info("Checking devices online...")
-        
-        var online = [OPIE]()
-        var dropped = false
-        
-        for op in self.opies {
-            if let lastHeard = op.lastHeardFrom {
-                let elapsedTime = NSDate().timeIntervalSinceDate(lastHeard)
-                if elapsedTime <= timeBeforeDrop {
-                    online.append(op)
-                } else {
-                    dropped = true
-                }
-            }
-        }
-        
-        self.opies = online
-        if dropped == true {
-            nc.postNotificationName(ASNotification.droppedOPIE.rawValue, object: nil)
-        }
-    }
 }

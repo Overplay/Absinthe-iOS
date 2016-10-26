@@ -290,7 +290,7 @@
         <scene sceneID="m5L-P1-bdY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="y8q-sV-GMZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="TVs" image="TabTVIconSolid" selectedImage="TabTVIconSolid" id="ULO-pZ-htM"/>
+                    <tabBarItem key="tabBarItem" title="TVs" image="ic_tv_white" selectedImage="ic_tv_white" id="ULO-pZ-htM"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -310,7 +310,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TabTVIconSolid" width="25" height="25"/>
         <image name="TopBar" width="400" height="100"/>
+        <image name="ic_tv_white" width="24" height="24"/>
     </resources>
 </document>

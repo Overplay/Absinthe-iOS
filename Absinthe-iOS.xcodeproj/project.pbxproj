@@ -44,11 +44,12 @@
 		4F3248E61DB6970900EF4CE3 /* AccountBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3248E51DB6970900EF4CE3 /* AccountBaseViewController.swift */; };
 		4F5ED9821D511D56006519A7 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */; };
 		4F6C7F291D3E9E110055EF8A /* Asahi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C7F281D3E9E110055EF8A /* Asahi.swift */; };
-		4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A571D4FD5D000F83848 /* IntroPage1.xib */; };
-		4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F826A591D4FDA1200F83848 /* IntroPage2.xib */; };
 		4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */; };
 		4F9033221D4FB98F00525515 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9033211D4FB98F00525515 /* Account.storyboard */; };
 		4FBDEE261D3D5BB600EF9434 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */; };
+		4FC790B81DBADD61004058D6 /* MainTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790B71DBADD61004058D6 /* MainTabsController.swift */; };
+		4FC790BA1DBEB636004058D6 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790B91DBEB636004058D6 /* CheckAuthViewController.swift */; };
+		4FC790BC1DC05B86004058D6 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */; };
 		4FD30E171D4FFE4600C6DB60 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */; };
 		4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */; };
 		4FE9456D1D53F81600F35CD0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE9456C1D53F81600F35CD0 /* Map.storyboard */; };
@@ -98,11 +99,12 @@
 		4F5ED9811D511D56006519A7 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoAnimationSegue.swift; path = "Absinthe-iOS/NoAnimationSegue.swift"; sourceTree = "<group>"; };
 		4F6C7F281D3E9E110055EF8A /* Asahi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asahi.swift; path = "Absinthe-iOS/Asahi.swift"; sourceTree = "<group>"; };
 		4F76932F1D3EBD96008B515A /* Absinthe-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Absinthe-iOS-Bridging-Header.h"; path = "Absinthe-iOS/Absinthe-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		4F826A571D4FD5D000F83848 /* IntroPage1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage1.xib; path = "Absinthe-iOS/IntroPage1.xib"; sourceTree = "<group>"; };
-		4F826A591D4FDA1200F83848 /* IntroPage2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroPage2.xib; path = "Absinthe-iOS/IntroPage2.xib"; sourceTree = "<group>"; };
 		4F8BE9DA1D9F1D6D0099B46B /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		4F9033211D4FB98F00525515 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Account.storyboard; path = "Absinthe-iOS/Account.storyboard"; sourceTree = "<group>"; };
 		4FBDEE251D3D5BB600EF9434 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Pods/XCGLogger/XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
+		4FC790B71DBADD61004058D6 /* MainTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabsController.swift; sourceTree = "<group>"; };
+		4FC790B91DBEB636004058D6 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
+		4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		4FD30E161D4FFE4600C6DB60 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "Absinthe-iOS/AccountViewController.swift"; sourceTree = "<group>"; };
 		4FE9456A1D53F80B00F35CD0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "Absinthe-iOS/MapViewController.swift"; sourceTree = "<group>"; };
 		4FE9456C1D53F81600F35CD0 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = "Absinthe-iOS/Map.storyboard"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1E167ACF1D92E6E90080C4C6 /* MainTabsStoryboard.storyboard */,
+				4FC790B71DBADD61004058D6 /* MainTabsController.swift */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -223,7 +226,6 @@
 				1E25C1321D36F53F00BEA1FB /* Control */,
 				1E167ACE1D92E6D40080C4C6 /* Tabs */,
 				1EABF7531D90F40900D2BBD5 /* Registration */,
-				4F826A501D4FCC7700F83848 /* Intro */,
 				4FE945691D53F7F700F35CD0 /* Map */,
 				4F9033201D4FB97100525515 /* Account */,
 			);
@@ -241,17 +243,9 @@
 				1E69E6601D924CAF00B48212 /* LoginViewController.swift */,
 				1E167ACA1D92DC540080C4C6 /* LoginBaseViewController.swift */,
 				1E167ACC1D92DD130080C4C6 /* RegSceneBaseViewController.swift */,
+				4FC790B91DBEB636004058D6 /* CheckAuthViewController.swift */,
 			);
 			name = Registration;
-			sourceTree = "<group>";
-		};
-		4F826A501D4FCC7700F83848 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				4F826A571D4FD5D000F83848 /* IntroPage1.xib */,
-				4F826A591D4FDA1200F83848 /* IntroPage2.xib */,
-			);
-			name = Intro;
 			sourceTree = "<group>";
 		};
 		4F9033201D4FB97100525515 /* Account */ = {
@@ -263,6 +257,7 @@
 				4F2118D91DAFF2F800D82E6D /* SettingsCell.swift */,
 				4F3248E11DB5818600EF4CE3 /* ChangePasswordViewController.swift */,
 				4F3248E51DB6970900EF4CE3 /* AccountBaseViewController.swift */,
+				4FC790BB1DC05B86004058D6 /* InviteFriendsViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -360,8 +355,6 @@
 				1EABF7551D90F50D00D2BBD5 /* RegistrationStoryboard.storyboard in Resources */,
 				1E96566F1D89F82800EFD7EF /* Poppins-SemiBold.ttf in Resources */,
 				1E25C1231D36F2A700BEA1FB /* LaunchScreen.storyboard in Resources */,
-				4F826A581D4FD5D000F83848 /* IntroPage1.xib in Resources */,
-				4F826A5A1D4FDA1200F83848 /* IntroPage2.xib in Resources */,
 				1E96566D1D89F82800EFD7EF /* Poppins-Medium.ttf in Resources */,
 				4F9033221D4FB98F00525515 /* Account.storyboard in Resources */,
 				1E25C1201D36F2A700BEA1FB /* Assets.xcassets in Resources */,
@@ -436,11 +429,13 @@
 				1E25C1471D36FAD400BEA1FB /* ASNotification.swift in Sources */,
 				1E25C14C1D36FAD400BEA1FB /* Style.swift in Sources */,
 				1E25C13D1D36F99300BEA1FB /* OurglasserViewController.swift in Sources */,
+				4FC790BA1DBEB636004058D6 /* CheckAuthViewController.swift in Sources */,
 				4F3248E21DB5818600EF4CE3 /* ChangePasswordViewController.swift in Sources */,
 				1E25C14A1D36FAD400BEA1FB /* OPIEBeaconListener.swift in Sources */,
 				4FE9456B1D53F80B00F35CD0 /* MapViewController.swift in Sources */,
 				1EABF75F1D919C1500D2BBD5 /* EnterPasswordViewController.swift in Sources */,
 				1E25C14E1D36FB9200BEA1FB /* Settings.swift in Sources */,
+				4FC790BC1DC05B86004058D6 /* InviteFriendsViewController.swift in Sources */,
 				4F2118DA1DAFF2F800D82E6D /* SettingsCell.swift in Sources */,
 				4F3248E01DB55AC000EF4CE3 /* EditAccountViewController.swift in Sources */,
 				1E25C13C1D36F99300BEA1FB /* ChooseOurglasserViewController.swift in Sources */,
@@ -453,6 +448,7 @@
 				1EC631641D778D3D00F99E0E /* ABNetworking.swift in Sources */,
 				1E167ACD1D92DD130080C4C6 /* RegSceneBaseViewController.swift in Sources */,
 				4F8BE9DB1D9F1D6D0099B46B /* RequestRouter.swift in Sources */,
+				4FC790B81DBADD61004058D6 /* MainTabsController.swift in Sources */,
 				1EABF7611D91A4B500D2BBD5 /* StringExtensions.swift in Sources */,
 				1EABF75B1D919BF400D2BBD5 /* EnterNameViewController.swift in Sources */,
 				1E69E6611D924CAF00B48212 /* LoginViewController.swift in Sources */,

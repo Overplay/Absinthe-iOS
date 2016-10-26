@@ -15,12 +15,33 @@ class EditAccountViewController: AccountBaseViewController {
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var emailGoodCheck: UIImageView!
+    @IBOutlet weak var saveButton: UIButton!
     
     @IBAction func closeEditAccount(sender: AnyObject) {
         self.navigationController!.popViewControllerAnimated(true)
     }
     
+    // TODO: this is not working
     @IBAction func save(sender: AnyObject) {
+        
+        guard let first = self.firstName.text
+            else {
+                showInvalidInfoAlert()
+                return
+        }
+        
+        guard let last = self.lastName.text
+            else {
+                showInvalidInfoAlert()
+                return
+        }
+        
+        guard let email = self.email.text
+            else {
+                showInvalidInfoAlert()
+                return
+        }
+        
         let alertController = UIAlertController(title: "Save Changes", message: "Are you sure you want to save changes to your account information?", preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in }
@@ -28,10 +49,29 @@ class EditAccountViewController: AccountBaseViewController {
         alertController.addAction(cancelAction)
         
         // TODO: change account information with call to Asahi and store new info in Settings
-        let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in }
+        let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            
+            Asahi.sharedInstance.changeAccountInfo(first, lastName: last, email: email)
+            
+                .then{ response -> Void in
+                    Settings.sharedInstance.userEmail = email
+                    Settings.sharedInstance.userFirstName = first
+                    Settings.sharedInstance.userLastName = last
+            }
+        }
         
         alertController.addAction(okAction)
         
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func showInvalidInfoAlert() {
+        let alertController = UIAlertController(title: "Oops!", message: "The information you put in is not valid.", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+        }
+        
+        alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -39,6 +79,7 @@ class EditAccountViewController: AccountBaseViewController {
         super.viewDidLoad()
         
         self.emailGoodCheck.alpha = 0
+        self.saveButton.alpha = 0
 
         self.firstName.text = Settings.sharedInstance.userFirstName
         self.lastName.text = Settings.sharedInstance.userLastName
@@ -52,7 +93,6 @@ class EditAccountViewController: AccountBaseViewController {
                 if let first = response["firstName"].string {
                     Settings.sharedInstance.userFirstName = first
                     self.firstName.text = first
-                    self.checkEmail()
                 }
                 
                 if let last = response["lastName"].string {
@@ -63,6 +103,11 @@ class EditAccountViewController: AccountBaseViewController {
                 if let email = response["auth"]["email"].string {
                     Settings.sharedInstance.userEmail = email
                     self.email.text = email
+                    self.checkEmail()
+                }
+                
+                if let userId = response["id"].string {
+                    Settings.sharedInstance.userId = userId
                 }
             }
             
@@ -94,10 +139,12 @@ class EditAccountViewController: AccountBaseViewController {
             
             if email.isValidEmail() && self.emailGoodCheck.alpha == 0 {
                 fadeIn(self.emailGoodCheck)
+                fadeIn(self.saveButton)
             }
             
             if !email.isValidEmail() {
                 fadeOut(self.emailGoodCheck)
+                fadeOut(self.saveButton)
             }
         }
     }
