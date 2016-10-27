@@ -64,16 +64,6 @@ class InviteFriendsViewController: AccountBaseViewController {
             }
         }
     }
-    
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
-        
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
 
     
     override func didReceiveMemoryWarning() {

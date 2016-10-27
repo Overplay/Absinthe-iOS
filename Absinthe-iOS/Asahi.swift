@@ -283,6 +283,8 @@ public class Asahi: NSObject {
                             reject(AsahiError.ResponseWasNotValidJson)
                             return
                         }
+                        
+                        print(value)
           
                         resolve(JSON(value))
                         
@@ -293,27 +295,28 @@ public class Asahi: NSObject {
         }
     }
     
-    func changeAccountInfo(firstName: String, lastName: String, email: String) -> Promise<Bool> {
+    func changeAccountInfo(firstName: String, lastName: String, email: String, userId: String) -> Promise<Bool> {
         return Promise<Bool> { resolve, reject in
             
             let params = ["email": email, "firstName": firstName, "lastName": lastName]
             
-            Alamofire.request(RequestRouter.ChangeAccountInfo(params))
+                Alamofire.request(RequestRouter.ChangeAccountInfo(params, userId))
             
-                .validate()
+                    .validate()
             
-                .responseString(completionHandler: { response in
+                    .responseString(completionHandler: { response in
                     
-                    switch response.result {
+                        switch response.result {
                         
-                    case .Success:
-                        resolve(true)
+                        case .Success:
+                            resolve(true)
                         
-                    case .Failure(let error):
-                        reject(error)
-                    }
-                })
+                        case .Failure(let error):
+                            reject(error)
+                        }
+                    })
         }
+
     }
     
     func logout() -> Promise<Bool> {

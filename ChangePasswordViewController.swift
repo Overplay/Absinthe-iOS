@@ -44,20 +44,29 @@ class ChangePasswordViewController: AccountBaseViewController {
         
             let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
                 
+                HUD.show(.Progress)
+                
                 if let email = self.email {
                     if let newPwd = self.newPassword.text {
                         
                         Asahi.sharedInstance.changePassword(email, newPassword: newPwd)
                             
-                            // TODO: show alert that password changed
                             .then{ response -> Void in
                                 log.debug("Password changed")
+                                HUD.flash(.Success, delay:0.7)
                             }
 
                             .error{ err -> Void in
-                                log.error("Error changing password")
+                                HUD.hide()
+                                self.showAlert("Unable to change password", message: "")
                             }
+                    } else {
+                        HUD.hide()
+                        self.showAlert("Unable to change password", message: "")
                     }
+                } else {
+                    HUD.hide()
+                    self.showAlert("Unable to change password", message: "")
                 }
             }
         

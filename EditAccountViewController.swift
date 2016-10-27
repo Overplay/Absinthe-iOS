@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import PKHUD
 
 class EditAccountViewController: AccountBaseViewController {
 
@@ -21,24 +22,23 @@ class EditAccountViewController: AccountBaseViewController {
         self.navigationController!.popViewControllerAnimated(true)
     }
     
-    // TODO: this is not working
     @IBAction func save(sender: AnyObject) {
         
         guard let first = self.firstName.text
             else {
-                showInvalidInfoAlert()
+                showAlert("Oops!", message: "The information you put in is not valid.")
                 return
         }
         
         guard let last = self.lastName.text
             else {
-                showInvalidInfoAlert()
+                showAlert("Oops!", message: "The information you put in is not valid.")
                 return
         }
         
         guard let email = self.email.text
             else {
-                showInvalidInfoAlert()
+                showAlert("Oops!", message: "The information you put in is not valid.")
                 return
         }
         
@@ -51,27 +51,31 @@ class EditAccountViewController: AccountBaseViewController {
         // TODO: change account information with call to Asahi and store new info in Settings
         let okAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
             
-            Asahi.sharedInstance.changeAccountInfo(first, lastName: last, email: email)
+            HUD.show(.Progress)
             
-                .then{ response -> Void in
-                    Settings.sharedInstance.userEmail = email
-                    Settings.sharedInstance.userFirstName = first
-                    Settings.sharedInstance.userLastName = last
+            if let uid = Settings.sharedInstance.userId {
+                Asahi.sharedInstance.changeAccountInfo(first, lastName: last, email: email, userId: uid)
+            
+                    .then{ response -> Void in
+                        Settings.sharedInstance.userEmail = email
+                        Settings.sharedInstance.userFirstName = first
+                        Settings.sharedInstance.userLastName = last
+                        
+                        HUD.flash(.Success, delay:0.7)
+                    }
+                
+                    .error{ err -> Void in
+                        HUD.hide()
+                        self.showAlert("Unable to change account info", message: "")
+                    }
+            } else {
+                HUD.hide()
+                self.showAlert("Unable to change account info", message: "")
             }
         }
         
         alertController.addAction(okAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    func showInvalidInfoAlert() {
-        let alertController = UIAlertController(title: "Oops!", message: "The information you put in is not valid.", preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
-        
-        alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
