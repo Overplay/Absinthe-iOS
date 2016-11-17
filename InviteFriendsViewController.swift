@@ -29,10 +29,7 @@ class InviteFriendsViewController: AccountBaseViewController {
             Asahi.sharedInstance.inviteNewUser(e)
                 
                 .then{ response -> Void in
-                    
-                    HUD.flash(.LabeledSuccess(title: "Sent invite!", subtitle: ""), delay: 1.0, completion: { (_) in
-                    })
-            }
+                    HUD.flash(.Success, delay: 1.0)            }
         }
         
         else {

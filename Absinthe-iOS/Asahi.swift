@@ -171,7 +171,7 @@ public class Asahi: NSObject {
         
         return loginOnly(email, password: password)
             .then{ _ -> Promise<String> in
-                self.getToken()
+                return self.getToken()
         }
     }
     
@@ -182,6 +182,8 @@ public class Asahi: NSObject {
             Alamofire.request(RequestRouter.GetToken())
                 .validate()
                 .responseJSON { response in
+                    
+                    log.debug(response.debugDescription)
                     
                     switch response.result {
                     
