@@ -87,7 +87,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         do {
             // JSON object to broadcast to the LAN
             let jsonPacket = JSON([
-                "ip": netInfo["ip"]!
+                "ip": netInfo["ip"]!,
+                "action": "discover",
+                "time": NSDate().timeIntervalSince1970
                 ])
             
             try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: PORT, withTimeout: -1, tag: TAG)
@@ -190,6 +192,13 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             }
             if let venue = OurglasserJson["venue"] as? String {
                 receivedOp.venue = venue
+            }
+            
+            // check packet received is from a real OG
+            if let randomFactoid = OurglasserJson["randomFactoid"] as? String {
+                log.debug(randomFactoid)
+            } else {  // not a real OG
+                return
             }
             
         } catch {
