@@ -107,7 +107,15 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         
         for op in self.opies {
             
-            if op.ipAddress == receivedOp.ipAddress {
+            /*if op.ipAddress == receivedOp.ipAddress {
+                op.systemName = receivedOp.systemName
+                op.location = receivedOp.location
+                op.ttl = maxTTL
+                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                return
+            }*/
+            
+            if op.systemName == receivedOp.systemName {
                 op.systemName = receivedOp.systemName
                 op.location = receivedOp.location
                 op.ttl = maxTTL
@@ -165,10 +173,10 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             return
         }
         
-        guard ipAddress != netInfo["ip"] else {
+        /*guard ipAddress != netInfo["ip"] else {
             log.debug("Got my own address as source of UDP packet, skipping!")
             return
-        }
+        }*/
         
         let receivedOp = OPIE()
         
@@ -177,8 +185,11 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             if let name = OurglasserJson["name"] as? String {
                 receivedOp.systemName = name != "undefined" && name != "" ? name : "Ourglass Device"
             }
-            if let location = OurglasserJson["location"] as? String {
+            if let location = OurglasserJson["locationWithinVenue"] as? String {
                 receivedOp.location = location != "undefined" && location != "" ? location : ""
+            }
+            if let venue = OurglasserJson["venue"] as? String {
+                receivedOp.venue = venue
             }
             
         } catch {
