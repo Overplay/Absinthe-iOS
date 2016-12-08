@@ -8,6 +8,7 @@
 
 import UIKit
 import PromiseKit
+import SystemConfiguration
 
 let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
 
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var opieBeaconListener: OPIEBeaconListener?
+    
+    //let reachability = Reachability()!
+    
+    //private var reachability: Reachability!
     
     func setupXCGLogger() {
         // Create a destination for the system console log (via NSLog)

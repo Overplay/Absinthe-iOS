@@ -24,7 +24,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     let maxTTL = 10
     
     // TODO: [mak] are their situations where this could fail (!)?
-    let netInfo = NetUtils.getWifiInfo()! as [String:String]
+    
+    // TODO: expensive to do this every time instead?
+    var netInfo = NetUtils.getWifiInfo()! as [String:String]
     
     // For identifying different UDP packets sent to different hosts or whatever
     // This doesn't really matter for our usecase
@@ -39,6 +41,8 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     func startListening() {
         
         opies = [OPIE]()
+        
+        self.netInfo = NetUtils.getWifiInfo()! as [String:String]
         
         self.socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
 
@@ -109,21 +113,21 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         
         for op in self.opies {
             
-            /*if op.ipAddress == receivedOp.ipAddress {
-                op.systemName = receivedOp.systemName
-                op.location = receivedOp.location
-                op.ttl = maxTTL
-                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
-                return
-            }*/
-            
-            if op.systemName == receivedOp.systemName {
+            if op.ipAddress == receivedOp.ipAddress {
                 op.systemName = receivedOp.systemName
                 op.location = receivedOp.location
                 op.ttl = maxTTL
                 nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
                 return
             }
+            
+            /*if op.systemName == receivedOp.systemName {
+                op.systemName = receivedOp.systemName
+                op.location = receivedOp.location
+                op.ttl = maxTTL
+                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                return
+            }*/
         }
         
         receivedOp.ttl = maxTTL
@@ -175,10 +179,10 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             return
         }
         
-        /*guard ipAddress != netInfo["ip"] else {
+        guard ipAddress != netInfo["ip"] else {
             log.debug("Got my own address as source of UDP packet, skipping!")
             return
-        }*/
+        }
         
         let receivedOp = OPIE()
         

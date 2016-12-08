@@ -8,5 +8,6 @@ target 'Absinthe-iOS' do
     pod 'XCGLogger', '~> 3.2.0'
     pod 'PKHUD', '~> 3.2.1'
     pod 'PromiseKit', '<4.0'
+    pod 'ReachabilitySwift', '~> 2.4'
 end
 
