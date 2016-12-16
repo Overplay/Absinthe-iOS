@@ -22,7 +22,7 @@ enum RequestRouter: URLRequestConvertible {
     case GetVenues()
     case GetAuthStatus()
     case Logout()
-    case ChangeAccountInfo([String: AnyObject])
+    case ChangeAccountInfo([String: AnyObject], String)
     case InviteNewUser([String: AnyObject])
     
     var URLRequest: NSMutableURLRequest {
@@ -47,7 +47,7 @@ enum RequestRouter: URLRequestConvertible {
                 return (user)
             case .ChangePwd(let newPass):
                 return (newPass)
-            case .ChangeAccountInfo(let info):
+            case .ChangeAccountInfo(let info, _):
                 return (info)
             case .InviteNewUser(let email):
                 return (email)
@@ -71,8 +71,8 @@ enum RequestRouter: URLRequestConvertible {
                 relativePath = "/auth/status"
             case .Logout:
                 relativePath = "/auth/logoutPage"
-            case .ChangeAccountInfo:
-                relativePath = "/user/\(Settings.sharedInstance.userId)"   // TODO: this might crash
+            case .ChangeAccountInfo(_, let userId):
+                relativePath = "api/v1/user/\(userId)"
             case .InviteNewUser:
                 relativePath = "/user/inviteNewUser"
             }

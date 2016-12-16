@@ -23,6 +23,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (3.5.1):
     - PromiseKit/CorePromise
+  - ReachabilitySwift (2.4)
   - SwiftyJSON (2.3.3)
   - XCGLogger (3.2)
 
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.5.0)
   - PKHUD (~> 3.2.1)
   - PromiseKit (< 4.0)
+  - ReachabilitySwift (~> 2.4)
   - SwiftyJSON (~> 2.3.2)
   - XCGLogger (~> 3.2.0)
 
@@ -40,9 +42,10 @@ SPEC CHECKSUMS:
   OMGHTTPURLRQ: 1e54807cb7d5dbb506926e53498e1e9ac5720c79
   PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
   PromiseKit: 99ea973444a4bff6c38ffb97fa1bb175e619bcf0
+  ReachabilitySwift: dc7452dab85ff881904215e1a113326ad8d07beb
   SwiftyJSON: 0fd0a115a3c0c09b277d2ab801df154902b942c3
   XCGLogger: da1f341f4bb8979db6e1df64232f04d9698402d4
 
-PODFILE CHECKSUM: 6bba1ca8ffc395ddb32d8a5a07ed33afc31a9e39
+PODFILE CHECKSUM: 92574933381bff72b2335c68aae9d3bae6940806
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.0.1

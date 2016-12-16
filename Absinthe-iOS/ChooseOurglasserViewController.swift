@@ -169,7 +169,14 @@ class ChooseOurglasserViewController : UIViewController, UICollectionViewDelegat
         cell.location.text = self.availableOPIEs[indexPath.row].location
         //cell.ipAddress.text = (isDevelopment ? self.availableOPIEs[indexPath.row].ipAddress : "")
         cell.ipAddress.text = self.availableOPIEs[indexPath.row].ipAddress
-        cell.systemNumberLabel.text = String(format: "%02d", indexPath.row+1)
+        cell.systemNumberLabel.text = String(format: "%02d", indexPath.row + 1)
+        
+        // Make number red for devices without a venue
+        if (self.availableOPIEs[indexPath.row].venue == "") {
+            cell.systemNumberLabel.textColor = UIColor.redColor()
+        } else {
+            cell.systemNumberLabel.textColor = UIColor.whiteColor()
+        }
         
         return cell
     }

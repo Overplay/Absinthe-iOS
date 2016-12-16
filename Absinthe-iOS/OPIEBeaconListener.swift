@@ -24,7 +24,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     let maxTTL = 10
     
     // TODO: [mak] are their situations where this could fail (!)?
-    let netInfo = NetUtils.getWifiInfo()! as [String:String]
+    
+    // TODO: expensive to do this every time instead?
+    var netInfo = NetUtils.getWifiInfo()! as [String:String]
     
     // For identifying different UDP packets sent to different hosts or whatever
     // This doesn't really matter for our usecase
@@ -39,6 +41,8 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     func startListening() {
         
         opies = [OPIE]()
+        
+        self.netInfo = NetUtils.getWifiInfo()! as [String:String]
         
         self.socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
 
@@ -87,7 +91,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         do {
             // JSON object to broadcast to the LAN
             let jsonPacket = JSON([
-                "ip": netInfo["ip"]!
+                "ip": netInfo["ip"]!,
+                "action": "discover",
+                "time": NSDate().timeIntervalSince1970
                 ])
             
             try self.socket.sendData(jsonPacket.rawData(), toHost: BROADCAST_HOST, port: PORT, withTimeout: -1, tag: TAG)
@@ -114,6 +120,14 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
                 nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
                 return
             }
+            
+            /*if op.systemName == receivedOp.systemName {
+                op.systemName = receivedOp.systemName
+                op.location = receivedOp.location
+                op.ttl = maxTTL
+                nc.postNotificationName(ASNotification.newOPIE.rawValue, object: nil, userInfo: ["OPIE": op])
+                return
+            }*/
         }
         
         receivedOp.ttl = maxTTL
@@ -177,8 +191,18 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             if let name = OurglasserJson["name"] as? String {
                 receivedOp.systemName = name != "undefined" && name != "" ? name : "Ourglass Device"
             }
-            if let location = OurglasserJson["location"] as? String {
+            if let location = OurglasserJson["locationWithinVenue"] as? String {
                 receivedOp.location = location != "undefined" && location != "" ? location : ""
+            }
+            if let venue = OurglasserJson["venue"] as? String {
+                receivedOp.venue = venue
+            }
+            
+            // check packet received is from a real OG
+            if let randomFactoid = OurglasserJson["randomFactoid"] as? String {
+                log.debug(randomFactoid)
+            } else {  // not a real OG
+                return
             }
             
         } catch {

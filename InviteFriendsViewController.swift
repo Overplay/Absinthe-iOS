@@ -29,10 +29,7 @@ class InviteFriendsViewController: AccountBaseViewController {
             Asahi.sharedInstance.inviteNewUser(e)
                 
                 .then{ response -> Void in
-                    
-                    HUD.flash(.LabeledSuccess(title: "Sent invite!", subtitle: ""), delay: 1.0, completion: { (_) in
-                    })
-            }
+                    HUD.flash(.Success, delay: 1.0)            }
         }
         
         else {
@@ -63,16 +60,6 @@ class InviteFriendsViewController: AccountBaseViewController {
                 fadeOut(self.inviteButton)
             }
         }
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
-        
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     
