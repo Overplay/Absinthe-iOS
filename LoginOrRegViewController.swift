@@ -43,12 +43,6 @@ class LoginOrRegViewController: RegSceneBaseViewController {
         self.signUpButton.alpha = 0
         self.orLabel.alpha = 0
         
-        Asahi.sharedInstance.
-        
-        let logoRestPosition = logoToTop.constant
-        logoToTop.constant = -200
-        createAccountButton.alpha = 0
-        loginWithFBButton.alpha = 0
         self.view.layoutIfNeeded()
 
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.14, initialSpringVelocity: 3.0, options: .CurveLinear, animations: {

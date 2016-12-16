@@ -68,13 +68,7 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
             return
         }
         
-        // Fire off the psuedo upnp "anyone there?" packet to send on an interval
-        NSTimer.scheduledTimerWithTimeInterval(broadcastInterval, target: self, selector: #selector (broadcastPacket),userInfo: nil, repeats: true)
-        
-        // Check devices are online
-        // TODO: remove algo broken?
-        //NSTimer.scheduledTimerWithTimeInterval(timeBeforeDrop, target: self, selector: #selector (checkOPIEs), userInfo: nil, repeats: true)
-        
+        NSTimer.scheduledTimerWithTimeInterval(broadcastInterval, target: self, selector: #selector(handleTimerFire), userInfo: nil, repeats: true)
     }
     
     func stopListening() {

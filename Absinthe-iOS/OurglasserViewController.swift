@@ -62,7 +62,8 @@ class OurglasserViewController: UIViewController, UIWebViewDelegate {
     func startPageLoadTimeout() {
         // Show HUD
 
-        HUD.show(.LabeledProgress(title: "Connecting To", subtitle: op.systemName))
+        //HUD.show(.LabeledProgress(title: "Connecting To", subtitle: op.systemName))
+        HUD.show(.LabeledProgress(title: "Loading", subtitle: "Please Wait"))
         if(self.timeoutTimer.valid) {
             self.timeoutTimer.invalidate()
         }
