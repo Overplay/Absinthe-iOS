@@ -1,27 +1,27 @@
 PODS:
   - Alamofire (3.5.1)
-  - CocoaAsyncSocket (7.5.0):
-    - CocoaAsyncSocket/GCD (= 7.5.0)
-  - CocoaAsyncSocket/GCD (7.5.0)
-  - OMGHTTPURLRQ (3.2.0):
-    - OMGHTTPURLRQ/RQ (= 3.2.0)
-  - OMGHTTPURLRQ/FormURLEncode (3.2.0)
-  - OMGHTTPURLRQ/RQ (3.2.0):
+  - CocoaAsyncSocket (7.5.1):
+    - CocoaAsyncSocket/GCD (= 7.5.1)
+  - CocoaAsyncSocket/GCD (7.5.1)
+  - OMGHTTPURLRQ (3.2.2):
+    - OMGHTTPURLRQ/RQ (= 3.2.2)
+  - OMGHTTPURLRQ/FormURLEncode (3.2.2)
+  - OMGHTTPURLRQ/RQ (3.2.2):
     - OMGHTTPURLRQ/FormURLEncode
     - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.2.0)
+  - OMGHTTPURLRQ/UserAgent (3.2.2)
   - PKHUD (3.2.1)
-  - PromiseKit (3.5.1):
-    - PromiseKit/Foundation (= 3.5.1)
-    - PromiseKit/QuartzCore (= 3.5.1)
-    - PromiseKit/UIKit (= 3.5.1)
-  - PromiseKit/CorePromise (3.5.1)
-  - PromiseKit/Foundation (3.5.1):
+  - PromiseKit (3.5.3):
+    - PromiseKit/Foundation (= 3.5.3)
+    - PromiseKit/QuartzCore (= 3.5.3)
+    - PromiseKit/UIKit (= 3.5.3)
+  - PromiseKit/CorePromise (3.5.3)
+  - PromiseKit/Foundation (3.5.3):
     - OMGHTTPURLRQ (~> 3.2.0)
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.5.1):
+  - PromiseKit/QuartzCore (3.5.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.5.1):
+  - PromiseKit/UIKit (3.5.3):
     - PromiseKit/CorePromise
   - ReachabilitySwift (2.4)
   - SwiftyJSON (2.3.3)
@@ -38,14 +38,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
-  CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
-  OMGHTTPURLRQ: 1e54807cb7d5dbb506926e53498e1e9ac5720c79
+  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  OMGHTTPURLRQ: edb14c7d28add69226b79d826f930805927a0ffa
   PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
-  PromiseKit: 99ea973444a4bff6c38ffb97fa1bb175e619bcf0
+  PromiseKit: d3393df0dfd7ed208cec0267dce13c66d9c09d0a
   ReachabilitySwift: dc7452dab85ff881904215e1a113326ad8d07beb
   SwiftyJSON: 0fd0a115a3c0c09b277d2ab801df154902b942c3
   XCGLogger: da1f341f4bb8979db6e1df64232f04d9698402d4
 
 PODFILE CHECKSUM: 92574933381bff72b2335c68aae9d3bae6940806
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

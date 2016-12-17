@@ -19,9 +19,9 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
     let PORT = Settings.sharedInstance.udpDiscoveryPort
     
     // time between pseudo upnp broadcast
-    let broadcastInterval: Double = 3
+    let broadcastInterval: Double = 10
     
-    let maxTTL = 10
+    let maxTTL = 6
     
     // TODO: [mak] are their situations where this could fail (!)?
     
@@ -165,8 +165,8 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         log.info("Sent packet into nothingness... hoping for response.")
     }
     
-    @objc func udpSocket(sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: NSError) {
-        log.error(String(format: "ERROR: OPIE socket failed to send packet. %@", error.description))
+    @objc func udpSocket(sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: NSError?) {
+        log.error(String(format: "ERROR: OPIE socket failed to send packet. %@", error!.description))
         ASNotification.OPIESocketError.issue()
     }
     
@@ -186,8 +186,17 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
         
         let receivedOp = OPIE()
         
+        //TODO this should be using SwiftyJSON and guard statements
         do {
             let OurglasserJson = try NSJSONSerialization.JSONObjectWithData(data, options:[])
+
+            // check packet received is from a real OG
+            if let randomFactoid = OurglasserJson["randomFactoid"] as? String {
+                log.debug(randomFactoid)
+            } else {  // not a real OG
+                return
+            }
+
             if let name = OurglasserJson["name"] as? String {
                 receivedOp.systemName = name != "undefined" && name != "" ? name : "Ourglass Device"
             }
@@ -198,12 +207,6 @@ class OPIEBeaconListener: NSObject, GCDAsyncUdpSocketDelegate {
                 receivedOp.venue = venue
             }
             
-            // check packet received is from a real OG
-            if let randomFactoid = OurglasserJson["randomFactoid"] as? String {
-                log.debug(randomFactoid)
-            } else {  // not a real OG
-                return
-            }
             
         } catch {
             log.error("Error reading UDP JSON.")

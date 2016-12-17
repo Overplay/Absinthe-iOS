@@ -28,10 +28,10 @@ platform with a `swiftc`, it has *excellent* Objective-C bridging and
 
 ```ruby
 # CocoaPods
-pod "PromiseKit", "~> 3.4"
+pod "PromiseKit", "~> 3.5"
 
 # Carthage
-github "mxcl/PromiseKit" ~> 3.4
+github "mxcl/PromiseKit" ~> 3.5
 
 # SwiftPM
 let package = Package(
@@ -140,7 +140,7 @@ We do **not** backport fixes (mostly) to these migration-branches, but pull-requ
 # Support
 
 * Ask questions of the developers and the community at our [Gitter chat channel](https://gitter.im/mxcl/PromiseKit).
-* Ask your question by [opening a ticket](issues/new).
+* Ask your question by [opening a ticket](https://github.com/mxcl/PromiseKit/issues/new).
 
 
 [travis]: https://travis-ci.org/mxcl/PromiseKit
