@@ -36,12 +36,20 @@ class LoginOrRegViewController: RegSceneBaseViewController {
         
         // For now, log in using Settings, then check Auth status
         
+        // Taking out account creation for Alpha release
+        self.signUpButton.hidden = true
+        self.orLabel.hidden = true
+        
         let welcomeRestPosition = welcomeToTop.constant
         self.welcomeToTop.constant = -200
         
         self.loginButton.alpha = 0
         self.signUpButton.alpha = 0
         self.orLabel.alpha = 0
+        
+        // Taking out account creation for Alpha release
+        self.signUpButton.hidden = true
+        self.orLabel.hidden = true
         
         self.view.layoutIfNeeded()
 
