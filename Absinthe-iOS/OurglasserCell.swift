@@ -17,7 +17,7 @@ class OurglasserCell: UICollectionViewCell {
     
     
     func swiped(sender: UISwipeGestureRecognizer){
-        log.debug("Tickle my pickle!")
+        log.debug("OG swiped")
     }
     
     override func awakeFromNib() {

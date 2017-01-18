@@ -29,9 +29,9 @@ class AccountViewController : AccountBaseViewController, UITableViewDelegate, UI
     var tableView: UITableView!
     
     let options = [
-        SettingsOption(label: "Invite Friends", image: "ic_card_giftcard_white_18pt"),
+        //SettingsOption(label: "Invite Friends", image: "ic_card_giftcard_white_18pt"),
         SettingsOption(label: "Edit Account", image: "ic_perm_identity_white_18pt"),
-        SettingsOption(label: "Add New Ourglass Device", image: "ic_queue_play_next_white_18pt"),
+        //SettingsOption(label: "Add New Ourglass Device", image: "ic_queue_play_next_white_18pt"),
         // SettingsOption(label: "Add/Manage Venues", image: "ic_add_location_white_18pt"),
         SettingsOption(label: "Log Out", image: "ic_first_page_white_18pt")]
     
